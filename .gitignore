@@ -1,0 +1,10 @@
+node_modules/
+.webpack/
+out/
+test-out/
+.vscode/
+test.sqlcipher
+yarn-error.log
+.idea
+.DS_Store
+
