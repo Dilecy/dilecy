@@ -1,5 +1,5 @@
 import { AjaxResponse } from 'rxjs/ajax';
-import { PaginatedResponse } from './api-service';
+import { PaginatedResponse } from './http-service';
 import {
   Brand,
   Company,

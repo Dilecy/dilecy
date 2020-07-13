@@ -130,5 +130,23 @@ export const localization = {
     'Um Dilecy mit mehr Funktionen und besserer Bedienbarkeit anbieten zu können, benötigen wir Informationen wie unsere Nutzer ihn empfinden. Ohne deine Einwilligung erheben wir diese personenbezogene Daten  nicht und du kannst Dilecy trotzdem mit den selben Funktionen nutzen. Wir freuen uns deine persönliche Meinung zu unserem Prototypen von dir hören. Wenn du damit einverstanden bist, wird deine E-Mail Adresse zu Feedback Zwecken an uns übermittelt. Gegebenenfalls würden wir dich unter dieser Adresse kontaktieren und dir einige Fragen zu deiner Erfahrung mit Dilecy stellen. Du kannst deine Einwilligung jederzeit unter Einstellungen zurückziehen. Bei Fragen kannst du gerne in unseren Datenschutzerklärung nachlesen oder uns unter support@dilecy.de schreiben.',
   CONSENT_PRIVACY:
     'Ich habe die AGBs und Datenschutzerklärung gelesen und akzeptiere diese.',
-  PROCEED_WITHOUT_EMAIL: 'Ohne E-Mailadresse fortfahren'
+  PROCEED_WITHOUT_EMAIL: 'Ohne E-Mailadresse fortfahren',
+  SEND_WITH_OWN_EMAIL: 'Über eigene E-Mailadresse versenden',
+  OWN_EMAIL_TIP:
+    'Du kannst mit deiner E-Mailadresse direkt an die Unternehmen Anfragen versenden.',
+  CONNECT_WITH_EMAIL_SERVER: 'Verbinde dich mit deinem Email-Server',
+  HOW_SEND_EMAILS: 'Wie möchtest du Anfragen versenden?',
+  WE_DONT_GET_YOUR_ADDRESS: 'Wir erfahren nicht deine E-Mailadresse',
+  WE_DONT_KNOW_WHAT_YOU_SEND: 'Wir erfahren nicht an wen du Anfragen sendest',
+  PASSWORD_NOT_REQUIRED: 'Kein E-Mail Passwort notwendig',
+  EFFORT: 'Aufwand',
+  LITTLE_EFFORT: '5 min',
+  BIG_EFFORT: '30 min',
+  USE_OWN_EMAIL: 'Über eigene E-Mailadresse',
+  USE_DILECY: 'Vorlagen zum Weiterleiten',
+  USE_DILECY_TIP:
+    'Wir schicken dir einzelne E-Mails, die du an die Unternehmen weiter leiten kannst.',
+  EMAIL_FORWARD_QUESTION: 'An welche E-Mail sollen wir die Vorlagen schicken?',
+  YOUR_EMAIL_ADDRESS: 'Deine Mailadresse',
+  CONFIRM_AND_SEND: 'Bestätigen und absenden'
 };

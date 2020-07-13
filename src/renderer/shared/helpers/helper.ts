@@ -6,5 +6,7 @@ export const isEmptyMap = (item: IdMap<any>) => {
 };
 
 export const hasEmail = (input: EmailAccount) => {
-  return input && (input.emailAddress || input.isGoogle);
+  return (
+    input && ((input.emailAddress || input.isGoogle) && !input.isForwarder)
+  );
 };

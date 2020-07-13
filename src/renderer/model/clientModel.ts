@@ -22,6 +22,8 @@ export interface EmailAccount {
 
   isGoogle?: boolean;
   refreshToken?: string;
+
+  isForwarder?: boolean;
 }
 
 export interface ProfileDetails {

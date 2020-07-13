@@ -1,4 +1,5 @@
 import { TaskQueue } from '../google/callQueue';
+import { ProfileDetails } from '../../model/clientModel';
 
 export interface Message {
   from: string;
@@ -15,7 +16,7 @@ export interface Verification {
 }
 
 export interface MessageTransport {
-  sendMessage: (m: Message) => Promise<string>;
+  sendMessage: (m: Message, brands?: string[]) => Promise<string>;
   verify: () => Promise<Verification>;
 }
 
@@ -31,5 +32,10 @@ export interface Mailer {
   getGoogleTransport: (
     taskQueue: TaskQueue,
     apiClient: any
+  ) => MessageTransport;
+
+  getForwarderTransport: (
+    taskQueue: TaskQueue,
+    profile: ProfileDetails
   ) => MessageTransport;
 }

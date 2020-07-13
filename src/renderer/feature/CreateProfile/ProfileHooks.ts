@@ -111,8 +111,13 @@ const defaultProfile = {
   ...defaultEmail
 };
 
+export const defaultEmailForwardFormValues = {
+  emailAddress: ''
+};
+
 export type ProfileDetailsFormValues = typeof defaultProfileDetails;
 export type EmailFormValues = typeof defaultEmail;
+export type EmailForwardFormValues = typeof defaultEmailForwardFormValues;
 export type ProfileFormValues = typeof defaultProfile;
 export type ProfileDataFormValues = typeof defaultProfileData;
 

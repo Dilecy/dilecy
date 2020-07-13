@@ -5,6 +5,7 @@ import {
   TESTING_EMAIL_TO
 } from '../../shared/utils/environment';
 import { googleMailer } from '../google/googleMailer';
+import { forwarderMailer } from '../forwarder/forwarderMailer';
 import { TaskQueue } from '../google/callQueue';
 import { defer } from 'rxjs';
 
@@ -86,6 +87,28 @@ export function createMailer(): Mailer {
           }
           const msgInfo = await googleMailer.sendMail(m, taskQueue, apiClient);
           return msgInfo.data.id!;
+        },
+        verify: async () => {
+          return {
+            verified: true
+          };
+        }
+      };
+    },
+    getForwarderTransport: (taskQueue, profile) => {
+      return {
+        sendMessage: async (m: Message, brands?: string[]) => {
+          if (isDevelopment()) {
+            replaceRecipients(m);
+          }
+
+          const id = await forwarderMailer.sendMail(
+            m,
+            taskQueue,
+            profile,
+            brands!
+          );
+          return id;
         },
         verify: async () => {
           return {

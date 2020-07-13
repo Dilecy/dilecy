@@ -1,4 +1,6 @@
 import { Mailer } from './interface';
+import { TaskQueue } from '../google/callQueue';
+import { ProfileDetails } from '../../model/clientModel';
 
 const sleep = (ms: number) => new Promise(resolve => setTimeout(resolve, ms));
 
@@ -30,6 +32,26 @@ export function createMailerMock(latencyInMs: number): Mailer {
       sendMessage: async message => {
         messageNumber += 1;
         const messageId = `Sending message #${messageNumber} via ${host}:${port} @${username}[${password}]`;
+        console.log(messageId);
+        console.log(message);
+        await sleep(latencyInMs);
+        console.log(`Done #${messageNumber}`);
+        return messageId;
+      },
+
+      verify: async () => {
+        console.log('Check mail server');
+        verificationCount = verificationCount + 1;
+        return {
+          verified: verificationCount % 3 === 0,
+          error: verificationCount % 3 === 1 ? 'host' : 'auth'
+        };
+      }
+    }),
+    getForwarderTransport: (queue: TaskQueue, profile: ProfileDetails) => ({
+      sendMessage: async message => {
+        messageNumber += 1;
+        const messageId = `Sending message #${messageNumber} via forwarder`;
         console.log(messageId);
         console.log(message);
         await sleep(latencyInMs);

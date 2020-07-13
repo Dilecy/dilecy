@@ -23,11 +23,12 @@ import { customTheme } from '../../../shared/styles/theme';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import { localization } from '../../../shared/localization';
 import Backdrop from '@material-ui/core/Backdrop';
-import { EmailSettingsForm } from '../../ProfileSettings/components/EmailSettingsForm';
 import { EmailAccount, Profile } from '../../../model/clientModel';
 import { hasEmail } from '../../../shared/helpers/helper';
 import { updateProfile } from '../../ProfileSettings/actions';
 import EmailSettingsDialog from '../../../shared/components/EmailSettingsDialog';
+import EmailTypeDialog from '../../../shared/components/EmailTypeDialog';
+import EmailForwarderDialog from '../../../shared/components/EmailForwarderDialog';
 
 interface Props {
   brandSelection: BrandSelection;
@@ -117,7 +118,9 @@ const SummaryStep = (props: Props) => {
   const addEmptyClass = (origClass: string) =>
     `${origClass} ${hasRecipients ? '' : 'empty'}`;
 
-  const [showEmailSettings, setShowEmailSettings] = useState(false);
+  const [showEmailType, setShowEmailType] = useState(false);
+  const [showEmailForwarder, setShowEmailForwarder] = useState(false);
+  const [showOwnEmail, setShowOwnEmail] = useState(false);
 
   React.useEffect(() => {
     hasRecipients
@@ -133,22 +136,62 @@ const SummaryStep = (props: Props) => {
         profileDetails: emailAccountToUpdate,
         sendRequest: true
       });
-      setShowEmailSettings(false);
+      setShowEmailForwarder(false);
+      setShowEmailType(false);
+      setShowOwnEmail(false);
     } catch (e) {
       console.log('an error occurred', e);
     }
   };
 
-  const getEmailSettings = () =>
-    showEmailSettings && (
-      <Backdrop open={showEmailSettings} className={classes.backdrop}>
+  const getOwnEmailDialog = () =>
+    showOwnEmail && (
+      <Backdrop open={showOwnEmail} className={classes.backdrop}>
         <EmailSettingsDialog
           emailSettings={userEmail}
           toggleEditEmailSettings={async () => {
-            setShowEmailSettings(false);
+            setShowOwnEmail(false);
           }}
-          updateEmailSettings={handleUpdateEmailSettings}
+          back={() => {
+            setShowOwnEmail(false);
+            setShowEmailType(true);
+          }}
+          close={() => {
+            setShowOwnEmail(false);
+          }}
+          confirm={handleUpdateEmailSettings}
         ></EmailSettingsDialog>
+      </Backdrop>
+    );
+
+  const getEmailTypeDialog = () =>
+    showEmailType && (
+      <Backdrop open={showEmailType} className={classes.backdrop}>
+        <EmailTypeDialog
+          close={() => setShowEmailType(false)}
+          useForwarder={() => {
+            setShowEmailType(false);
+            setShowEmailForwarder(true);
+          }}
+          useOwnEmail={() => {
+            setShowEmailType(false);
+            setShowOwnEmail(true);
+          }}
+        ></EmailTypeDialog>
+      </Backdrop>
+    );
+
+  const getEmailForwarderDialog = () =>
+    showEmailForwarder && (
+      <Backdrop open={showEmailForwarder} className={classes.backdrop}>
+        <EmailForwarderDialog
+          close={() => setShowEmailForwarder(false)}
+          back={() => {
+            setShowEmailForwarder(false);
+            setShowEmailType(true);
+          }}
+          confirm={handleUpdateEmailSettings}
+        ></EmailForwarderDialog>
       </Backdrop>
     );
 
@@ -191,7 +234,7 @@ const SummaryStep = (props: Props) => {
                   if (hasEmail(userEmail)) {
                     confirmAndSend();
                   } else {
-                    setShowEmailSettings(true);
+                    setShowEmailType(true);
                   }
                 }}
                 className={classes.sendButton}
@@ -219,7 +262,9 @@ const SummaryStep = (props: Props) => {
         </React.Fragment>
       )}
 
-      {getEmailSettings()}
+      {getEmailTypeDialog()}
+      {getOwnEmailDialog()}
+      {getEmailForwarderDialog()}
     </div>
   );
 };

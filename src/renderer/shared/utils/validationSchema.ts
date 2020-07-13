@@ -48,3 +48,9 @@ export const MissingBrandValidationSchema = Yup.object({
   city: Yup.string(),
   zip_code: Yup.string().max(5, 'Maximal 5 Zeichen erlaubt')
 });
+
+export const ForwardEmailSettingsValidationSchema = Yup.object({
+  emailAddress: Yup.string()
+    .required('Erfordert')
+    .email('Ungültige E-Mail Addresse')
+});

@@ -4,6 +4,9 @@ const PROD_API_URL = 'https://backend.dilecy.de/api/v1';
 const DEV_TRACKING_SERVER_URL = 'http://localhost:8001';
 const PROD_TRACKING_SERVER_URL = 'https://tracking.dilecy.de';
 
+const DEV_FORWARDER_URL = 'https://staging-forwarder.dilecy.de/api/v1';
+const PROD_FORWARDER_URL = 'https://forwarder.dilecy.de/api/v1';
+
 export const TESTING_EMAIL_TO = 'testing@dilecy.eu';
 export const DILECY_WEBSITE = 'https://dilecy.eu/';
 export const DILECY_OAUTH_REDIRECT = 'https://dilecy.eu/oauth-success/';
@@ -41,6 +44,9 @@ export const getApiServerUrl = (): string =>
 
 export const getTrackingServerUrl = (): string =>
   isDevelopment() ? DEV_TRACKING_SERVER_URL : PROD_TRACKING_SERVER_URL;
+
+export const getForwarderServerUrl = (): string =>
+  isDevelopment() ? DEV_FORWARDER_URL : PROD_FORWARDER_URL;
 
 export const HISTORY_IMPORT_LIMIT = 10000;
 

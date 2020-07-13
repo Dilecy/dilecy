@@ -8,6 +8,8 @@ const Logo = require('../../img/Logo.svg').default;
 const Plus = require('../../img/Plus.svg').default;
 const Settings = require('../../img/Settings.svg').default;
 const Logout = require('../../img/Logout.svg').default;
+const Check = require('../../img/Check.svg').default;
+const Cross = require('../../img/Cross.svg').default;
 
 const useStyles = makeStyles({
   icon: {
@@ -72,4 +74,23 @@ function LogoutIcon(props?: any) {
   );
 }
 
-export { LogoIcon, LogoutIcon, SettingsIcon, UserIcon, PlusIcon, GoogleIcon };
+function CheckIcon(props?: any) {
+  const { icon } = useStyles(props);
+  return <SvgIcon component={Check} viewBox="0 0 47.3 47.3" className={icon} />;
+}
+
+function CrossIcon(props?: any) {
+  const { icon } = useStyles(props);
+  return <SvgIcon component={Cross} viewBox="0 0 47.3 47.3" className={icon} />;
+}
+
+export {
+  LogoIcon,
+  LogoutIcon,
+  SettingsIcon,
+  UserIcon,
+  PlusIcon,
+  GoogleIcon,
+  CheckIcon,
+  CrossIcon
+};

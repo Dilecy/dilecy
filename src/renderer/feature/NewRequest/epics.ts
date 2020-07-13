@@ -151,7 +151,8 @@ export const confirmAndSendEpic: Epic = (
             smtpPort,
             encyptedPassword,
             isGoogle,
-            refreshToken
+            refreshToken,
+            isForwarder
           } = profileDetails.emailAccounts[0];
           if (isGoogle) {
             const decryptedToken = await loginSystem.sealedPassword.decrypt(
@@ -165,6 +166,8 @@ export const confirmAndSendEpic: Epic = (
             });
 
             transport = mailer.getGoogleTransport(taskQueue, apiClient);
+          } else if (isForwarder) {
+            transport = mailer.getForwarderTransport(taskQueue, profileDetails);
           } else {
             transport = mailer.getSmtpTransport(
               smtp,
@@ -189,6 +192,19 @@ export const confirmAndSendEpic: Epic = (
             requestTemplateText,
             profileDetails
           );
+
+          if (isForwarder) {
+            await transport.sendMessage(
+              {
+                from: fromAddress,
+                to: '',
+                subject: requestSubject,
+                text: requestTemplateText
+              },
+              brands.map(b => b.brand.id.toString()).filter(x => !!x)
+            );
+          }
+
           await defer(
             from(brands).pipe(
               mergeMap(({ brand, index }) =>
@@ -220,7 +236,10 @@ export const confirmAndSendEpic: Epic = (
                   });
                   dispatch(addEmailRequests([newRequest]));
                   dispatch(setRecipientStatus({ index, status: 'prepared' }));
-                  const messageId = await transport!.sendMessage(newRequest);
+                  let messageId;
+                  if (!isForwarder) {
+                    messageId = await transport!.sendMessage(newRequest);
+                  }
                   newRequest.inCreation = false;
                   newRequest.dateTimeSent = new Date().toISOString();
                   newRequest.messageId = messageId;
