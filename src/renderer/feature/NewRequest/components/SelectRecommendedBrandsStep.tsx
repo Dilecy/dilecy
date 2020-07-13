@@ -10,7 +10,6 @@ import { makeStyles } from '@material-ui/core/styles';
 import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
 import CircularProgress from '@material-ui/core/CircularProgress';
-import { IdMap } from '../../../store/util/types';
 import { customTheme } from '../../../shared/styles/theme';
 import { BrowserHistoryState, BrandSelection } from '../../../store/stateModel';
 import { selectBrowserHistory, isBrowserHistoryLoading } from '../selectors';
@@ -254,10 +253,11 @@ const SelectRecommendedBrandsStep: React.FC<Props> = ({
         title=""
         rootStyle={{ maxHeight: 'calc(100% - 2rem)', overflow: 'auto' }}
         columns={[
-          { title: 'URL', field: 'url' },
+          { title: 'URL', field: 'url', filtering: false },
           {
             title: 'Zuletzt aufgerufen',
             field: 'last_accessed',
+            filtering: false,
             customSort: (
               a: BrowserHistoryWithBrand,
               b: BrowserHistoryWithBrand

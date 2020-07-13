@@ -1,18 +1,28 @@
+/* eslint-disable @typescript-eslint/no-use-before-define */
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { makeStyles, Theme } from '@material-ui/core/styles';
-import Container from '@material-ui/core/Container';
-import CircularProgress from '@material-ui/core/CircularProgress';
-import LinearProgress from '@material-ui/core/LinearProgress';
 import Tooltip from '@material-ui/core/Tooltip';
+import Container from '@material-ui/core/Container';
+import LinearProgress from '@material-ui/core/LinearProgress';
+import CircularProgress from '@material-ui/core/CircularProgress';
+
+import { makeStyles, Theme } from '@material-ui/core/styles';
 import { RootState } from 'typesafe-actions';
-import CustomDataTable from '../../../shared/components/CustomDataTable';
 import * as Actions from '../actions';
-import { useDueDateStatus } from '../hooks/useDueDateStatus';
 import moment from 'moment';
+import { RequestGroup } from '../../../model/clientModel';
+import { OldRequest } from '../interface';
+import OldRequestsTable from './OldRequestsTable';
+import Playground from './Playground';
+import {
+  isDevelopment,
+  PROGRESS_COMPLETED
+} from '../../../shared/utils/environment';
+import { selectOldRequests } from '../selectors';
 import { localization as localizations } from '../../../shared/localization';
-import { getTranslatedRequestGroupType } from '../../../shared/helpers/helper';
 import { customTheme } from '../../../shared/styles/theme';
+import { MRequestGroup } from '../../../model/db/enitities';
+import { format } from 'date-fns';
 
 const useStyles = makeStyles((theme: Theme) => ({
   root: {
@@ -68,47 +78,71 @@ const useStyles = makeStyles((theme: Theme) => ({
   }
 }));
 
-export interface OldRequest {
-  brandName: string;
-  dateTimeCreated: JSX.Element;
-  dateTimeCreatedMoment: moment.Moment;
-  requestGroupType: string;
-  dueDate: string;
-  progress: JSX.Element;
-}
+export const progressGenerator = (progress: number, dueDate: string) => {
+  return (
+    <Tooltip title={dueDate}>
+      <LinearProgress
+        variant="determinate"
+        value={progress}
+        style={
+          progress === PROGRESS_COMPLETED
+            ? { backgroundColor: '#76FF03' }
+            : undefined
+        }
+      />
+    </Tooltip>
+  );
+};
 
 const OldRequestsPage: React.FC = () => {
   const classes = useStyles();
   const dispatch = useDispatch();
-  const oldRequests: OldRequest[] = useSelector((state: RootState) =>
-    state.oldRequestsState.oldRequests.map(request => {
-      const { createdTime, createdDate, dueDate, progress } = useDueDateStatus(
-        moment(request.dateTimeCreated),
-        30
-      );
-      return {
-        brandName: request.brandName,
-        dateTimeCreatedMoment: moment(request.dateTimeCreated),
-        dateTimeCreated: (
-          <Tooltip title={createdTime} className={classes.tooltip}>
-            <span>{createdDate}</span>
-          </Tooltip>
-        ),
-        requestGroupType: getTranslatedRequestGroupType(
-          request.requestGroupType
-        ),
-        dueDate: dueDate,
-        progress: (
-          <Tooltip title={dueDate} className={classes.tooltip}>
-            <LinearProgress
-              variant="determinate"
-              value={progress}
-              className={progress === 100 ? classes.colorPrimary : undefined}
-            />
-          </Tooltip>
-        )
-      };
-    })
+  const oldRequests = useSelector((state: RootState) =>
+    selectOldRequests(state)
+  );
+  const oldRequestsById = useSelector(
+    (state: RootState) => state.oldRequestsState.byId
+  );
+  const oldRequestsTestArray = oldRequestsById.map(id => oldRequests[id]); // For Testing purposes only. To be removed
+
+  const oldRequestsArray = oldRequestsById.map(id => {
+    const request = oldRequests[id];
+    const requestGroup = new MRequestGroup(
+      request.brandId,
+      request.brandName,
+      request.companyName,
+      request.requestGroupType,
+      request.dateTimeCreated,
+      request.snoozeCount,
+      request.state
+    );
+
+    const progress = requestGroup.progress;
+    const visibleState = requestGroup.visibleState;
+    const createdDate = format(requestGroup.createdDate, 'dd.MM.yyyy');
+    const createdTime = format(requestGroup.createdDate, 'HH:MM');
+    const dueDate = format(requestGroup.dueDate, 'dd.MM.yyyy');
+    return {
+      id: request.id,
+      brandName: request.brandName,
+      dateTimeCreatedMoment: moment(request.dateTimeCreated),
+      dateTimeCreated: (
+        <Tooltip title={createdTime} className={classes.tooltip}>
+          <span>{createdDate}</span>
+        </Tooltip>
+      ),
+      snoozeCount: request.snoozeCount || 0,
+      requestGroupType: request.requestGroupType,
+      dueDate: dueDate,
+      requestGroupState: request.state || 'inProgress',
+      progress: progressGenerator(progress, dueDate),
+      visibleState: visibleState,
+      isDue: requestGroup.isDue
+    };
+  }) as OldRequest[];
+
+  const [oldRequestsData, setOldRequestsData] = React.useState(
+    oldRequestsArray
   );
   const isLoading = useSelector(
     (state: RootState) => state.oldRequestsState.loading
@@ -118,12 +152,41 @@ const OldRequestsPage: React.FC = () => {
     dispatch(Actions.oldRequestsRequested());
   }, []);
 
+  React.useEffect(() => {
+    setOldRequestsData(oldRequestsArray);
+  }, [oldRequests]);
+
+  const handleResponse = (responseType: 'affirmative' | 'negative') => (
+    rowData: OldRequest
+  ) => {
+    if (responseType === 'affirmative') {
+      const requestGroupToUpdate: RequestGroup = {
+        ...oldRequests[rowData.id],
+        state: 'successful'
+      };
+      dispatch(Actions.updateRequestGroup(requestGroupToUpdate));
+    } else {
+      const requestGroupToUpdate: RequestGroup = {
+        ...oldRequests[rowData.id],
+        state: 'failed'
+      };
+      dispatch(Actions.updateRequestGroup(requestGroupToUpdate));
+    }
+  };
+
+  const handleSnooze = (rowData: OldRequest) => {
+    const requestGroupToUpdate: RequestGroup = {
+      ...oldRequests[rowData.id],
+      snoozeCount: +rowData.snoozeCount + 1
+    };
+    dispatch(Actions.updateRequestGroup(requestGroupToUpdate));
+  };
+
   return (
     <Container className={classes.root}>
       <div className={classes.nav}>
         <h1 className={classes.heading}>{localizations.OLD_REQUESTS}</h1>
       </div>
-
       <div className={classes.card}>
         {isLoading && (
           <div className={classes.loading}>
@@ -131,32 +194,15 @@ const OldRequestsPage: React.FC = () => {
           </div>
         )}
         {!isLoading && (
-          <CustomDataTable
-            title="Alte Anfragen"
-            columns={[
-              { title: localizations.BRAND_NAME, field: 'brandName' },
-              {
-                title: localizations.DATE,
-                field: 'dateTimeCreated',
-                customSort: (a, b) =>
-                  a.dateTimeCreatedMoment.unix() -
-                  b.dateTimeCreatedMoment.unix()
-              },
-              {
-                title: localizations.REQUEST_GROUP_TYPE,
-                field: 'requestGroupType'
-              },
-              {
-                title: localizations.PROGRESS,
-                field: 'progress',
-                customSort: (a, b) =>
-                  moment(a.dueDate, 'DD.MM.YYYY').unix() -
-                  moment(b.dueDate, 'DD.MM.YYYY').unix()
-              }
-            ]}
-            rows={oldRequests}
+          <OldRequestsTable
+            oldRequestsData={oldRequestsData}
+            onResponse={handleResponse}
+            onSnooze={handleSnooze}
           />
         )}
+
+        {/* Only for debugging purposes */}
+        {isDevelopment() && <Playground requestGroups={oldRequestsTestArray} />}
       </div>
     </Container>
   );

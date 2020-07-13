@@ -1,6 +1,5 @@
 import React, { useEffect, useRef } from 'react';
-import { connect } from 'react-redux';
-
+import { connect, useSelector } from 'react-redux';
 import { RootState } from 'typesafe-actions';
 import CardActionArea from '@material-ui/core/CardActionArea';
 import CardContent from '@material-ui/core/CardContent';
@@ -21,7 +20,6 @@ import { selectPage, selectView } from '../../core/actions';
 import CreateProfileForm from '../CreateProfile/components/CreateProfilePage';
 import { LogoIcon, PlusIcon, UserIcon } from '../../shared/components/Icon';
 import { customTheme } from '../../shared/styles/theme';
-import { appVersion } from '../../core/appInfo';
 import { localization } from '../../shared/localization';
 
 const useStyles = makeStyles((theme: Theme) => ({
@@ -149,6 +147,7 @@ interface Props {
 }
 
 const LoginPage = (props: Props) => {
+  const appVersion = useSelector((state: RootState) => state.appInfo.version);
   const [loginAttempt, setLoginAttempt] = React.useState(-1);
   const [password, setPassword] = React.useState('');
   const [wrong, setWrong] = React.useState(false);

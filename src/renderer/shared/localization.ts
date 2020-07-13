@@ -68,6 +68,8 @@ export const localization = {
   GOOGLE_AUTH_ERROR:
     'Die Dilecy-Anwendung benötigt die Erlaubnis in deinem Namen E-Mails zu versenden.',
   PROGRESS: 'Fälligkeit',
+  REQUEST_STATE: 'Status',
+  REQUEST_NOTIFICATION: 'Benachrichtigungen',
   DATE: 'Datum',
   UNKNOWN: 'Unbekannt',
   BRAND_NAME: 'Brandname',
@@ -84,6 +86,11 @@ export const localization = {
   löschen zu lassen. Du ziehst damit ggf. gegebene Einwilligungen zurück und wiedersprichst Verarbeitungen, denen du 
   wiedersprechen kannst. Damit kannst du Dienste weiter nutzen und trotzdem die Verarbeitung deiner personenbezogener Daten
   minimieren.`,
+  NOTIFICATION_ANSWER_RECEIVED: 'Antwort erhalten',
+  NOTIFICATION_COMPLIED_WITH_REQUEST: 'Anfrage nachgekommen',
+  NOTIFICATION_CONTINUE_WAIT: 'Weiter Warten?',
+  NOTIFICATION_REQUEST_SUCCESSFUL: 'Anfrage erfolgreich',
+  NOTIFICATION_REQUEST_FAILED: 'Anfrage gescheitert',
   RATING_TITLE: 'Vielen dank für deine Bewertung!',
   RATING_CONTENT: 'Du kannst deine Bewertung jederzeit ändern.',
   RATING_BUTTON: `Ok`,
@@ -92,6 +99,18 @@ export const localization = {
     'Deine lokalen Daten wurden mit einer neueren Version der Dilecy-Anwendung erstellt.',
   APP_VERSION_MISMATCH_2:
     'Bitte installiere die neuste Version. Du findest sie unter ',
+  ACTION: 'Aktion',
+  ACTION_ACCEPT: 'Erledigt',
+  ACTION_REJECT: 'Gescheitert',
+  ACTION_SNOOZE: 'Zurückstellen',
+  VISIBLE_STATE_RUNNING: 'läuft',
+  VISIBLE_STATE_SNOOZED: 'zurückgestellt',
+  VISIBLE_STATE_DUE: 'fällig',
+  VISIBLE_STATE_SUCCESSFUL: 'erfolgreich',
+  VISIBLE_STATE_FAILED: 'fehlgeschlagen',
+  REQUEST_GROUP_TYPE_ACCESS: 'Datenauskunft',
+  REQUEST_GROUP_TYPE_DELETION: 'Datenlöschung',
+  REQUEST_GROUP_TYPE_REJECTION: 'Widerspruch',
   WELCOME_MESSAGE: 'Herzlich willkommen in deinem Dilecy Profil!',
   WELCOME_CONTENT:
     'In der Anwendung findest du Texte, die dir bei der Bedienung von Dilecy helfen sollen. Solltest du dennoch einmal eine Frage haben oder Hilfe benötigen, darfst du dich gerne an unseren Support wenden.',

@@ -15,10 +15,6 @@ export const applyRequestSearchFilter = createAction(
 export const setRequestList = createAction('SET_REQUEST_LIST')<
   RequestGroupListItem[]
 >();
-export const setDataStatus = createAction('SET_DATA_STATUS')<{
-  id: number;
-  dataStatus: RequestGroupDataStatus;
-}>();
 
 export const addEmailRequests = createAction('ADD_EMAIL_REQUESTS')<
   EmailRequest[]
@@ -39,3 +35,12 @@ export const oldRequestsReceived = createAction('[Old Requests] Data Received')<
 export const oldRequestsRequestFailed = createAction(
   '[Old Requests] Request Failed'
 )();
+
+export const updateRequestGroup = createAction(
+  '[Old Requests] Update Request Group'
+)<RequestGroup>();
+
+// TODO Remove this action once playground component is removed
+export const testActionToUpdateRequestGroup = createAction(
+  '[Old Requests] TEST ACTION'
+)<{ id: number; dateTimeCreated: string; snoozeCount: number }>();

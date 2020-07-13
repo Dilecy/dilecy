@@ -16,7 +16,14 @@ import SaveAlt from '@material-ui/icons/SaveAlt';
 import Search from '@material-ui/icons/Search';
 import ViewColumn from '@material-ui/icons/ViewColumn';
 // typings are here:
-import { Icons, Localization } from 'material-table';
+import {
+  Icons,
+  Column,
+  Action,
+  Localization,
+  Components
+} from 'material-table';
+import { localization as localizations } from '../localization';
 import { makeStyles, Theme } from '@material-ui/core/styles';
 import MaterialTable from 'material-table';
 import { customTheme } from '../styles/theme';
@@ -49,11 +56,12 @@ declare global {
   type Dictionary<T> = { [key: string]: T };
 }
 
-export interface Column {
-  title: string;
-  field: string;
-  customSort?: (a: any, b: any) => number;
-}
+const localization: Localization = {
+  header: { actions: localizations.ACTION },
+  toolbar: {
+    searchPlaceholder: 'Suchtext'
+  }
+};
 
 const useStyles = makeStyles((theme: Theme) => ({
   root: {
@@ -98,38 +106,54 @@ const useStyles = makeStyles((theme: Theme) => ({
 
     '& .MuiToolbar-root': {
       position: 'sticky',
-      top: '0',
+      top: '-25px',
       backgroundColor: 'white',
       zIndex: '11'
     }
   }
 }));
-interface Props<T> {
-  columns: Column[];
+
+interface Props<T extends object> {
+  columns: Column<T>[];
   rows: T[];
   title: string;
+  selection?: boolean;
+  actions?: (Action<T> | ((rowData: T) => Action<T>))[] | undefined;
+  components?: Components | undefined;
   // If Table needs to be full-height set height manually and apply overflow
   rootStyle?: { [key: string]: string };
   onSelectionChange?: (data: T[], rowData: T | undefined) => void;
   selected?: (data: T) => { checked: boolean };
 }
-const localization: Localization = {
-  toolbar: {
-    searchPlaceholder: 'Suchtext'
-  }
-};
 const CustomDataTable = <T extends Dictionary<any>>(props: Props<T>) => {
-  const { columns, rows, onSelectionChange, rootStyle, selected } = props;
+  const {
+    columns,
+    rows,
+    onSelectionChange,
+    title,
+    selection,
+    actions,
+    rootStyle,
+    components,
+    selected
+  } = props;
   const classes = useStyles();
   return (
     <div className={classes.root} style={rootStyle}>
       <MaterialTable
+        title={title}
         columns={columns}
         data={rows}
+        actions={actions}
+        localization={localization}
+        components={components}
         options={{
-          selection: true,
-          showTitle: false,
+          selection: selection !== undefined ? selection : true,
           showTextRowsSelected: false,
+          maxBodyHeight: '350px',
+          actionsColumnIndex: -1,
+          filtering: true,
+          showTitle: false,
           showFirstLastPageButtons: false,
           pageSize: 5,
           showSelectAllCheckbox: true,
@@ -137,7 +161,6 @@ const CustomDataTable = <T extends Dictionary<any>>(props: Props<T>) => {
           selectionProps: selected
         }}
         icons={tableIcons}
-        localization={localization}
         onSelectionChange={onSelectionChange}
       />
     </div>

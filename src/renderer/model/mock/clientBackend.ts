@@ -10,61 +10,51 @@ export function createInMemoryClientBackend(): CM.ClientBackend {
       brandId: 1,
       brandName: 'Facebook',
       companyName: 'Facebook',
-      dataStatus: 'missing',
       dateTimeCreated: '2020-05-11T15:52:06.190Z',
-      dateTimeRefreshed: '',
-      dateTimeSnoozed: '',
+      snoozeCount: 0,
       id: 1,
       requestGroupType: 'access',
-      state: 'processing'
+      state: 'inProgress'
     },
     {
       brandId: 2,
       brandName: 'Nike',
       companyName: 'Nike',
-      dataStatus: 'missing',
       dateTimeCreated: '2019-03-15T15:56:06.190Z',
-      dateTimeRefreshed: '',
-      dateTimeSnoozed: '',
+      snoozeCount: 0,
       id: 2,
       requestGroupType: 'access',
-      state: 'processing'
+      state: 'inProgress'
     },
     {
       brandId: 3,
       brandName: 'Gmail',
       companyName: 'Google',
-      dataStatus: 'missing',
-      dateTimeCreated: '2020-03-08T15:52:06.190Z',
-      dateTimeRefreshed: '',
-      dateTimeSnoozed: '',
+      dateTimeCreated: '2020-04-08T15:52:06.190Z',
+      snoozeCount: 0,
       id: 3,
       requestGroupType: 'access',
-      state: 'processing'
+      state: 'inProgress'
     },
     {
-      brandId: 445322312,
+      brandId: 99839454354359,
       brandName: '',
       companyName: '',
-      dataStatus: 'missing',
-      dateTimeCreated: '2020-03-08T15:52:06.190Z',
-      dateTimeRefreshed: '',
-      dateTimeSnoozed: '',
-      id: 3,
+      dateTimeCreated: '2020-02-11T15:52:06.190Z',
+      snoozeCount: 0,
+      id: 4,
       requestGroupType: 'access',
-      state: 'processing'
+      state: 'inProgress'
     },
     {
       brandId: 173,
       brandName: '',
       companyName: '',
-      dataStatus: 'missing',
-      dateTimeCreated: '2020-03-08T15:52:06.190Z',
-      dateTimeRefreshed: '',
-      dateTimeSnoozed: '',
-      id: 4,
+      dateTimeCreated: '2020-05-08T15:52:06.190Z',
+      snoozeCount: 0,
+      id: 5,
       requestGroupType: 'access',
-      state: 'processing'
+      state: 'inProgress'
     }
   ];
   const emailRequestsStore: CM.EmailRequest[] = [];
@@ -155,7 +145,10 @@ export function createInMemoryClientBackend(): CM.ClientBackend {
 
   const getRequestGroups: CM.GetRequestGroups = async () => requestGroupsStore;
   const updateRequestGroup: CM.UpdateRequestGroup = async group => {
-    requestGroupsStore.push(group);
+    const index = requestGroupsStore.findIndex(
+      requestGroup => requestGroup.id === group.id
+    );
+    requestGroupsStore[index] = group;
   };
 
   const createRequestGroup: CM.CreateRequestGroup = async group => {
@@ -166,9 +159,8 @@ export function createInMemoryClientBackend(): CM.ClientBackend {
       companyName: 'test company',
       requestGroupType: 'access',
       dateTimeCreated: Date.now().toString(),
-      dateTimeRefreshed: Date.now().toString(),
-      state: 'processing',
-      dataStatus: 'pending'
+      snoozeCount: 0,
+      state: 'inProgress'
     };
     const newGroup: CM.RequestGroup = {
       ...base,

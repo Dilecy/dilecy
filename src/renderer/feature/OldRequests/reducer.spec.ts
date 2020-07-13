@@ -1,6 +1,6 @@
 import * as Actions from './actions';
 import { initialOldRequestState, oldRequestsStateReducer } from './reducer';
-import { requestGroups } from '../../model/mock/testData';
+import { requestGroups, requestGroupMap } from '../../model/mock/testData';
 
 describe('old requests reducer', () => {
   const initialState = initialOldRequestState;
@@ -26,7 +26,8 @@ describe('old requests reducer', () => {
     const action = Actions.oldRequestsReceived(mockOldRequests);
     return reducer(initialState, action).should.deep.equal({
       ...initialState,
-      oldRequests: mockOldRequests
+      oldRequests: requestGroupMap,
+      byId: [1, 2]
     });
   });
 });

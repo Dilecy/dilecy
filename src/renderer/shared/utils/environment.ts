@@ -15,6 +15,11 @@ export const GOOGLE_API_SCOPE = 'https://www.googleapis.com/auth/gmail.send';
 export const GOOGLE_PROFILE_URL =
   'https://www.googleapis.com/oauth2/v2/userinfo';
 
+export const SNOOZE_DAYS = 30;
+export const SNOOZE_LIMIT = 1;
+export const DUE_DAY_DURATION = 30;
+export const PROGRESS_COMPLETED = 100;
+
 export enum Environment {
   STAGING,
   PROD

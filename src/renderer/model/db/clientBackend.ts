@@ -172,14 +172,18 @@ export class DBClientBackend implements CM.ClientBackend {
   }
 
   async getRequestGroups() {
+    // @ts-ignore: MRequestGroup has a constructor with parameters which objection
+    // does not support.
     return MRequestGroup.query(this.profileDb);
   }
   async updateRequestGroup(group: CM.RequestGroup) {
+    // @ts-ignore: see getRequestGroups comment
     await MRequestGroup.query(this.profileDb)
       .update(group)
       .where('id', group.id);
   }
   async createRequestGroup(group: Partial<CM.RequestGroup>) {
+    // @ts-ignore: see getRequestGroups comment
     return MRequestGroup.query(this.profileDb).insertAndFetch(group);
   }
 

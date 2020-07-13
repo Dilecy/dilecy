@@ -8,10 +8,7 @@ import {
 import { createReducer, RootAction } from 'typesafe-actions';
 import * as Actions from './actions';
 import { logout } from '../feature/CreateProfile/actions';
-import {
-  addEmailRequests,
-  setDataStatus
-} from '../feature/OldRequests/actions';
+import { addEmailRequests } from '../feature/OldRequests/actions';
 import { setAuthAnswerText } from '../feature/NewRequest/actions';
 
 const initialAppInfo: AppInfo = {
@@ -124,17 +121,5 @@ export const clientDataReducer = createReducer<ClientData, RootAction>(
     return {
       ...state,
       authA
-    };
-  })
-  .handleAction(setDataStatus, (state, action) => {
-    const requestGroup = { ...state.requestGroup };
-    const { id, dataStatus } = action.payload;
-    const rg = requestGroup[id];
-    if (rg) {
-      requestGroup[id] = { ...rg, dataStatus };
-    }
-    return {
-      ...state,
-      requestGroup
     };
   });

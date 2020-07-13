@@ -7,6 +7,7 @@ import m0003 from './0003_lastLogin';
 import m0004 from './0004_requestGroup';
 import m0005 from './0005_rating';
 import m0006 from './0006_appInfo';
+import m0007 from './0007_requestGroup';
 
 const migrations = {
   1: m0001,
@@ -14,9 +15,10 @@ const migrations = {
   3: m0003,
   4: m0004,
   5: m0005,
-  6: m0006
+  6: m0006,
+  7: m0007
 };
-const latest = 6;
+const latest = 7;
 
 type TargetVersion = keyof typeof migrations;
 const migrationTableName = 'migration_info';

@@ -1,16 +1,12 @@
 import { Epic } from '../../store/root-epic';
 import { filter, concatMap } from 'rxjs/operators';
 import { isActionOf } from 'typesafe-actions';
-import {
-  oldRequestsRequested,
-  oldRequestsReceived,
-  oldRequestsLoadingStarted,
-  oldRequestsLoadingFinished
-} from './actions';
+import * as Actions from './actions';
 import { fromThunky } from '../../store/thunky';
 import { IdMap } from '../../store/util/types';
 import { Brand, Company } from '../../model/serverModel';
 import { localization as localizations } from '../../shared/localization';
+import { RequestGroup } from '../../model/clientModel';
 
 export const fetchOldRequestsEpic: Epic = (
   action$,
@@ -18,12 +14,21 @@ export const fetchOldRequestsEpic: Epic = (
   { clientBackend, apiService }
 ) =>
   action$.pipe(
-    filter(isActionOf(oldRequestsRequested)),
+    filter(isActionOf(Actions.oldRequestsRequested)),
     concatMap(() =>
       fromThunky(async dispatch => {
         try {
-          dispatch(oldRequestsLoadingStarted());
-          const oldRequests = await clientBackend.getRequestGroups();
+          const state = state$.value;
+          const oldRequestsState = state.oldRequestsState;
+          dispatch(Actions.oldRequestsLoadingStarted());
+          let oldRequests: RequestGroup[] = [];
+          if (oldRequestsState.byId.length) {
+            oldRequests = oldRequestsState.byId.map(
+              id => oldRequestsState.oldRequests[id]
+            );
+          } else {
+            oldRequests = await clientBackend.getRequestGroups();
+          }
 
           // check if there are any requests with empty brandnames
           const requestsWithEmptyBrandNames = oldRequests.filter(
@@ -104,15 +109,32 @@ export const fetchOldRequestsEpic: Epic = (
                 updatedOldRequests[request]
               );
             }
-            dispatch(oldRequestsReceived(oldRequestsWithUpdatedBrandName));
+            dispatch(
+              Actions.oldRequestsReceived(oldRequestsWithUpdatedBrandName)
+            );
           } else {
-            dispatch(oldRequestsReceived(oldRequests));
+            dispatch(Actions.oldRequestsReceived(oldRequests));
           }
         } catch (error) {
           console.log(error);
         } finally {
-          dispatch(oldRequestsLoadingFinished());
+          dispatch(Actions.oldRequestsLoadingFinished());
         }
+      })
+    )
+  );
+
+export const updateRequestGroupEpic: Epic = (
+  action$,
+  state$,
+  { clientBackend }
+) =>
+  action$.pipe(
+    filter(isActionOf(Actions.updateRequestGroup)),
+    concatMap(action =>
+      fromThunky(async dispatch => {
+        const requestGroupToUpdate = action.payload;
+        await clientBackend.updateRequestGroup(requestGroupToUpdate);
       })
     )
   );

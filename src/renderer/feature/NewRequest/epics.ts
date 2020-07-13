@@ -203,7 +203,7 @@ export const confirmAndSendEpic: Epic = (
                   const newGroup = await clientBackend.createRequestGroup({
                     brandId: brand.id,
                     dateTimeCreated: new Date().toISOString(),
-                    dateTimeRefreshed: new Date().toISOString(),
+                    snoozeCount: 0,
                     requestGroupType: requestType,
                     brandName: brand.name,
                     companyName: company.name

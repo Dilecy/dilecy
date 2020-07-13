@@ -1,5 +1,5 @@
 import React from 'react';
-import { connect } from 'react-redux';
+import { connect, useSelector } from 'react-redux';
 import SideBarMenu from './SideBarMenu';
 import Container from '@material-ui/core/Container';
 
@@ -17,7 +17,6 @@ import {
 import List from '@material-ui/core/List';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import SideBarMenuItem from './SideBarMenuItem';
-import { appVersion } from '../../../core/appInfo';
 
 const useStyles = makeStyles((theme: Theme) => ({
   logo: {
@@ -93,6 +92,7 @@ interface Props {
 
 const SideBar = ({ logout, loggedIn }: Props) => {
   const classes = useStyles();
+  const appVersion = useSelector((state: RootState) => state.appInfo.version);
   return (
     <Container className={classes.root}>
       <div className={classes.logo}>

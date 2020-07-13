@@ -149,6 +149,7 @@ export interface RequestGroupListItem extends CM.RequestGroup {
   elapsedTime: number;
 }
 export type OldRequestsState = {
-  oldRequests: CM.RequestGroup[];
+  oldRequests: IdMap<CM.RequestGroup>;
+  byId: number[];
   loading: boolean;
 };

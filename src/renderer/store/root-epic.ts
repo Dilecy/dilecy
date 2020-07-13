@@ -47,7 +47,10 @@ import { catchError } from 'rxjs/operators';
 import { AjaxError } from 'rxjs/ajax';
 import { pushAlert } from '../core/actions';
 import { of } from 'rxjs';
-import { fetchOldRequestsEpic } from '../feature/OldRequests/epics';
+import {
+  fetchOldRequestsEpic,
+  updateRequestGroupEpic
+} from '../feature/OldRequests/epics';
 import { localization as localizations } from '../shared/localization';
 
 /**
@@ -74,6 +77,7 @@ export const rootEpic: Epic = (action$, store$, dependencies) =>
     fetchFilteredBrandsByTagsEpic,
     fetchRecommendedBrandsEpic,
     fetchOldRequestsEpic,
+    updateRequestGroupEpic,
     startupEpic,
     fetchRequestsEpic,
     confirmAndSendEpic,

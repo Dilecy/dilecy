@@ -42,10 +42,8 @@ function createRequestGroup(
   companyName: string,
   requestGroupType: CM.RequestGroupType,
   dateTimeCreated: string,
-  dateTimeRefreshed: string,
-  state: CM.RequestGroupState,
-  dataStatus: CM.RequestGroupDataStatus,
-  dateTimeSnoozed?: string
+  snoozeCount: number,
+  state: CM.RequestGroupState
 ): CM.RequestGroup {
   return {
     id,
@@ -54,9 +52,7 @@ function createRequestGroup(
     companyName,
     requestGroupType,
     dateTimeCreated,
-    dateTimeRefreshed,
-    dateTimeSnoozed,
-    dataStatus,
+    snoozeCount,
     state
   };
 }
@@ -228,26 +224,20 @@ export const serverTestData = {
 };
 
 export const requestGroups = [
-  createRequestGroup(
-    0,
-    0,
-    'test',
-    'test',
-    'access',
-    'DATE_A',
-    'DATE_B',
-    'processing',
-    'pending'
-  ),
-  createRequestGroup(
-    1,
-    1,
-    'test',
-    'test',
-    'access',
-    'DATE_A',
-    'DATE_B',
-    'processing',
-    'pending'
-  )
+  createRequestGroup(1, 0, 'test', 'test', 'access', 'DATE_A', 0, 'inProgress'),
+  createRequestGroup(2, 1, 'test', 'test', 'access', 'DATE_A', 0, 'failed')
 ];
+
+export const requestGroupMap = {
+  1: createRequestGroup(
+    1,
+    0,
+    'test',
+    'test',
+    'access',
+    'DATE_A',
+    0,
+    'inProgress'
+  ),
+  2: createRequestGroup(2, 1, 'test', 'test', 'access', 'DATE_A', 0, 'failed')
+};

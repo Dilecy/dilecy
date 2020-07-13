@@ -92,11 +92,7 @@ export type ChangeProfilePassword = (
   newPassword: SealedPassword
 ) => Promise<ProfileWithDetails>;
 
-export type RequestGroupState =
-  | 'processing'
-  | 'complaint'
-  | 'completed'
-  | 'canceled';
+export type RequestGroupState = 'inProgress' | 'successful' | 'failed';
 
 export type RequestGroupDataStatus = 'pending' | 'received' | 'missing';
 
@@ -111,10 +107,8 @@ export interface RequestGroup {
   brandId: number;
   requestGroupType: RequestGroupType;
   dateTimeCreated: string;
-  dateTimeRefreshed: string;
-  dateTimeSnoozed?: string;
+  snoozeCount: number;
   state: RequestGroupState;
-  dataStatus: RequestGroupDataStatus;
   brandName: string;
   companyName: string;
 }
