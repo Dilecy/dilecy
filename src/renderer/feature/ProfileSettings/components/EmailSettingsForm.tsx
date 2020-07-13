@@ -106,7 +106,7 @@ export const EmailSettingsForm: React.FC<Props> = ({
   const smtpFields = (
     <div>
       <CustomInputField placeholder="Smtp" name="smtp" type="input" />
-      <CustomInputField placeholder="Smtp Port" name="smtpPort" type="input" />
+      <CustomInputField placeholder="Smtp Port" name="smtpPort" type="number" />
       <CustomInputField placeholder="Smtp User" name="smtpUser" type="input" />
     </div>
   );
@@ -263,7 +263,7 @@ export const EmailSettingsForm: React.FC<Props> = ({
                           style={{ margin: '1rem auto' }}
                           onClick={retryAutoConfig}
                         >
-                          {localization.RETRY}
+                          {localization.RESET}
                         </StyledButtonOutlined>
                       )}
                       <StyledButton

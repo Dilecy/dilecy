@@ -17,6 +17,7 @@ import {
 } from '../actions';
 import { customTheme } from '../../../shared/styles/theme';
 import { RootState } from 'typesafe-actions';
+import { localization } from '../../../shared/localization';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -180,7 +181,7 @@ const RequestTemplateStep: React.FC<Props> = (props: Props) => {
         className={classes.resetButton}
         onClick={resetTemplate}
       >
-        Zurücksetzen
+        {localization.RESET}
       </StyledbuttonOutlined>
     </div>
   );

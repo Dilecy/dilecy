@@ -2,11 +2,11 @@
 import { createSelector } from 'reselect';
 import { RootState } from 'typesafe-actions';
 import * as SM from '../../model/serverModel';
-import { IdMap, HashMap } from '../util/types';
-import { mapIdMap } from '../util/idMap';
+import { HashMap, IdMap } from '../util/types';
 import { BrowserHistory } from 'node-browser-history';
 import moment from 'moment';
 import 'moment/locale/de';
+
 moment.locale('de');
 
 export interface BrowserHistoryWithBrand extends BrowserHistory {
@@ -84,28 +84,6 @@ export const getFilteredBrandList = createSelector(
   }
 );
 
-const getRecipientStatus = (state: RootState) =>
-  state.newRequestState.recipientStatus;
-
-const getRecipients = createSelector(
-  getBrandSelection,
-  selectBrands,
-  (selection, brands) => {
-    const combined = { ...selection };
-    return mapIdMap(combined, brands);
-  }
-);
-
-export const getRecipientsWithStatus = createSelector(
-  getRecipients,
-  getRecipientStatus,
-  (recipients, status) =>
-    recipients.map((brand, i) => ({
-      brand,
-      status: status[i] || 'selected'
-    }))
-);
-
 const hostNameMatcher = (
   hostName: string,
   domainList: HashMap<SM.Domain>
@@ -125,29 +103,6 @@ const hostNameMatcher = (
     }
   }
   return matchedBrandId;
-};
-
-const getBrandIdsFromMatchedDomains = (
-  browserHistoryDomains: string[],
-  serverDomains: HashMap<SM.Domain>
-): number[] => {
-  const brandIdList: number[] = [];
-  for (const domain in browserHistoryDomains) {
-    const hostName = new URL(browserHistoryDomains[domain]).hostname;
-    const matchedBrandId = hostNameMatcher(hostName, serverDomains);
-    if (matchedBrandId !== undefined) {
-      if (brandIdList.indexOf(matchedBrandId) === -1) {
-        brandIdList.push(matchedBrandId);
-      }
-    }
-  }
-  return brandIdList;
-};
-
-const brandsMatcher = (brandIds: number[], brands: IdMap<SM.Brand>) => {
-  const matchedBrands: SM.Brand[] = [];
-  brandIds.map(brandId => matchedBrands.push(brands[brandId]));
-  return matchedBrands;
 };
 
 export const getRecommendedDomainsWithBrands = createSelector(
@@ -179,7 +134,9 @@ export const getRecommendedDomainsWithBrands = createSelector(
         return browserHistoryWithBrand;
       }
     );
-    const withUniqueBrands = Object.values(browserHistoryWithBrand
+    // modified utc time to readable time duration
+    // and remove undefined brandIds
+    return Object.values(browserHistoryWithBrand
       .filter(item => item.brandId !== undefined)
       .reduce(
         (acc, curr) => Object.assign(acc, { [curr.brandId || '']: curr }),
@@ -188,32 +145,5 @@ export const getRecommendedDomainsWithBrands = createSelector(
       ...item,
       last_accessed: moment(item.utc_time).format('DD.MM.YYYY')
     }));
-    //modified utc time to readable time duration
-    // and remove undefined brandIds
-    return withUniqueBrands;
-  }
-);
-
-export const getRecommendedBrands = createSelector(
-  selectBrands,
-  selectDomains,
-  selectTags,
-  selectBrowserHistory,
-  (brands, domains, tags, browserHistory) => {
-    const browserHistoryDomains = browserHistory.browserHistoryData.map(
-      data => data.url
-    );
-
-    const brandIds = getBrandIdsFromMatchedDomains(
-      browserHistoryDomains,
-      domains
-    );
-
-    const matchedBrands = [...brandsMatcher(brandIds, brands)];
-    const brandsWithFormattedTags = matchedBrands.map(brand => ({
-      ...brand,
-      formattedTags: tagGenerator(brand.tags, tags)
-    }));
-    return brandsWithFormattedTags;
   }
 );

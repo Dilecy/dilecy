@@ -230,6 +230,7 @@ const StepEmail = (props: Props) => {
                   <Grid item className={classes.item} xs={4}>
                     <TextField
                       {...textFieldProps('smtpPort')}
+                      type="number"
                       placeholder="z.B. 587"
                       disabled={isGoogle}
                     />
@@ -242,7 +243,7 @@ const StepEmail = (props: Props) => {
                 >
                   {!doAutoConfig && (
                     <StyledButtonOutlined onClick={() => retryAutoConfig()}>
-                      {localizations.RETRY}
+                      {localizations.RESET}
                     </StyledButtonOutlined>
                   )}
                 </Grid>

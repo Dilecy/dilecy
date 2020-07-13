@@ -28,6 +28,7 @@ import {
 } from '../../../store/selectors/newRequest';
 import CustomDataTable from '../../../shared/components/CustomDataTable';
 import StyledButtonOutlined from '../../../shared/components/StyledButtonOutlined';
+import { localization } from '../../../shared/localization';
 
 interface Props {
   brandSelection: BrandSelection;
@@ -231,7 +232,7 @@ const SelectRecommendedBrandsStep: React.FC<Props> = ({
             }}
             color="primary"
           >
-            {browserHistory.consent ? 'Zurücksetzen' : 'Nein, Ablehnen'}
+            {browserHistory.consent ? localization.RESET : 'Nein, Ablehnen'}
           </StyledButtonOutlined>
         </div>
       </div>

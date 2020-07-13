@@ -29,7 +29,7 @@ export const localization = {
   PROFILE_DESCRIPTION_WARNING: `Falls du dein Passwort vergisst, können wir dir nicht helfen 
   es wieder zu erlangen. Merke es dir daher gut.`,
   NEXT: 'Weiter',
-  RETRY: 'Erneut versuchen',
+  RESET: 'Zurücksetzen',
   EMAIL_PLACEHOLDER: 'z.B. max@example.com',
   LABEL_EMAIL_ADDRESS: 'E-Mail',
   LABEL_EMAIL_PASSWORD: 'E-Mail Passwort',
