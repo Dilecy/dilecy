@@ -5,6 +5,7 @@ import { ProfileDetails, Profile } from '../../model/clientModel';
 export const updateProfile = createAction('UPDATE_PROFILE')<{
   profile: Profile;
   profileDetails: Partial<ProfileDetails>;
+  sendRequest?: boolean;
 }>();
 
 export const changeProfilePassword = createAction('CHANGE_PROFILE_PASSWORD')<{

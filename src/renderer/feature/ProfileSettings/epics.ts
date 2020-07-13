@@ -7,6 +7,7 @@ import { updateProfile, changeProfilePassword } from './actions';
 import { ConsentAction } from '../../model/serverModel';
 import { logout } from '../CreateProfile/actions';
 import { Epic } from '../../store/root-epic';
+import { confirmAndSend } from '../NewRequest/actions';
 
 export const updateProfileEpic: Epic = (action$, state$, { clientBackend }) =>
   action$.pipe(
@@ -25,6 +26,10 @@ export const updateProfileEpic: Epic = (action$, state$, { clientBackend }) =>
           //TODO: Add proper update actions after state refactoring
           dispatch(fetchProfiles());
           dispatch(loginSuccess(updatedProfileWithDetails));
+
+          if (action.payload.sendRequest) {
+            dispatch(confirmAndSend());
+          }
         } catch (error) {
           console.error(error);
         }

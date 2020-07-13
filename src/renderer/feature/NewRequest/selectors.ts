@@ -88,3 +88,15 @@ export const isBrowserHistoryLoading = createSelector(
   selectBrowserHistory,
   browserHistory => browserHistory.isFetching
 );
+
+const selectLoggedIn = (state: RootState) => state.loginStatus.loggedIn;
+
+export const getUserEmail = createSelector(
+  selectLoggedIn,
+  loggedIn => loggedIn!.profileDetails.emailAccounts[0]
+);
+
+export const getUserProfile = createSelector(
+  selectLoggedIn,
+  loggedIn => loggedIn!.profile
+);

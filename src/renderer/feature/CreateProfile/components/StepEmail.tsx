@@ -87,6 +87,9 @@ const useStyles = makeStyles(theme => ({
     marginTop: theme.spacing(customTheme.spacing),
     display: 'flex',
     justifyContent: 'space-between'
+  },
+  noEmailRow: {
+    marginTop: '2rem'
   }
 }));
 
@@ -155,6 +158,8 @@ const StepEmail = (props: Props) => {
       setProfileStep({ stepName: STEP_CONSENT });
     }
   };
+
+  const shouldValidate = emailAddress || isGoogle || form.values.emailAddress;
 
   return (
     <React.Fragment>
@@ -270,11 +275,17 @@ const StepEmail = (props: Props) => {
             type="submit"
             onClick={(event: React.FormEvent) => {
               event.preventDefault();
-              form.submitForm();
+              if (shouldValidate) {
+                form.submitForm();
+              } else {
+                setProfileStep({ stepName: STEP_CONSENT });
+              }
             }}
             disabled={form.isSubmitting}
           >
-            {localizations.NEXT}
+            {shouldValidate
+              ? localizations.NEXT
+              : localizations.PROCEED_WITHOUT_EMAIL}
           </StyledButton>
         </div>
       </form>

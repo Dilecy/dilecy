@@ -110,5 +110,6 @@ export const localization = {
   CONSENT_EMAIL_DETAILS:
     'Um Dilecy mit mehr Funktionen und besserer Bedienbarkeit anbieten zu können, benötigen wir Informationen wie unsere Nutzer ihn empfinden. Ohne deine Einwilligung erheben wir diese personenbezogene Daten  nicht und du kannst Dilecy trotzdem mit den selben Funktionen nutzen. Wir freuen uns deine persönliche Meinung zu unserem Prototypen von dir hören. Wenn du damit einverstanden bist, wird deine E-Mail Adresse zu Feedback Zwecken an uns übermittelt. Gegebenenfalls würden wir dich unter dieser Adresse kontaktieren und dir einige Fragen zu deiner Erfahrung mit Dilecy stellen. Du kannst deine Einwilligung jederzeit unter Einstellungen zurückziehen. Bei Fragen kannst du gerne in unseren Datenschutzerklärung nachlesen oder uns unter support@dilecy.de schreiben.',
   CONSENT_PRIVACY:
-    'Ich habe die AGBs und Datenschutzerklärung gelesen und akzeptiere diese.'
+    'Ich habe die AGBs und Datenschutzerklärung gelesen und akzeptiere diese.',
+  PROCEED_WITHOUT_EMAIL: 'Ohne E-Mailadresse fortfahren'
 };

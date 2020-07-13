@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles, Theme } from '@material-ui/core/styles';
@@ -6,7 +6,11 @@ import { makeStyles, Theme } from '@material-ui/core/styles';
 import { NewRequestStatus, Recipient } from '../../../store/stateModel';
 
 import RecipientTable from '../components/RecipientTable';
-import { getRecipientsWithStatus } from '../selectors';
+import {
+  getRecipientsWithStatus,
+  getUserEmail,
+  getUserProfile
+} from '../selectors';
 import {
   confirmAndSend,
   validateNewRequestStep,
@@ -18,6 +22,12 @@ import StyledButton from '../../../shared/components/StyledButton';
 import { customTheme } from '../../../shared/styles/theme';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import { localization } from '../../../shared/localization';
+import Backdrop from '@material-ui/core/Backdrop';
+import { EmailSettingsForm } from '../../ProfileSettings/components/EmailSettingsForm';
+import { EmailAccount, Profile } from '../../../model/clientModel';
+import { hasEmail } from '../../../shared/helpers/helper';
+import { updateProfile } from '../../ProfileSettings/actions';
+import EmailSettingsDialog from '../../../shared/components/EmailSettingsDialog';
 
 interface Props {
   brandSelection: BrandSelection;
@@ -27,6 +37,9 @@ interface Props {
   validateNewRequestStep: typeof validateNewRequestStep;
   selectNewRequestStep: typeof selectNewRequestStep;
   isProcessing: boolean;
+  userEmail: EmailAccount;
+  updateProfile: typeof updateProfile;
+  userProfile: Profile;
 }
 
 const useStyles = makeStyles((theme: Theme) => ({
@@ -74,6 +87,14 @@ const useStyles = makeStyles((theme: Theme) => ({
   emptyContainer: {
     display: 'flex',
     flexDirection: 'column'
+  },
+  backdrop: {
+    zIndex: theme.zIndex.drawer + 1,
+    color: '#fff',
+
+    '& .MuiCard-root': {
+      borderRadius: customTheme.borderRadius
+    }
   }
 }));
 
@@ -85,7 +106,10 @@ const SummaryStep = (props: Props) => {
     confirmAndSend,
     validateNewRequestStep,
     selectNewRequestStep,
-    isProcessing
+    isProcessing,
+    userEmail,
+    updateProfile,
+    userProfile
   } = props;
 
   const classes = useStyles();
@@ -93,11 +117,41 @@ const SummaryStep = (props: Props) => {
   const addEmptyClass = (origClass: string) =>
     `${origClass} ${hasRecipients ? '' : 'empty'}`;
 
+  const [showEmailSettings, setShowEmailSettings] = useState(false);
+
   React.useEffect(() => {
     hasRecipients
       ? validateNewRequestStep({ summary: true })
       : validateNewRequestStep({ summary: false });
   }, [recipients.length]);
+
+  const handleUpdateEmailSettings = async (event: EmailAccount) => {
+    try {
+      const emailAccountToUpdate = { emailAccounts: [event] };
+      updateProfile({
+        profile: userProfile,
+        profileDetails: emailAccountToUpdate,
+        sendRequest: true
+      });
+      setShowEmailSettings(false);
+    } catch (e) {
+      console.log('an error occurred', e);
+    }
+  };
+
+  const getEmailSettings = () =>
+    showEmailSettings && (
+      <Backdrop open={showEmailSettings} className={classes.backdrop}>
+        <EmailSettingsDialog
+          emailSettings={userEmail}
+          toggleEditEmailSettings={async () => {
+            setShowEmailSettings(false);
+          }}
+          updateEmailSettings={handleUpdateEmailSettings}
+        ></EmailSettingsDialog>
+      </Backdrop>
+    );
+
   return (
     <div className={addEmptyClass(classes.root)}>
       {isProcessing && (
@@ -133,7 +187,13 @@ const SummaryStep = (props: Props) => {
                 an deine eigene E-Mailadresse.
               </Typography>
               <StyledButton
-                onClick={() => confirmAndSend()}
+                onClick={() => {
+                  if (hasEmail(userEmail)) {
+                    confirmAndSend();
+                  } else {
+                    setShowEmailSettings(true);
+                  }
+                }}
                 className={classes.sendButton}
               >
                 {Object.keys(brandSelection).length === 1
@@ -158,6 +218,8 @@ const SummaryStep = (props: Props) => {
           )}
         </React.Fragment>
       )}
+
+      {getEmailSettings()}
     </div>
   );
 };
@@ -166,13 +228,16 @@ const mapStateToProps = (state: RootState) => ({
   brandSelection: state.newRequestState.brandSelection,
   status: state.newRequestState.status,
   recipients: getRecipientsWithStatus(state),
-  isProcessing: state.newRequestState.isProcessing
+  isProcessing: state.newRequestState.isProcessing,
+  userEmail: getUserEmail(state),
+  userProfile: getUserProfile(state)
 });
 
 const dispatchToProps = {
   confirmAndSend,
   validateNewRequestStep,
-  selectNewRequestStep
+  selectNewRequestStep,
+  updateProfile
 };
 
 export default connect(

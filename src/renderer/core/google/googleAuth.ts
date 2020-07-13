@@ -34,7 +34,7 @@ export const googleAuth: GoogleAuth = {
     }
     const client = createOAuthClient(
       GOOGLE_CLIENT_ID,
-      GOOGLE_CLIENT_SECRET,
+      GOOGLE_CLIENT_SECRET!,
       [GOOGLE_API_SCOPE],
       DILECY_OAUTH_REDIRECT
     );
@@ -65,7 +65,7 @@ export const googleAuth: GoogleAuth = {
   getAuthClient: (refreshToken: string) => {
     const client = createOAuthClient(
       GOOGLE_CLIENT_ID,
-      GOOGLE_CLIENT_SECRET,
+      GOOGLE_CLIENT_SECRET!,
       [GOOGLE_API_SCOPE],
       DILECY_OAUTH_REDIRECT
     );
