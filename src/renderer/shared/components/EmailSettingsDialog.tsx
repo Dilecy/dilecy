@@ -5,9 +5,9 @@ import CardContent from '@material-ui/core/CardContent';
 import { makeStyles, Theme } from '@material-ui/core/styles';
 import { customTheme } from '../styles/theme';
 import { EmailAccount } from '../../model/clientModel';
-import { localization as localizations } from '../localization';
-import StyledButtonOutlined from './StyledButtonOutlined';
-import StyledButton from './StyledButton';
+import { localization } from '../localization/localization';
+import { StyledButtonOutlined } from './StyledButtonOutlined';
+import { StyledButton } from './StyledButton';
 import { EmailSettingsForm } from '../../feature/ProfileSettings/components/EmailSettingsForm';
 
 interface EmailSettingsDialogProps {
@@ -53,21 +53,19 @@ const EmailSettingsDialog: React.FC<EmailSettingsDialogProps> = (
   return (
     <Card className={classes.card}>
       <CardContent className={classes.welcomeMessage}>
-        <Typography variant="h4">
-          {localizations.SEND_WITH_OWN_EMAIL}
-        </Typography>
+        <Typography variant="h4">{localization.SEND_WITH_OWN_EMAIL}</Typography>
         <Typography variant="subtitle2" className={classes.titleRow}>
-          {localizations.OWN_EMAIL_TIP}
+          {localization.OWN_EMAIL_TIP}
         </Typography>
 
         <Typography variant="subtitle2" className={classes.subTitleRow}>
-          {localizations.CONNECT_WITH_EMAIL_SERVER}
+          {localization.CONNECT_WITH_EMAIL_SERVER}
         </Typography>
 
         <div>
           <EmailSettingsForm
             showEditEmail={true}
-            toggleEditEmailSettings={async () => {}}
+            toggleEditEmailSettings={() => {}}
             updateEmailSettings={confirm}
             dialogMode={true}
           ></EmailSettingsForm>
@@ -78,20 +76,20 @@ const EmailSettingsDialog: React.FC<EmailSettingsDialogProps> = (
             style={{ width: 250, marginRight: 20 }}
             onClick={() => back()}
           >
-            {localizations.BACK}
+            {localization.BACK}
           </StyledButtonOutlined>
           <StyledButtonOutlined
             style={{ width: 250, marginRight: 20 }}
             onClick={() => close()}
           >
-            {localizations.CANCEL}
+            {localization.CANCEL}
           </StyledButtonOutlined>
           <StyledButton
             form="settings-form"
             type="submit"
             style={{ width: 250 }}
           >
-            {localizations.CONFIRM_AND_SEND}
+            {localization.CONFIRM_AND_SEND}
           </StyledButton>
         </div>
       </CardContent>

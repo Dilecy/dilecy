@@ -6,18 +6,18 @@ import Grid from '@material-ui/core/Grid';
 import TextField from '@material-ui/core/TextField';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import { STEP_PROFILE, STEP_CONSENT } from '../profile-types';
-import { localization as localizations } from '../../../shared/localization';
+import { localization } from '@dilecy/shared';
 import { setProfileStepData, setProfileStep, abortProfile } from '../actions';
 import { getProfileData } from '../selectors';
 import { RootState } from 'typesafe-actions';
-import { CreateProfileData } from '../../../store/stateModel';
+import { CreateProfileData } from '@dilecy/store/stateModel';
 import { useEmailForm } from '../ProfileHooks';
-import StyledButton from '../../../shared/components/StyledButton';
-import StyledButtonOutlined from '../../../shared/components/StyledButtonOutlined';
-import { customTheme } from '../../../shared/styles/theme';
-import { GoogleEmailButton } from '../../../shared/components/GoogleEmailButton';
-import { EmailAccount } from '../../../model/clientModel';
-import { pushAlert } from '../../../core/actions';
+
+import { StyledButton, StyledButtonOutlined } from '@dilecy/shared';
+import { customTheme } from '@dilecy/shared/styles/theme';
+import { GoogleEmailButton } from '@dilecy/shared/components/GoogleEmailButton';
+import { EmailAccount } from '@dilecy/model/clientModel';
+import { pushAlert } from '@dilecy/core/actions';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -94,11 +94,11 @@ const useStyles = makeStyles(theme => ({
 }));
 
 const labels = {
-  emailAddress: localizations.LABEL_EMAIL_ADDRESS,
-  emailPassword: localizations.LABEL_EMAIL_PASSWORD,
-  smtpUser: localizations.LABEL_SMTP_USER,
-  smtp: localizations.LABEL_SMTP,
-  smtpPort: localizations.LABEL_SMTP_PORT
+  emailAddress: localization.LABEL_EMAIL_ADDRESS,
+  emailPassword: localization.LABEL_EMAIL_PASSWORD,
+  smtpUser: localization.LABEL_SMTP_USER,
+  smtp: localization.LABEL_SMTP,
+  smtpPort: localization.LABEL_SMTP_PORT
 };
 
 interface Props {
@@ -185,13 +185,13 @@ const StepEmail = (props: Props) => {
               style={{ paddingBottom: '0' }}
               xs={12}
             >
-              <Typography>{localizations.OR}</Typography>
+              <Typography>{localization.OR}</Typography>
             </Grid>
             <div className={classes.row + ' ' + classes.justifyContentCenter}>
               <Grid item className={classes.item} xs={4}>
                 <TextField
                   {...textFieldProps('emailAddress')}
-                  placeholder={localizations.EMAIL_PLACEHOLDER}
+                  placeholder={localization.EMAIL_PLACEHOLDER}
                   disabled={isGoogle}
                   autoFocus
                 />
@@ -243,7 +243,7 @@ const StepEmail = (props: Props) => {
                 >
                   {!doAutoConfig && (
                     <StyledButtonOutlined onClick={() => retryAutoConfig()}>
-                      {localizations.RESET}
+                      {localization.RESET}
                     </StyledButtonOutlined>
                   )}
                 </Grid>
@@ -252,12 +252,12 @@ const StepEmail = (props: Props) => {
             {isGoogle ? (
               <Grid item className={classes.item} xs={12}>
                 <Typography variant="subtitle1" gutterBottom>
-                  {localizations.SMTP_DISABLED_GOOGLE_EXPLANATION}
+                  {localization.SMTP_DISABLED_GOOGLE_EXPLANATION}
                 </Typography>
               </Grid>
             ) : null}
             <Typography variant="subtitle1">
-              {localizations.EMAIL_CLIENT_EXPLANATION}
+              {localization.EMAIL_CLIENT_EXPLANATION}
             </Typography>
           </div>
         </Grid>
@@ -266,10 +266,10 @@ const StepEmail = (props: Props) => {
           <StyledButtonOutlined
             onClick={() => setProfileStep({ stepName: STEP_PROFILE })}
           >
-            {localizations.BACK}
+            {localization.BACK}
           </StyledButtonOutlined>
           <StyledButtonOutlined onClick={abortProfile}>
-            {localizations.CANCEL}
+            {localization.CANCEL}
           </StyledButtonOutlined>
 
           <StyledButton
@@ -285,8 +285,8 @@ const StepEmail = (props: Props) => {
             disabled={form.isSubmitting}
           >
             {shouldValidate
-              ? localizations.NEXT
-              : localizations.PROCEED_WITHOUT_EMAIL}
+              ? localization.NEXT
+              : localization.PROCEED_WITHOUT_EMAIL}
           </StyledButton>
         </div>
       </form>

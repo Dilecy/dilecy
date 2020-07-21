@@ -9,7 +9,7 @@ import Typography from '@material-ui/core/Typography';
 import Link from '@material-ui/core/Link';
 
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-import { localization } from '../../../shared/localization';
+import { localization } from '@dilecy/shared';
 
 type ConsentState = {
   tracking: boolean;

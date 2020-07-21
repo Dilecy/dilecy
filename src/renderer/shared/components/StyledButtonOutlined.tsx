@@ -2,14 +2,7 @@ import React from 'react';
 import { withStyles, createStyles, Theme } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import { customTheme } from '../styles/theme';
-
-export interface ButtonProps {
-  classes: { [key: string]: string };
-  children?: React.ReactNode;
-  className?: string;
-  color?: 'inherit' | 'default' | 'primary' | 'secondary' | undefined;
-  [key: string]: any;
-}
+import { ButtonProps } from './StyledButton';
 
 const styles = createStyles((theme: Theme) => ({
   root: {
@@ -35,7 +28,7 @@ const styles = createStyles((theme: Theme) => ({
   }
 }));
 
-function StyledButtonOutlined(props: ButtonProps) {
+function _component(props: ButtonProps) {
   const { classes, children, color, className, ...others } = props;
   return (
     <Button
@@ -49,4 +42,6 @@ function StyledButtonOutlined(props: ButtonProps) {
   );
 }
 
-export default withStyles(styles)(StyledButtonOutlined);
+const StyledButtonOutlined = withStyles(styles)(_component);
+
+export { StyledButtonOutlined };

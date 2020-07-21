@@ -51,7 +51,7 @@ import {
   fetchOldRequestsEpic,
   updateRequestGroupEpic
 } from '../feature/OldRequests/epics';
-import { localization as localizations } from '../shared/localization';
+import { localization } from '../shared/localization/localization';
 
 /**
  * Root Epic with with error handler to catch all kind of async actions errors. If error occurs, it resubscibes to the original stream and continues the epic flow.
@@ -100,7 +100,7 @@ export const rootEpic: Epic = (action$, store$, dependencies) =>
        */
       if (error instanceof AjaxError) {
         // Server side error
-        return of(pushAlert(localizations.INTERNET_CONNECTION_ERROR));
+        return of(pushAlert(localization.INTERNET_CONNECTION_ERROR));
       } else {
         // client side error
       }

@@ -4,12 +4,12 @@ import { RootState } from 'typesafe-actions';
 import { makeStyles, Theme, createStyles } from '@material-ui/core/styles';
 import { STEP_PROFILE, STEP_EMAIL, STEP_CONSENT } from '../profile-types';
 import CustomStepper from './CustomStepper';
-import { localization } from '../../../shared/localization';
+import { localization } from '@dilecy/shared';
 import { getActiveStep } from '../selectors';
 import StepConsent from './StepConsent';
 import StepEmail from './StepEmail';
 import StepProfile from './StepProfile';
-import { customTheme } from '../../../shared/styles/theme';
+import { customTheme } from '@dilecy/shared/styles/theme';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({

@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles, Theme } from '@material-ui/core/styles';
 
-import { NewRequestStatus, Recipient } from '../../../store/stateModel';
+import { NewRequestStatus, Recipient } from '@dilecy/store/stateModel';
 
 import RecipientTable from '../components/RecipientTable';
 import {
@@ -17,18 +17,18 @@ import {
   selectNewRequestStep
 } from '../actions';
 import { RootState } from 'typesafe-actions';
-import { BrandSelection } from '../../../store/stateModel';
-import StyledButton from '../../../shared/components/StyledButton';
-import { customTheme } from '../../../shared/styles/theme';
+import { BrandSelection } from '@dilecy/store/stateModel';
+import { StyledButton } from '@dilecy/shared/components/StyledButton';
+import { customTheme } from '@dilecy/shared/styles/theme';
 import CircularProgress from '@material-ui/core/CircularProgress';
-import { localization } from '../../../shared/localization';
+import { localization } from '@dilecy/shared';
 import Backdrop from '@material-ui/core/Backdrop';
-import { EmailAccount, Profile } from '../../../model/clientModel';
-import { hasEmail } from '../../../shared/helpers/helper';
+import { EmailAccount, Profile } from '@dilecy/model/clientModel';
+import { hasEmail } from '@dilecy/shared/helpers/helper';
 import { updateProfile } from '../../ProfileSettings/actions';
-import EmailSettingsDialog from '../../../shared/components/EmailSettingsDialog';
-import EmailTypeDialog from '../../../shared/components/EmailTypeDialog';
-import EmailForwarderDialog from '../../../shared/components/EmailForwarderDialog';
+import EmailSettingsDialog from '@dilecy/shared/components/EmailSettingsDialog';
+import EmailTypeDialog from '@dilecy/shared/components/EmailTypeDialog';
+import EmailForwarderDialog from '@dilecy/shared/components/EmailForwarderDialog';
 
 interface Props {
   brandSelection: BrandSelection;

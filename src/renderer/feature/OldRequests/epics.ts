@@ -5,7 +5,7 @@ import * as Actions from './actions';
 import { fromThunky } from '../../store/thunky';
 import { IdMap } from '../../store/util/types';
 import { Brand, Company } from '../../model/serverModel';
-import { localization as localizations } from '../../shared/localization';
+import { localization } from '../../shared/localization/localization';
 import { RequestGroup } from '../../model/clientModel';
 
 export const fetchOldRequestsEpic: Epic = (
@@ -88,14 +88,14 @@ export const fetchOldRequestsEpic: Epic = (
                 const retreivedCompanyName =
                   retreivedBrand && retrievedCompany
                     ? retrievedCompany.name
-                    : localizations.UNKNOWN;
+                    : localization.UNKNOWN;
 
                 return {
                   ...request,
                   companyName: retreivedCompanyName,
                   brandName: retreivedBrand
                     ? retreivedBrand.name
-                    : localizations.UNKNOWN
+                    : localization.UNKNOWN
                 };
               }
             );

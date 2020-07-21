@@ -2,7 +2,7 @@ import React from 'react';
 import chai, { expect } from 'chai';
 import StepEmail from './StepEmail';
 import { shallow } from 'enzyme';
-import * as types from '../../../store/types';
+import * as types from '@dilecy/store/types';
 import configureMockStore from 'redux-mock-store';
 import { Provider } from 'react-redux';
 

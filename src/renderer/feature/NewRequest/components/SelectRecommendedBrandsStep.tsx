@@ -10,8 +10,8 @@ import { makeStyles } from '@material-ui/core/styles';
 import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
 import CircularProgress from '@material-ui/core/CircularProgress';
-import { customTheme } from '../../../shared/styles/theme';
-import { BrowserHistoryState, BrandSelection } from '../../../store/stateModel';
+import { customTheme } from '@dilecy/shared/styles/theme';
+import { BrowserHistoryState, BrandSelection } from '@dilecy/store/stateModel';
 import { selectBrowserHistory, isBrowserHistoryLoading } from '../selectors';
 import {
   browserHistoryConsent,
@@ -25,10 +25,10 @@ import { RootState } from 'typesafe-actions';
 import {
   getRecommendedDomainsWithBrands,
   BrowserHistoryWithBrand
-} from '../../../store/selectors/newRequest';
-import CustomDataTable from '../../../shared/components/CustomDataTable';
-import StyledButtonOutlined from '../../../shared/components/StyledButtonOutlined';
-import { localization } from '../../../shared/localization';
+} from '@dilecy/store/selectors/newRequest';
+import CustomDataTable from '@dilecy/shared/components/CustomDataTable';
+import { StyledButtonOutlined } from '@dilecy/shared';
+import { localization } from '@dilecy/shared';
 
 interface Props {
   brandSelection: BrandSelection;

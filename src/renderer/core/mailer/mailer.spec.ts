@@ -1,7 +1,7 @@
 import chai from 'chai';
 import nodemailer from 'nodemailer';
 import { createMailer } from './mailer';
-import { TESTING_EMAIL_TO } from '../../shared/utils/environment';
+import { TESTING_EMAIL_TO } from '@dilecy/shared';
 import { createTaskQueue } from '../google/callQueue';
 
 chai.use(require('chai-spies'));

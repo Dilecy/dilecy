@@ -1,5 +1,5 @@
 import { ajax } from 'rxjs/ajax';
-import { Environment, getEnvironment } from '../../shared/utils/environment';
+import { Environment, getEnvironment } from '@dilecy/shared';
 import { map } from 'rxjs/operators';
 
 const getEnvironmentParameter = (): string => {
@@ -22,13 +22,17 @@ export const buildEnvironmentUrl = (url: string): string => {
   return urlWithQuery.href;
 };
 
-const getJSON = <T>(url: string, headers?: Object | undefined) => {
+const getJSON = <T>(url: string, headers?: Record<string, any> | undefined) => {
   const environmentUrl = buildEnvironmentUrl(url);
 
   return ajax.getJSON<T>(environmentUrl, headers);
 };
 
-const post = <T>(url: string, body?: T, headers?: Object | undefined) => {
+const post = <T>(
+  url: string,
+  body?: T,
+  headers?: Record<string, any> | undefined
+) => {
   const environmentUrl = buildEnvironmentUrl(url);
 
   return ajax.post(environmentUrl, body, headers);

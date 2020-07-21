@@ -62,7 +62,7 @@ const themeProvider = createMuiTheme({
   }
 });
 
-const ThemeRoot = () => {
+const _root = () => {
   return (
     <MuiThemeProvider theme={themeProvider}>
       <App />
@@ -70,5 +70,6 @@ const ThemeRoot = () => {
   );
 };
 
-export { customTheme, themeProvider };
-export default withStyles(createStyles({}), { withTheme: true })(ThemeRoot);
+const ThemeRoot = withStyles(createStyles({}), { withTheme: true })(_root);
+
+export { customTheme, themeProvider, ThemeRoot };

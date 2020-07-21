@@ -4,8 +4,9 @@ import { TaskQueue } from '../google/callQueue';
 import { ProfileDetails } from '../../model/clientModel';
 import { ForwarderMessage } from '../api/forwarder-interface';
 import { createForwarderService } from '../api/forwarder-service';
-import { getForwarderServerUrl } from '../../shared/utils/environment';
+import { getForwarderServerUrl } from '@dilecy/shared';
 
+/* eslint-disable @typescript-eslint/camelcase */
 export const forwarderMailer = {
   async sendMail(
     m: Message,

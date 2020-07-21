@@ -12,7 +12,7 @@ import Done from '@material-ui/icons/Done';
 import Close from '@material-ui/icons/Close';
 
 import { useDispatch, useSelector } from 'react-redux';
-import { SendStatus, Recipient } from '../../../store/stateModel';
+import { SendStatus, Recipient } from '@dilecy/store/stateModel';
 import {
   toggleBrandSelected,
   toggleRecommendedBrandSelected

@@ -1,19 +1,18 @@
 import DateFnsUtils from '@date-io/date-fns';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
-import StyledButton from '../../../shared/components/StyledButton';
-import StyledButtonOutlined from '../../../shared/components/StyledButtonOutlined';
+import { StyledButton, StyledButtonOutlined } from '@dilecy/shared';
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
 import { MuiPickersUtilsProvider } from '@material-ui/pickers';
 import { Form, Formik, Field } from 'formik';
 import React from 'react';
-import { ProfileDetails } from '../../../model/clientModel';
+import { ProfileDetails } from '@dilecy/model/clientModel';
 import { ChangePassword } from './ChangePassword';
-import { SealedPassword } from '../../../core/crypto/interface';
-import { ProfileValidationSchema } from '../../../shared/utils/validationSchema';
-import { CustomInputField } from '../../../shared/components/CustomInputField';
-import { CustomDatePicker } from '../../../shared/components/CustomDatePicker';
-import { localization } from '../../../shared/localization';
+import { SealedPassword } from '@dilecy/core/crypto/interface';
+import { ProfileValidationSchema } from '@dilecy/shared/utils/validationSchema';
+import { CustomInputField } from '@dilecy/shared/components/CustomInputField';
+import { CustomDatePicker } from '@dilecy/shared/components/CustomDatePicker';
+import { localization } from '@dilecy/shared';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({

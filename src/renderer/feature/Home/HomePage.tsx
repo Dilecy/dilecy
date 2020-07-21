@@ -13,9 +13,9 @@ import Backdrop from '@material-ui/core/Backdrop';
 
 import Link from '@material-ui/core/Link';
 import { SuggestBrand } from '../NewRequest/components/SuggestBrand';
-import { UpdateInfo } from '../../model/serverModel';
+import { UpdateInfo } from '@dilecy/model/serverModel';
 import { RootState } from 'typesafe-actions';
-import { selectView, setWelcomeMessageToggle } from '../../core/actions';
+import { selectView, setWelcomeMessageToggle } from '@dilecy/core/actions';
 import {
   startRating,
   clearShowRating,
@@ -23,12 +23,16 @@ import {
   startFeedback
 } from './actions';
 
-import StyledButton from '../../shared/components/StyledButton';
-import StyledButtonOutlined from '../../shared/components/StyledButtonOutlined';
-import StyledRating from '../../shared/components/StyledRating';
-import { UserIcon } from '../../shared/components/Icon';
-import { customTheme } from '../../shared/styles/theme';
-import { isDevelopment } from '../../shared/utils/environment';
+import { customTheme } from '@dilecy/shared/styles/theme';
+import {
+  isDevelopment,
+  StyledRating,
+  UserIcon,
+  StyledButton,
+  StyledButtonOutlined,
+  localization,
+  OkDialog
+} from '@dilecy/shared';
 import {
   getPrimaryEmail,
   getRating,
@@ -36,9 +40,7 @@ import {
   getShowFeedbackMessage,
   getTotalDomains
 } from './selectors';
-import { EmailAccount } from '../../model/clientModel';
-import { localization } from '../../shared/localization';
-import OkDialog from '../../shared/components/OkDialog';
+import { EmailAccount } from '@dilecy/model/clientModel';
 
 const useStyles = makeStyles(theme => ({
   root: {

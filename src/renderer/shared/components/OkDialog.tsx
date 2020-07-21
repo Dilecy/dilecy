@@ -3,7 +3,7 @@ import Card from '@material-ui/core/Card';
 import Typography from '@material-ui/core/Typography';
 import CardContent from '@material-ui/core/CardContent';
 import { makeStyles, Theme } from '@material-ui/core/styles';
-import StyledButton from './StyledButton';
+import { StyledButton } from './StyledButton';
 import { customTheme } from '../styles/theme';
 
 interface OkDialogProps {
@@ -52,4 +52,4 @@ const OkDialog: React.FC<OkDialogProps> = (props: OkDialogProps) => {
   );
 };
 
-export default OkDialog;
+export { OkDialog };

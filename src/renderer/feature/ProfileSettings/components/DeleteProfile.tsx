@@ -5,9 +5,8 @@ import DialogTitle from '@material-ui/core/DialogTitle';
 import DialogContent from '@material-ui/core/DialogContent';
 import Typography from '@material-ui/core/Typography';
 import DialogActions from '@material-ui/core/DialogActions';
-import { customTheme } from '../../../shared/styles/theme';
-import StyledButton from '../../../shared/components/StyledButton';
-import StyledButtonOutlined from '../../../shared/components/StyledButtonOutlined';
+import { customTheme } from '@dilecy/shared/styles/theme';
+import { StyledButton, StyledButtonOutlined } from '@dilecy/shared';
 
 interface Props {
   open: boolean;

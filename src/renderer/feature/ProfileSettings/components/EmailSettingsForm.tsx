@@ -1,21 +1,20 @@
 import React, { useState, useEffect } from 'react';
 import { Formik, Form, FormikHelpers } from 'formik';
 import { makeStyles, Theme, createStyles } from '@material-ui/core/styles';
-import { EmailAccount } from '../../../model/clientModel';
+import { EmailAccount } from '@dilecy/model/clientModel';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
-import {
-  useMailer,
-  useSealedProfilePassword
-} from '../../../core/dependencies';
+import { useMailer, useSealedProfilePassword } from '@dilecy/core/dependencies';
 import { EmailFormValues } from '../../CreateProfile/ProfileHooks';
-import { EmailSettingsValidationSchema } from '../../../shared/utils/validationSchema';
-import { autoConfig } from '../../../core/mailer/smtpConfig';
-import { CustomInputField } from '../../../shared/components/CustomInputField';
-import StyledButton from '../../../shared/components/StyledButton';
-import StyledButtonOutlined from '../../../shared/components/StyledButtonOutlined';
-import { GoogleEmailButton } from '../../../shared/components/GoogleEmailButton';
-import { localization } from '../../../shared/localization';
+import { autoConfig } from '@dilecy/core/mailer/smtpConfig';
+import {
+  StyledButton,
+  StyledButtonOutlined,
+  GoogleEmailButton,
+  localization,
+  CustomInputField,
+  EmailSettingsValidationSchema
+} from '@dilecy/shared';
 
 interface Props {
   emailSettings?: EmailAccount;

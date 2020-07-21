@@ -10,18 +10,15 @@ import { makeStyles, Theme } from '@material-ui/core/styles';
 import { RootState } from 'typesafe-actions';
 import * as Actions from '../actions';
 import moment from 'moment';
-import { RequestGroup } from '../../../model/clientModel';
+import { RequestGroup } from '@dilecy/model/clientModel';
 import { OldRequest } from '../interface';
 import OldRequestsTable from './OldRequestsTable';
 import Playground from './Playground';
-import {
-  isDevelopment,
-  PROGRESS_COMPLETED
-} from '../../../shared/utils/environment';
+import { isDevelopment, PROGRESS_COMPLETED } from '@dilecy/shared';
 import { selectOldRequests } from '../selectors';
-import { localization as localizations } from '../../../shared/localization';
-import { customTheme } from '../../../shared/styles/theme';
-import { MRequestGroup } from '../../../model/db/enitities';
+import { localization } from '@dilecy/shared';
+import { customTheme } from '@dilecy/shared/styles/theme';
+import { MRequestGroup } from '@dilecy/model/db/enitities';
 import { format } from 'date-fns';
 
 const useStyles = makeStyles((theme: Theme) => ({
@@ -185,7 +182,7 @@ const OldRequestsPage: React.FC = () => {
   return (
     <Container className={classes.root}>
       <div className={classes.nav}>
-        <h1 className={classes.heading}>{localizations.OLD_REQUESTS}</h1>
+        <h1 className={classes.heading}>{localization.OLD_REQUESTS}</h1>
       </div>
       <div className={classes.card}>
         {isLoading && (

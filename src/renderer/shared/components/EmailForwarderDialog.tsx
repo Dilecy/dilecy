@@ -2,12 +2,12 @@ import React from 'react';
 import Card from '@material-ui/core/Card';
 import { makeStyles, Theme } from '@material-ui/core/styles';
 import { customTheme } from '../styles/theme';
-import { localization as localizations } from '../localization';
-import StyledButton from './StyledButton';
-import StyledButtonOutlined from './StyledButtonOutlined';
+import { localization } from '../localization/localization';
+import { StyledButton } from './StyledButton';
+import { StyledButtonOutlined } from './StyledButtonOutlined';
 import { CardContent, Typography } from '@material-ui/core';
 import { CustomInputField } from './CustomInputField';
-import { Formik, Form, FormikHelpers } from 'formik';
+import { Formik, Form } from 'formik';
 import { ForwardEmailSettingsValidationSchema } from '../utils/validationSchema';
 import {
   EmailForwardFormValues,
@@ -79,17 +79,17 @@ const EmailForwarderDialog: React.FC<EmailForwarderDialogProps> = (
           {({ dirty }) => (
             <Form autoComplete="off">
               <div className={classes.titleRow}>
-                <Typography variant="h4">{localizations.USE_DILECY}</Typography>
+                <Typography variant="h4">{localization.USE_DILECY}</Typography>
                 <Typography variant="subtitle2">
-                  {localizations.USE_DILECY_TIP}
+                  {localization.USE_DILECY_TIP}
                 </Typography>
               </div>
               <div className={classes.formRow}>
                 <Typography variant="subtitle2">
-                  {localizations.EMAIL_FORWARD_QUESTION}
+                  {localization.EMAIL_FORWARD_QUESTION}
                 </Typography>
                 <CustomInputField
-                  placeholder={localizations.YOUR_EMAIL_ADDRESS}
+                  placeholder={localization.YOUR_EMAIL_ADDRESS}
                   autoFocus
                   name="emailAddress"
                   type="email"
@@ -100,16 +100,16 @@ const EmailForwarderDialog: React.FC<EmailForwarderDialogProps> = (
                   style={{ width: 250, marginRight: 20 }}
                   onClick={() => back()}
                 >
-                  {localizations.BACK}
+                  {localization.BACK}
                 </StyledButtonOutlined>
                 <StyledButtonOutlined
                   style={{ width: 250, marginRight: 20 }}
                   onClick={() => close()}
                 >
-                  {localizations.CANCEL}
+                  {localization.CANCEL}
                 </StyledButtonOutlined>
                 <StyledButton type="submit" style={{ width: 250 }}>
-                  {localizations.CONFIRM_AND_SEND}
+                  {localization.CONFIRM_AND_SEND}
                 </StyledButton>
               </div>
             </Form>

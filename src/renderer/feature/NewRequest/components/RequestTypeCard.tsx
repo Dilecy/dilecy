@@ -6,10 +6,10 @@ import ButtonBase from '@material-ui/core/ButtonBase';
 import Typography from '@material-ui/core/Typography';
 import ClearIcon from '@material-ui/icons/Clear';
 import { makeStyles } from '@material-ui/core/styles';
-import { RequestGroupType } from '../../../model/clientModel';
-import CustomTooltip from '../../../shared/components/CustomTooltip';
+import { RequestGroupType } from '@dilecy/model/clientModel';
+import CustomTooltip from '@dilecy/shared/components/CustomTooltip';
 import { selectRequestType } from '../actions';
-import { customTheme } from '../../../shared/styles/theme';
+import { customTheme } from '@dilecy/shared/styles/theme';
 import { RootState } from 'typesafe-actions';
 
 const cardWidth = '21.875rem';

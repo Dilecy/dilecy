@@ -5,13 +5,12 @@ import DialogTitle from '@material-ui/core/DialogTitle';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogActions from '@material-ui/core/DialogActions';
 import { Formik, Form } from 'formik';
-import { SealedPassword } from '../../../core/crypto/interface';
-import { usePasswordSealer } from '../../../core/dependencies';
-import { ChangePasswordValidationSchema } from '../../../shared/utils/validationSchema';
-import { CustomInputField } from '../../../shared/components/CustomInputField';
-import StyledButton from '../../../shared/components/StyledButton';
-import StyledButtonOutlined from '../../../shared/components/StyledButtonOutlined';
-import { customTheme } from '../../../shared/styles/theme';
+import { SealedPassword } from '@dilecy/core/crypto/interface';
+import { usePasswordSealer } from '@dilecy/core/dependencies';
+import { ChangePasswordValidationSchema } from '@dilecy/shared/utils/validationSchema';
+import { CustomInputField } from '@dilecy/shared/components/CustomInputField';
+import { StyledButton, StyledButtonOutlined } from '@dilecy/shared';
+import { customTheme } from '@dilecy/shared/styles/theme';
 
 const useStyles = makeStyles(() =>
   createStyles({

@@ -10,4 +10,4 @@ const StyledRating = withStyles(theme => ({
   }
 }))(Rating);
 
-export default StyledRating;
+export { StyledRating };

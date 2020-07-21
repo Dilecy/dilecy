@@ -15,10 +15,10 @@ import InputAdornment from '@material-ui/core/InputAdornment';
 import Search from '@material-ui/icons/Search';
 import Clear from '@material-ui/icons/Clear';
 
-import { Brand, Tag } from '../../../model/serverModel';
-import { IdMap } from '../../../store/util/types';
-import CustomTooltip from '../../../shared/components/CustomTooltip';
-import StyledButton from '../../../shared/components/StyledButton';
+import { Brand, Tag } from '@dilecy/model/serverModel';
+import { IdMap } from '@dilecy/store/util/types';
+import CustomTooltip from '@dilecy/shared/components/CustomTooltip';
+import { StyledButton } from '@dilecy/shared/components/StyledButton';
 import { SuggestBrand } from '../components/SuggestBrand';
 import {
   setSelectSearchFilter,
@@ -29,13 +29,13 @@ import {
   toggleBrandSelected
 } from '../actions';
 import { RootState } from 'typesafe-actions';
-import BrandSelectionTablePaginated from '../../../shared/components/BrandSelectionTablePaginated';
-import { customTheme } from '../../../shared/styles/theme';
+import BrandSelectionTablePaginated from '@dilecy/shared/components/BrandSelectionTablePaginated';
+import { customTheme } from '@dilecy/shared/styles/theme';
 import { getBrandsByPageNumber } from '../selectors';
 import { fromEvent } from 'rxjs';
 import { FromEventTarget } from 'rxjs/internal/observable/fromEvent';
 import { debounceTime } from 'rxjs/operators';
-import { BrandSelection } from '../../../store/stateModel';
+import { BrandSelection } from '@dilecy/store/stateModel';
 
 const useStyles = makeStyles(theme => ({
   multiSelect: {

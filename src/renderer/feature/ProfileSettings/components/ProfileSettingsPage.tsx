@@ -15,21 +15,21 @@ import {
   useSelector as useSelectorGeneric,
   useDispatch
 } from 'react-redux';
-import StyledButton from '../../../shared/components/StyledButton';
-import { ProfileDetails, EmailAccount } from '../../../model/clientModel';
+import { StyledButton } from '@dilecy/shared/components/StyledButton';
+import { ProfileDetails, EmailAccount } from '@dilecy/model/clientModel';
 import { ConsentSettings } from './ConsentSettings';
 import { EmailSettingsForm } from './EmailSettingsForm';
 import { ProfileSettingsForm } from './ProfileSettingsForm';
-import { ConsentAction } from '../../../model/serverModel';
-import { useVisitorIdGenerator } from '../../../core/dependencies';
+import { ConsentAction } from '@dilecy/model/serverModel';
+import { useVisitorIdGenerator } from '@dilecy/core/dependencies';
 import { DeleteProfile } from './DeleteProfile';
-import { SealedPassword } from '../../../core/crypto/interface';
+import { SealedPassword } from '@dilecy/core/crypto/interface';
 import { postConsent } from '../../CreateProfile/actions';
 import { changeProfilePassword, updateProfile } from '../actions';
 import { deleteProfile } from '../../Login/actions';
-import { customTheme } from '../../../shared/styles/theme';
+import { customTheme } from '@dilecy/shared/styles/theme';
 import { RootState } from 'typesafe-actions';
-import { localization } from '../../../shared/localization';
+import { localization } from '@dilecy/shared';
 
 export const useSelector: TypedUseSelectorHook<RootState> = useSelectorGeneric;
 

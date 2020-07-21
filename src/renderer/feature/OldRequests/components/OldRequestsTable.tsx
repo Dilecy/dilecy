@@ -1,15 +1,14 @@
 import React from 'react';
-import CustomDataTable from '../../../shared/components/CustomDataTable';
-import { localization as localizations } from '../../../shared/localization';
+import CustomDataTable from '@dilecy/shared/components/CustomDataTable';
+import { localization } from '@dilecy/shared';
 
 import { OldRequest } from '../interface';
 import moment from 'moment';
-import { SNOOZE_DAYS, SNOOZE_LIMIT } from '../../../shared/utils/environment';
+import { SNOOZE_DAYS, SNOOZE_LIMIT } from '@dilecy/shared';
 import { Action } from 'material-table';
 import { makeStyles, Theme } from '@material-ui/core/styles';
-import { customTheme } from '../../../shared/styles/theme';
-import StyledButton from '../../../shared/components/StyledButton';
-import StyledButtonOutlined from '../../../shared/components/StyledButtonOutlined';
+import { customTheme } from '@dilecy/shared/styles/theme';
+import { StyledButton, StyledButtonOutlined } from '@dilecy/shared';
 
 interface OldRequestTableProps {
   oldRequestsData: OldRequest[];
@@ -54,25 +53,25 @@ const OldRequestsTable: React.FC<OldRequestTableProps> = ({
       title="Alte Anfragen"
       selection={false}
       columns={[
-        { title: localizations.BRAND_NAME, field: 'brandName' },
+        { title: localization.BRAND_NAME, field: 'brandName' },
         {
-          title: localizations.DATE,
+          title: localization.DATE,
           field: 'dateTimeCreated',
           filtering: false,
           customSort: (a, b) =>
             a.dateTimeCreatedMoment.unix() - b.dateTimeCreatedMoment.unix()
         },
         {
-          title: localizations.REQUEST_GROUP_TYPE,
+          title: localization.REQUEST_GROUP_TYPE,
           field: 'requestGroupType',
           lookup: {
-            access: localizations.REQUEST_GROUP_TYPE_ACCESS,
-            rejection: localizations.REQUEST_GROUP_TYPE_REJECTION,
-            deletion: localizations.REQUEST_GROUP_TYPE_DELETION
+            access: localization.REQUEST_GROUP_TYPE_ACCESS,
+            rejection: localization.REQUEST_GROUP_TYPE_REJECTION,
+            deletion: localization.REQUEST_GROUP_TYPE_DELETION
           }
         },
         {
-          title: localizations.PROGRESS,
+          title: localization.PROGRESS,
           field: 'progress',
           filtering: false,
           customSort: (a, b) =>
@@ -80,18 +79,18 @@ const OldRequestsTable: React.FC<OldRequestTableProps> = ({
             moment(b.dueDate, 'DD.MM.YYYY').unix()
         },
         {
-          title: localizations.REQUEST_STATE,
+          title: localization.REQUEST_STATE,
           field: 'visibleState',
           lookup: {
-            [localizations.VISIBLE_STATE_DUE]: localizations.VISIBLE_STATE_DUE,
-            [localizations.VISIBLE_STATE_RUNNING]:
-              localizations.VISIBLE_STATE_RUNNING,
-            [localizations.VISIBLE_STATE_SNOOZED]:
-              localizations.VISIBLE_STATE_SNOOZED,
-            [localizations.VISIBLE_STATE_SUCCESSFUL]:
-              localizations.VISIBLE_STATE_SUCCESSFUL,
-            [localizations.VISIBLE_STATE_FAILED]:
-              localizations.VISIBLE_STATE_FAILED
+            [localization.VISIBLE_STATE_DUE]: localization.VISIBLE_STATE_DUE,
+            [localization.VISIBLE_STATE_RUNNING]:
+              localization.VISIBLE_STATE_RUNNING,
+            [localization.VISIBLE_STATE_SNOOZED]:
+              localization.VISIBLE_STATE_SNOOZED,
+            [localization.VISIBLE_STATE_SUCCESSFUL]:
+              localization.VISIBLE_STATE_SUCCESSFUL,
+            [localization.VISIBLE_STATE_FAILED]:
+              localization.VISIBLE_STATE_FAILED
           }
         }
       ]}
@@ -107,7 +106,7 @@ const OldRequestsTable: React.FC<OldRequestTableProps> = ({
                     onClick={() => onResponse('affirmative')(props.data)}
                     className={classes.buttonGreen}
                   >
-                    {localizations.ACTION_ACCEPT}
+                    {localization.ACTION_ACCEPT}
                   </StyledButton>
                 )}
               </>
@@ -120,7 +119,7 @@ const OldRequestsTable: React.FC<OldRequestTableProps> = ({
                     onClick={() => onResponse('negative')(props.data)}
                     className={classes.buttonRed}
                   >
-                    {localizations.ACTION_REJECT}
+                    {localization.ACTION_REJECT}
                   </StyledButton>
                 )}
               </>
@@ -136,7 +135,7 @@ const OldRequestsTable: React.FC<OldRequestTableProps> = ({
                       onClick={() => onSnooze(props.data)}
                       className={classes.buttonGray}
                     >
-                      {localizations.ACTION_SNOOZE}
+                      {localization.ACTION_SNOOZE}
                     </StyledButtonOutlined>
                   )}
               </>
@@ -147,12 +146,12 @@ const OldRequestsTable: React.FC<OldRequestTableProps> = ({
       actions={[
         {
           icon: 'accept',
-          tooltip: localizations.ACTION_ACCEPT,
+          tooltip: localization.ACTION_ACCEPT,
           onClick: () => undefined
         },
         {
           icon: 'reject',
-          tooltip: localizations.ACTION_REJECT,
+          tooltip: localization.ACTION_REJECT,
           onClick: () => undefined
         },
         {

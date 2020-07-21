@@ -23,7 +23,7 @@ const styles = createStyles((theme: Theme) => ({
   }
 }));
 
-function StyledButton(props: ButtonProps) {
+function _component(props: ButtonProps) {
   const { classes, children, className, color, ...others } = props;
   return (
     <Button
@@ -37,4 +37,6 @@ function StyledButton(props: ButtonProps) {
   );
 }
 
-export default withStyles(styles)(StyledButton);
+const StyledButton = withStyles(styles)(_component);
+
+export { StyledButton };

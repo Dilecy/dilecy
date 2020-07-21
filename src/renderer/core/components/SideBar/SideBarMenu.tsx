@@ -2,7 +2,7 @@ import React from 'react';
 import List from '@material-ui/core/List';
 import SideBarMenuItem from './SideBarMenuItem';
 import { makeStyles, Theme } from '@material-ui/core/styles';
-import { customTheme } from '../../../shared/styles/theme';
+import { customTheme } from '@dilecy/shared/styles/theme';
 
 interface Props {
   loggedIn: boolean;

@@ -1,5 +1,5 @@
 import React from 'react';
-import { RequestGroup } from '../../../model/clientModel';
+import { RequestGroup } from '@dilecy/model/clientModel';
 import { useDispatch } from 'react-redux';
 import { testActionToUpdateRequestGroup } from '../actions';
 

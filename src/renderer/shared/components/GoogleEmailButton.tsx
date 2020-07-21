@@ -5,9 +5,9 @@ import { makeStyles, Theme } from '@material-ui/core/styles';
 
 import { EmailAccount } from '../../model/clientModel';
 import { useGoogleAuth } from '../../core/dependencies';
-import StyledButtonOutlined from '../../shared/components/StyledButtonOutlined';
+import { StyledButtonOutlined } from '../../shared/components/StyledButtonOutlined';
 import { customTheme } from '../../shared/styles/theme';
-import { localization } from '../localization';
+import { localization } from '../localization/localization';
 import { GoogleIcon } from './Icon';
 
 const useStyles = makeStyles((theme: Theme) => ({

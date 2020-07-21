@@ -12,7 +12,7 @@ import {
 } from '../selectors';
 import { validateNewRequestStep, emailTemplatesRequested } from '../actions';
 import { RootState } from 'typesafe-actions';
-import { localization } from '../../../shared/localization';
+import { localization } from '@dilecy/shared';
 
 interface Props {
   templateMissing: boolean;

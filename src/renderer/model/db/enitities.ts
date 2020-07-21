@@ -13,11 +13,8 @@ import {
 } from '../clientModel';
 import { ConsentAction } from '../serverModel';
 import * as Schema from './schemas';
-import { localization } from '../../shared/localization';
-import {
-  DUE_DAY_DURATION,
-  PROGRESS_COMPLETED
-} from '../../shared/utils/environment';
+import { localization } from '../../shared/localization/localization';
+import { DUE_DAY_DURATION, PROGRESS_COMPLETED } from '@dilecy/shared';
 import { differenceInDays, addDays } from 'date-fns';
 
 export class MProfile extends Model implements Profile {

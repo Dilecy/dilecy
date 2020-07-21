@@ -6,7 +6,7 @@ import ListItem from '@material-ui/core/ListItem';
 import TextField from '@material-ui/core/TextField';
 import Container from '@material-ui/core/Container';
 import Typography from '@material-ui/core/Typography';
-import { AuthQAItem } from '../../../store/stateModel';
+import { AuthQAItem } from '@dilecy/store/stateModel';
 import { setAuthAnswerText } from '../actions';
 import { RootState } from 'typesafe-actions';
 

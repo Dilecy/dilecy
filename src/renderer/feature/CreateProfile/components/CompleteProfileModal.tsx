@@ -5,19 +5,20 @@ import Grid from '@material-ui/core/Grid';
 import TextField from '@material-ui/core/TextField';
 import Modal from '@material-ui/core/Modal';
 import { makeStyles, Theme, createStyles } from '@material-ui/core/styles';
-import { ProfileDetails, Profile } from '../../../model/clientModel';
+import { ProfileDetails, Profile } from '@dilecy/model/clientModel';
 import { RootState } from 'typesafe-actions';
 import DateFnsUtils from '@date-io/date-fns';
 import MuiPickersUtilsProvider from '@material-ui/pickers/MuiPickersUtilsProvider';
 import { updateProfile } from '../../ProfileSettings/actions';
-import { selectView } from '../../../core/actions';
+import { selectView } from '@dilecy/core/actions';
 import { useProfileDetailsForm } from '../ProfileHooks';
-import { localization as localizations } from '../../../shared/localization';
-import { CustomDatePicker } from '../../../shared/components/CustomDatePicker';
-import StyledButton from '../../../shared/components/StyledButton';
-import StyledButtonOutlined from '../../../shared/components/StyledButtonOutlined';
-import { customTheme } from '../../../shared/styles/theme';
-
+import {
+  localization,
+  StyledButton,
+  StyledButtonOutlined,
+  CustomDatePicker
+} from '@dilecy/shared';
+import { customTheme } from '@dilecy/shared/styles/theme';
 import { getLoggedInProfile, getLoggedInProfileDetails } from '../selectors';
 
 const useStyles = makeStyles((theme: Theme) =>
@@ -70,15 +71,15 @@ const useStyles = makeStyles((theme: Theme) =>
 );
 
 const labels = {
-  firstName: localizations.LABEL_FIRST_NAME,
-  lastName: localizations.LABEL_LAST_NAME,
-  dateOfBirth: localizations.LABEL_DATE_OF_BIRTH,
-  streetName: localizations.LABEL_STREET_NAME,
-  houseNumber: localizations.LABEL_HOUSE_NUMBER,
-  zipCode: localizations.LABEL_ZIP_CODE,
-  city: localizations.LABEL_CITY,
-  state: localizations.LABEL_STATE,
-  country: localizations.LABEL_COUNTRY
+  firstName: localization.LABEL_FIRST_NAME,
+  lastName: localization.LABEL_LAST_NAME,
+  dateOfBirth: localization.LABEL_DATE_OF_BIRTH,
+  streetName: localization.LABEL_STREET_NAME,
+  houseNumber: localization.LABEL_HOUSE_NUMBER,
+  zipCode: localization.LABEL_ZIP_CODE,
+  city: localization.LABEL_CITY,
+  state: localization.LABEL_STATE,
+  country: localization.LABEL_COUNTRY
 };
 
 interface Props {
@@ -180,7 +181,7 @@ const CompleteProfileModal = (props: Props) => {
     <div className={classes.paper}>
       <div>
         <Typography variant="h6" align="left" className={classes.heading}>
-          {localizations.PERSONAL_DETAILS}
+          {localization.PERSONAL_DETAILS}
         </Typography>
         <form>
           <Grid container>
@@ -189,14 +190,14 @@ const CompleteProfileModal = (props: Props) => {
                 <Grid item className={classes.item} xs={4}>
                   <TextField
                     {...textFieldProps('firstName')}
-                    placeholder={localizations.LABEL_FIRST_NAME}
+                    placeholder={localization.LABEL_FIRST_NAME}
                     autoFocus
                   />
                 </Grid>
                 <Grid item className={classes.item} xs={4}>
                   <TextField
                     {...textFieldProps('lastName')}
-                    placeholder={localizations.LABEL_LAST_NAME}
+                    placeholder={localization.LABEL_LAST_NAME}
                   />
                 </Grid>
                 <Grid item className={classes.item} xs={4}>
@@ -204,8 +205,8 @@ const CompleteProfileModal = (props: Props) => {
                     className={classes.customDatePicker}
                     field={textFieldProps('dateOfBirth')}
                     form={form}
-                    label={localizations.LABEL_DATE_OF_BIRTH}
-                    placeholder={localizations.LABEL_DATE_OF_BIRTH}
+                    label={localization.LABEL_DATE_OF_BIRTH}
+                    placeholder={localization.LABEL_DATE_OF_BIRTH}
                     keyboard={true}
                     format="dd.MM.yyyy"
                   />
@@ -216,19 +217,19 @@ const CompleteProfileModal = (props: Props) => {
                 <Grid item className={classes.item} xs={4}>
                   <TextField
                     {...textFieldProps('streetName')}
-                    placeholder={localizations.LABEL_STREET_NAME}
+                    placeholder={localization.LABEL_STREET_NAME}
                   />
                 </Grid>
                 <Grid item className={classes.item} xs={4}>
                   <TextField
                     {...textFieldProps('houseNumber')}
-                    placeholder={localizations.LABEL_HOUSE_NUMBER}
+                    placeholder={localization.LABEL_HOUSE_NUMBER}
                   />
                 </Grid>
                 <Grid item className={classes.item} xs={4}>
                   <TextField
                     {...textFieldProps('zipCode')}
-                    placeholder={localizations.LABEL_ZIP_CODE}
+                    placeholder={localization.LABEL_ZIP_CODE}
                   />
                 </Grid>
               </Grid>
@@ -237,30 +238,30 @@ const CompleteProfileModal = (props: Props) => {
                 <Grid item className={classes.item} xs={4}>
                   <TextField
                     {...textFieldProps('city')}
-                    placeholder={localizations.LABEL_CITY}
+                    placeholder={localization.LABEL_CITY}
                   />
                 </Grid>
                 <Grid item className={classes.item} xs={4}>
                   <TextField
                     {...textFieldProps('state')}
-                    placeholder={localizations.LABEL_STATE}
+                    placeholder={localization.LABEL_STATE}
                   />
                 </Grid>
                 <Grid item className={classes.item} xs={4}>
                   <TextField
                     {...textFieldProps('country')}
-                    placeholder={localizations.LABEL_COUNTRY}
+                    placeholder={localization.LABEL_COUNTRY}
                   />
                 </Grid>
               </Grid>
               <Typography variant="subtitle2">
-                {localizations.PERSONAL_DETAILS_EXPLANATION}
+                {localization.PERSONAL_DETAILS_EXPLANATION}
               </Typography>
 
               <Grid container className={classes.mt2}>
                 <Grid item className={classes.item} xs={6}>
                   <StyledButtonOutlined onClick={abort}>
-                    {localizations.CANCEL}
+                    {localization.CANCEL}
                   </StyledButtonOutlined>
                 </Grid>
                 <Grid
@@ -269,7 +270,7 @@ const CompleteProfileModal = (props: Props) => {
                   xs={6}
                 >
                   <StyledButton type="submit" onClick={handleSubmit}>
-                    {localizations.CONFIRM}
+                    {localization.CONFIRM}
                   </StyledButton>
                 </Grid>
               </Grid>

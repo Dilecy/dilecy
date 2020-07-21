@@ -1,9 +1,6 @@
 import { Mailer, Message, MessageTransport } from './interface';
 import nodemailer from 'nodemailer';
-import {
-  isDevelopment,
-  TESTING_EMAIL_TO
-} from '../../shared/utils/environment';
+import { isDevelopment, TESTING_EMAIL_TO } from '@dilecy/shared';
 import { googleMailer } from '../google/googleMailer';
 import { forwarderMailer } from '../forwarder/forwarderMailer';
 import { TaskQueue } from '../google/callQueue';

@@ -25,11 +25,11 @@ import {
   newRequestDone
 } from './actions';
 import { selectPage, selectView } from '../../core/actions';
-import StyledButton from '../../shared/components/StyledButton';
+import { StyledButton } from '../../shared/components/StyledButton';
 import { customTheme } from '../../shared/styles/theme';
 import CustomStepIcon from '../../shared/components/StyledStepIcon';
 import CompleteProfileModal from '../CreateProfile/components/CompleteProfileModal';
-import { localization } from '../../shared/localization';
+import { localization } from '../../shared/localization/localization';
 
 const useStyles = makeStyles((theme: Theme) => ({
   root: {

@@ -23,7 +23,7 @@ import {
   Localization,
   Components
 } from 'material-table';
-import { localization as localizations } from '../localization';
+import { localization } from '../localization/localization';
 import { makeStyles, Theme } from '@material-ui/core/styles';
 import MaterialTable from 'material-table';
 import { customTheme } from '../styles/theme';
@@ -56,8 +56,8 @@ declare global {
   type Dictionary<T> = { [key: string]: T };
 }
 
-const localization: Localization = {
-  header: { actions: localizations.ACTION },
+const matTableLocalization: Localization = {
+  header: { actions: localization.ACTION },
   toolbar: {
     searchPlaceholder: 'Suchtext'
   }
@@ -145,7 +145,7 @@ const CustomDataTable = <T extends Dictionary<any>>(props: Props<T>) => {
         columns={columns}
         data={rows}
         actions={actions}
-        localization={localization}
+        localization={matTableLocalization}
         components={components}
         options={{
           selection: selection !== undefined ? selection : true,

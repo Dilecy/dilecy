@@ -4,11 +4,11 @@ import Typography from '@material-ui/core/Typography';
 import CardContent from '@material-ui/core/CardContent';
 import { makeStyles, Theme } from '@material-ui/core/styles';
 import { customTheme } from '../styles/theme';
-import { localization as localizations } from '../localization';
+import { localization } from '../localization/localization';
 import { Grid } from '@material-ui/core';
 import { CheckIcon, CrossIcon } from '../components/Icon';
-import StyledButton from './StyledButton';
-import StyledButtonOutlined from './StyledButtonOutlined';
+import { StyledButton } from './StyledButton';
+import { StyledButtonOutlined } from './StyledButtonOutlined';
 
 interface EmailTypeDialogProps {
   close: () => void;
@@ -61,24 +61,24 @@ const EmailTypeDialog: React.FC<EmailTypeDialogProps> = (
   return (
     <Card className={classes.card}>
       <CardContent className={classes.welcomeMessage}>
-        <Typography variant="h4">{localizations.HOW_SEND_EMAILS}</Typography>
+        <Typography variant="h4">{localization.HOW_SEND_EMAILS}</Typography>
 
         <Grid container>
           <Grid item xs={4}></Grid>
           <Grid item xs={4}>
             <Typography variant="subtitle1" className={classes.headerText}>
-              {localizations.SEND_WITH_OWN_EMAIL}:
+              {localization.SEND_WITH_OWN_EMAIL}:
             </Typography>
             <Typography variant="subtitle2" className={classes.headerText}>
-              {localizations.OWN_EMAIL_TIP}
+              {localization.OWN_EMAIL_TIP}
             </Typography>
           </Grid>
           <Grid item xs={4}>
             <Typography variant="subtitle1" className={classes.headerText}>
-              {localizations.USE_DILECY}:
+              {localization.USE_DILECY}:
             </Typography>
             <Typography variant="subtitle2" className={classes.headerText}>
-              {localizations.USE_DILECY_TIP}
+              {localization.USE_DILECY_TIP}
             </Typography>
           </Grid>
 
@@ -89,7 +89,7 @@ const EmailTypeDialog: React.FC<EmailTypeDialogProps> = (
           >
             <Grid item xs={4}>
               <Typography variant="subtitle2" className={classes.smallText}>
-                {localizations.WE_DONT_GET_YOUR_ADDRESS}
+                {localization.WE_DONT_GET_YOUR_ADDRESS}
               </Typography>
             </Grid>
             <Grid item xs={4}>
@@ -103,7 +103,7 @@ const EmailTypeDialog: React.FC<EmailTypeDialogProps> = (
           <Grid container className={classes.benefitRow} alignItems="center">
             <Grid item xs={4}>
               <Typography variant="subtitle2" className={classes.smallText}>
-                {localizations.WE_DONT_KNOW_WHAT_YOU_SEND}
+                {localization.WE_DONT_KNOW_WHAT_YOU_SEND}
               </Typography>
             </Grid>
             <Grid item xs={4}>
@@ -117,7 +117,7 @@ const EmailTypeDialog: React.FC<EmailTypeDialogProps> = (
           <Grid container className={classes.benefitRow} alignItems="center">
             <Grid item xs={4}>
               <Typography variant="subtitle2" className={classes.smallText}>
-                {localizations.PASSWORD_NOT_REQUIRED}
+                {localization.PASSWORD_NOT_REQUIRED}
               </Typography>
             </Grid>
 
@@ -133,14 +133,14 @@ const EmailTypeDialog: React.FC<EmailTypeDialogProps> = (
           <Grid container className={classes.benefitRow} alignItems="center">
             <Grid item xs={4}>
               <Typography variant="subtitle2" className={classes.smallText}>
-                {localizations.EFFORT}
+                {localization.EFFORT}
               </Typography>
             </Grid>
             <Grid item xs={4}>
-              <Typography>{localizations.LITTLE_EFFORT}</Typography>
+              <Typography>{localization.LITTLE_EFFORT}</Typography>
             </Grid>
             <Grid item xs={4}>
-              <Typography>{localizations.BIG_EFFORT}</Typography>
+              <Typography>{localization.BIG_EFFORT}</Typography>
             </Grid>
           </Grid>
 
@@ -148,19 +148,19 @@ const EmailTypeDialog: React.FC<EmailTypeDialogProps> = (
             <Grid item xs={4}></Grid>
             <Grid item xs={4}>
               <StyledButton onClick={() => useOwnEmail()}>
-                {localizations.USE_OWN_EMAIL}
+                {localization.USE_OWN_EMAIL}
               </StyledButton>
             </Grid>
             <Grid item xs={4}>
               <StyledButton onClick={() => useForwarder()}>
-                {localizations.USE_DILECY}
+                {localization.USE_DILECY}
               </StyledButton>
             </Grid>
           </Grid>
         </Grid>
 
         <StyledButtonOutlined onClick={() => close()}>
-          {localizations.CANCEL}
+          {localization.CANCEL}
         </StyledButtonOutlined>
       </CardContent>
     </Card>

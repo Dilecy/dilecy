@@ -1,6 +1,6 @@
 import React from 'react';
 import chai, { expect } from 'chai';
-import OkDialog from './OkDialog';
+import { OkDialog } from './OkDialog';
 import { mount } from 'enzyme';
 
 chai.should();

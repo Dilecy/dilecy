@@ -1,19 +1,18 @@
 import React from 'react';
-import { connect, useDispatch } from 'react-redux';
+import { connect } from 'react-redux';
 import Grid from '@material-ui/core/Grid';
 import TextField from '@material-ui/core/TextField';
 import makeStyles from '@material-ui/core/styles/makeStyles';
 import Typography from '@material-ui/core/Typography';
 import { STEP_EMAIL } from '../profile-types';
-import { localization as localizations } from '../../../shared/localization';
+import { localization } from '@dilecy/shared';
 import { setProfileStepData, setProfileStep, abortProfile } from '../actions';
 import { getProfileData } from '../selectors';
 import { RootState } from 'typesafe-actions';
-import { CreateProfileData } from '../../../store/stateModel';
+import { CreateProfileData } from '@dilecy/store/stateModel';
 import { useProfileDataForm } from '../ProfileHooks';
-import StyledButton from '../../../shared/components/StyledButton';
-import StyledButtonOutlined from '../../../shared/components/StyledButtonOutlined';
-import { customTheme } from '../../../shared/styles/theme';
+import { StyledButton, StyledButtonOutlined } from '@dilecy/shared';
+import { customTheme } from '@dilecy/shared/styles/theme';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -61,9 +60,9 @@ const useStyles = makeStyles(theme => ({
 }));
 
 const labels = {
-  profileName: localizations.LABEL_PROFILE_NAME,
-  password: localizations.LABEL_PASSWORD,
-  password2: localizations.LABEL_PASSWORD_AGAIN
+  profileName: localization.LABEL_PROFILE_NAME,
+  password: localization.LABEL_PASSWORD,
+  password2: localization.LABEL_PASSWORD_AGAIN
 };
 
 interface Props {
@@ -114,14 +113,14 @@ const StepProfile = (props: Props) => {
 
           <div>
             <Typography variant="subtitle1" gutterBottom>
-              {localizations.PROFILE_DESCRIPTION}
+              {localization.PROFILE_DESCRIPTION}
             </Typography>
             <Typography
               variant="subtitle1"
               gutterBottom
               className={classes.warning}
             >
-              {localizations.PROFILE_DESCRIPTION_WARNING}
+              {localization.PROFILE_DESCRIPTION_WARNING}
             </Typography>
           </div>
         </Grid>
@@ -129,10 +128,10 @@ const StepProfile = (props: Props) => {
         <Grid container>
           <Grid item xs={12} className={classes.buttonBar}>
             <StyledButtonOutlined style={{ visibility: 'hidden' }}>
-              {localizations.BACK}
+              {localization.BACK}
             </StyledButtonOutlined>
             <StyledButtonOutlined onClick={abortProfile}>
-              {localizations.CANCEL}
+              {localization.CANCEL}
             </StyledButtonOutlined>
             <StyledButton
               type="submit"
@@ -142,7 +141,7 @@ const StepProfile = (props: Props) => {
               }}
               disabled={form.isSubmitting}
             >
-              {localizations.NEXT}
+              {localization.NEXT}
             </StyledButton>
           </Grid>
         </Grid>

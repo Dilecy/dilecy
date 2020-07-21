@@ -4,7 +4,7 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import { Provider } from 'react-redux';
 import { DependencyInjector } from './core/dependencies';
-import ThemeRoot from './shared/styles/theme';
+import { ThemeRoot } from './shared/styles/theme';
 import { appVersion } from './core/appInfo';
 import { configureStore } from './store';
 import { sealPassword, rng } from './core/crypto/password';

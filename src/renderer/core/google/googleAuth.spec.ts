@@ -1,7 +1,7 @@
 import chai from 'chai';
 import { googleAuth } from './googleAuth';
 import * as client from './oauthClient';
-import { GOOGLE_API_SCOPE } from '../../shared/utils/environment';
+import { GOOGLE_API_SCOPE } from '@dilecy/shared';
 chai.use(require('chai-spies'));
 chai.should();
 

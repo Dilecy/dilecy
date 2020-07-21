@@ -10,12 +10,11 @@ import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 
 import { useDispatch } from 'react-redux';
-import { MissingBrandValidationSchema } from '../../../shared/utils/validationSchema';
-import { CustomInputField } from '../../../shared/components/CustomInputField';
+import { MissingBrandValidationSchema } from '@dilecy/shared/utils/validationSchema';
+import { CustomInputField } from '@dilecy/shared/components/CustomInputField';
 import { addMissingBrand } from '../actions';
-import { customTheme } from '../../../shared/styles/theme';
-import StyledButton from '../../../shared/components/StyledButton';
-import StyledButtonOutlined from '../../../shared/components/StyledButtonOutlined';
+import { customTheme } from '@dilecy/shared/styles/theme';
+import { StyledButton, StyledButtonOutlined } from '@dilecy/shared';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({

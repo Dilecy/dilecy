@@ -1,5 +1,5 @@
-import { Brand } from '../../../model/serverModel';
-import { IdMap } from '../../../store/util/types';
+import { Brand } from '@dilecy/model/serverModel';
+import { IdMap } from '@dilecy/store/util/types';
 
 export interface BrandsResponse {
   brandsList: Brand[];

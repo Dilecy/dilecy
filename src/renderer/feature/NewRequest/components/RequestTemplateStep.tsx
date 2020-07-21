@@ -3,9 +3,10 @@ import { connect } from 'react-redux';
 import TextField from '@material-ui/core/TextField';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
-import StyledbuttonOutlined from '../../../shared/components/StyledButtonOutlined';
-import { EmailTemplate } from '../../../model/serverModel';
-import CustomTooltip from '../../../shared/components/CustomTooltip';
+import { StyledButtonOutlined } from '@dilecy/shared';
+
+import { EmailTemplate } from '@dilecy/model/serverModel';
+import CustomTooltip from '@dilecy/shared/components/CustomTooltip';
 import {
   getOriginalRequestTemplate,
   getMissingTemplateFields
@@ -15,9 +16,9 @@ import {
   setRequestSubject,
   validateNewRequestStep
 } from '../actions';
-import { customTheme } from '../../../shared/styles/theme';
+import { customTheme } from '@dilecy/shared/styles/theme';
 import { RootState } from 'typesafe-actions';
-import { localization } from '../../../shared/localization';
+import { localization } from '@dilecy/shared';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -177,12 +178,12 @@ const RequestTemplateStep: React.FC<Props> = (props: Props) => {
         label="Mustertext"
         {...errors}
       />
-      <StyledbuttonOutlined
+      <StyledButtonOutlined
         className={classes.resetButton}
         onClick={resetTemplate}
       >
         {localization.RESET}
-      </StyledbuttonOutlined>
+      </StyledButtonOutlined>
     </div>
   );
 };

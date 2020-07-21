@@ -4,8 +4,7 @@ import DialogTitle from '@material-ui/core/DialogTitle';
 import Dialog from '@material-ui/core/Dialog';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogActions from '@material-ui/core/DialogActions';
-import StyledButton from './StyledButton';
-import StyledButtonOutlined from './StyledButtonOutlined';
+import { StyledButton, StyledButtonOutlined } from '@dilecy/shared';
 import { customTheme } from '../styles/theme';
 
 interface ConfirmDialogProps {

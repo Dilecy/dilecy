@@ -6,7 +6,7 @@ import {
   GOOGLE_API_SCOPE,
   DILECY_OAUTH_REDIRECT,
   GOOGLE_PROFILE_URL
-} from '../../shared/utils/environment';
+} from '@dilecy/shared';
 
 let lastToken: GoogleAuthResult = {};
 

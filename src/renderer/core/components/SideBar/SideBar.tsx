@@ -5,15 +5,12 @@ import Container from '@material-ui/core/Container';
 
 import Typography from '@material-ui/core/Typography';
 import { makeStyles, Theme } from '@material-ui/core/styles';
-import { Profile, ProfileDetails } from '../../../model/clientModel';
+import { Profile, ProfileDetails } from '@dilecy/model/clientModel';
 import { RootState } from 'typesafe-actions';
 import { requestLogout } from '../../actions';
-import { customTheme } from '../../../shared/styles/theme';
-import {
-  LogoIcon,
-  SettingsIcon,
-  LogoutIcon
-} from '../../../shared/components/Icon';
+import { LogoIcon, SettingsIcon, LogoutIcon } from '@dilecy/shared';
+import { customTheme } from '@dilecy/shared/styles/theme';
+
 import List from '@material-ui/core/List';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import SideBarMenuItem from './SideBarMenuItem';

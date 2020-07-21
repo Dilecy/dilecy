@@ -51,9 +51,10 @@ import { EmailTemplate, Brand, Tag } from '../../model/serverModel';
 import { tagGenerator } from '../../store/selectors/newRequest';
 import { MessageTransport } from '../../core/mailer/interface';
 import { isEmptyMap } from '../../shared/helpers/helper';
-import { HISTORY_IMPORT_LIMIT } from '../../shared/utils/environment';
+import { HISTORY_IMPORT_LIMIT } from '@dilecy/shared';
 import { Tracker } from '../../core/tracker/interface';
 import { createTaskQueue } from '../../core/google/callQueue';
+/* eslint-disable @typescript-eslint/camelcase */
 import { gmail_v1 } from 'googleapis/build/src/apis/gmail/v1';
 import { googleAuth } from '../../core/google/googleAuth';
 

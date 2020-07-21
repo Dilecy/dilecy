@@ -6,7 +6,7 @@ import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import { STEP_EMAIL } from '../profile-types';
 import { Consent } from './Consent';
-import { localization as localizations } from '../../../shared/localization';
+import { localization } from '@dilecy/shared';
 import {
   setProfileStepData,
   setProfileStep,
@@ -14,12 +14,11 @@ import {
   submitProfile
 } from '../actions';
 
-import StyledButton from '../../../shared/components/StyledButton';
-import StyledButtonOutlined from '../../../shared/components/StyledButtonOutlined';
-import { customTheme } from '../../../shared/styles/theme';
+import { StyledButton, StyledButtonOutlined } from '@dilecy/shared';
+import { customTheme } from '@dilecy/shared/styles/theme';
 import { getProfileData } from '../selectors';
 import { RootState } from 'typesafe-actions';
-import { CreateProfileData } from '../../../store/stateModel';
+import { CreateProfileData } from '@dilecy/store/stateModel';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -104,7 +103,7 @@ const StepConsent = (props: Props) => {
 
           <Grid item xs={12}>
             <Typography variant="subtitle1" gutterBottom>
-              {localizations.MISSION}
+              {localization.MISSION}
             </Typography>
           </Grid>
         </Grid>
@@ -114,10 +113,10 @@ const StepConsent = (props: Props) => {
             <StyledButtonOutlined
               onClick={() => setProfileStep({ stepName: STEP_EMAIL })}
             >
-              {localizations.BACK}
+              {localization.BACK}
             </StyledButtonOutlined>
             <StyledButtonOutlined onClick={abortProfile}>
-              {localizations.CANCEL}
+              {localization.CANCEL}
             </StyledButtonOutlined>
             <StyledButton
               type="submit"
@@ -127,7 +126,7 @@ const StepConsent = (props: Props) => {
                 handleSubmit();
               }}
             >
-              {localizations.CREATE_AND_SIGNUP}
+              {localization.CREATE_AND_SIGNUP}
             </StyledButton>
           </Grid>
         </Grid>
