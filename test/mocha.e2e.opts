@@ -1,5 +1,0 @@
-./test/**/*.spec.[j|t]s
---require ts-node/register
---timeout 20000
---recursive
---exit
