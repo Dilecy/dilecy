@@ -14,6 +14,10 @@
     "jsx": "react",
     "sourceMap": true,
     "emitDecoratorMetadata": true,
-    "experimentalDecorators": true
+    "experimentalDecorators": true,
+    "baseUrl": "../",
+    "paths": {
+      "@dilecy/*": ["src/renderer/*"]
+    }
   }
 }
