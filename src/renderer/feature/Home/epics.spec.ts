@@ -6,7 +6,9 @@ import configureMockStore from 'redux-mock-store';
 import { createEpicMiddleware } from 'redux-observable';
 import { EpicMiddleware } from '../../store/root-epic';
 import { dependencies } from '../../index.mock';
-chai.use(require('chai-spies'));
+import chaiSpies from 'chai-spies';
+
+chai.use(chaiSpies);
 chai.should();
 
 describe('startFeedbackEpic', () => {
@@ -24,7 +26,7 @@ describe('startFeedbackEpic', () => {
     const feedbackSpy = chai.spy.on(
       dependencies.apiService,
       'postFeedback',
-      returns => Promise.resolve()
+      () => Promise.resolve()
     );
 
     const actions$ = ActionsObservable.of(startFeedback('hello'));

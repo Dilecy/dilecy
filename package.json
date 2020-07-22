@@ -11,6 +11,7 @@
     "make": "electron-forge make",
     "publish": "electron-forge publish",
     "lint": "eslint --ignore-path .gitignore . --ext ts --ext tsx --ext js --ext jsx",
+    "lint:fix": "eslint --ignore-path .gitignore . --ext ts --ext tsx --ext js --ext jsx --fix",
     "pree2etest": "cross-env BUILD_ENV=e2etest node ./tools/build.js",
     "e2etest": "mocha --opts ./test/mocha.e2e.opts",
     "test": "mocha --opts ./test/mocha.unit.opts",

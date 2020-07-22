@@ -17,7 +17,7 @@ const windowsLibs = [
   'user32.lib',
   'crypt32.lib'
 ];
-const libs = isWindows ? windowsLibs : (isMacos ? macosLibs : linuxLibs);
+const libs = isWindows ? windowsLibs : isMacos ? macosLibs : linuxLibs;
 
 const bindingGyp = {
   includes: ['deps/common-sqlite.gypi'],

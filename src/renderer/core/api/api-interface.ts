@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/camelcase */
 import { AjaxResponse } from 'rxjs/ajax';
 import { PaginatedResponse } from './http-service';
 import {

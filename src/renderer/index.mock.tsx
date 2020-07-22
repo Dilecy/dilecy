@@ -15,7 +15,6 @@ import { createTracker } from './core/tracker/tracker';
 import { getMockBrowserHistory } from './core/browserHistory/mockBrowserHistory';
 import { appStarted } from './core/actions';
 import { createApiService } from './core/api/api-service';
-import { createMockApiService } from './core/api/api-service-mock';
 import {
   getApiServerUrl,
   getTrackingServerUrl,

@@ -1,5 +1,3 @@
-import { AjaxResponse } from 'rxjs/ajax';
-
 export interface ForwarderMessage {
   user_email: string;
   user_data: {

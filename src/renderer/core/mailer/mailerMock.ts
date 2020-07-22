@@ -1,6 +1,4 @@
 import { Mailer } from './interface';
-import { TaskQueue } from '../google/callQueue';
-import { ProfileDetails } from '../../model/clientModel';
 
 const sleep = (ms: number) => new Promise(resolve => setTimeout(resolve, ms));
 
@@ -48,7 +46,7 @@ export function createMailerMock(latencyInMs: number): Mailer {
         };
       }
     }),
-    getForwarderTransport: (queue: TaskQueue, profile: ProfileDetails) => ({
+    getForwarderTransport: () => ({
       sendMessage: async message => {
         messageNumber += 1;
         const messageId = `Sending message #${messageNumber} via forwarder`;

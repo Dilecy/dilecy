@@ -132,7 +132,7 @@ export const updateRequestGroupEpic: Epic = (
   action$.pipe(
     filter(isActionOf(Actions.updateRequestGroup)),
     concatMap(action =>
-      fromThunky(async dispatch => {
+      fromThunky(async () => {
         const requestGroupToUpdate = action.payload;
         await clientBackend.updateRequestGroup(requestGroupToUpdate);
       })

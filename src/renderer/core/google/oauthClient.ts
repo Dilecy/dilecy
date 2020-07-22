@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/camelcase */
 import ElectronGoogleOAuth2 from '@getstation/electron-google-oauth2';
 
 export interface OAuthClient {

@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/camelcase */
 import chai from 'chai';
 import { googleAuth } from './googleAuth';
 import * as client from './oauthClient';

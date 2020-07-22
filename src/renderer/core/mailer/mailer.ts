@@ -9,6 +9,16 @@ import { forwarderMailer } from '../forwarder/forwarderMailer';
 import { TaskQueue } from '../google/callQueue';
 import { defer } from 'rxjs';
 
+function replaceRecipients(m: Message) {
+  m.to = TESTING_EMAIL_TO;
+  if (m.cc) {
+    m.cc = TESTING_EMAIL_TO;
+  }
+  if (m.bcc) {
+    m.bcc = TESTING_EMAIL_TO;
+  }
+}
+
 export function createMailer(): Mailer {
   const createSMTPPayload = (
     host: string,
@@ -63,16 +73,6 @@ export function createMailer(): Mailer {
       }
     };
   }
-
-  const replaceRecipients = (m: Message) => {
-    m.to = TESTING_EMAIL_TO;
-    if (m.cc) {
-      m.cc = TESTING_EMAIL_TO;
-    }
-    if (m.bcc) {
-      m.bcc = TESTING_EMAIL_TO;
-    }
-  };
 
   return {
     getSmtpTransport: (host, port, user, pass, taskQueue) => {

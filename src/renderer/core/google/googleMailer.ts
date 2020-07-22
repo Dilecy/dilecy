@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/camelcase */
 import { gmail_v1 } from 'googleapis/build/src/apis/gmail/v1';
 import { mailFormatter } from './mailFormatter';
 import { Message } from '../mailer/interface';

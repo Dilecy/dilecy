@@ -171,6 +171,7 @@ export class DBClientBackend implements CM.ClientBackend {
     }
   }
 
+  /* eslint-disable @typescript-eslint/ban-ts-ignore */
   async getRequestGroups() {
     // @ts-ignore: MRequestGroup has a constructor with parameters which objection
     // does not support.

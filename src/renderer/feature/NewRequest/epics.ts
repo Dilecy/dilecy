@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/camelcase */
+
 import { filter, concatMap, mergeMap, switchMap } from 'rxjs/operators';
 import { isActionOf } from 'typesafe-actions';
 import {
@@ -286,7 +288,7 @@ export const requestTypeEpic: Epic = (action$, state$) =>
 export const fetchTagsEpic: Epic = (action$, state$, { apiService }) =>
   action$.pipe(
     filter(isActionOf(tagsRequested)),
-    mergeMap(action =>
+    mergeMap(() =>
       fromThunky(async dispatch => {
         try {
           const tagsById: IdMap<Tag> = {};
@@ -406,7 +408,7 @@ export const fetchRecommendedBrandsEpic: Epic = (
 ) =>
   action$.pipe(
     filter(isActionOf(recommendedBrandsRequested)),
-    concatMap(action =>
+    concatMap(() =>
       fromThunky(async dispatch => {
         const state = state$.value;
         const selectedBrandIds = Object.keys(

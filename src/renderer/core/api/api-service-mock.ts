@@ -3,12 +3,12 @@ import { ApiService } from './api-interface';
 import { serverTestData } from '../../model/mock/testData';
 import { of } from 'rxjs';
 
-const postConsent = (consent: ConsentAction) =>
+const postConsent = () =>
   new Promise(() => {
     throw new Error('Server Error');
   });
 
-const postMissingBrand = (brand: MissingBrand) =>
+const postMissingBrand = () =>
   new Promise(() => {
     throw new Error('Server Error');
   });
@@ -31,7 +31,7 @@ export function createMockApiService(): ApiService {
     getTags: () => new Promise(() => serverTestData.tags),
     postConsent: (consent: ConsentAction) => postConsent(consent),
     postMissingBrand: (brand: MissingBrand) => postMissingBrand(brand),
-    postPing: (cohort: string, is_first: boolean) => new Promise(() => true),
+    postPing: () => new Promise(() => true),
     postRating: (points: number) =>
       new Promise(() => ({
         points,
@@ -44,6 +44,6 @@ export function createMockApiService(): ApiService {
         id,
         password
       })),
-    postFeedback: (message: string) => new Promise(() => ({}))
+    postFeedback: () => new Promise(() => ({}))
   };
 }

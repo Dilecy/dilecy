@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/camelcase */
+
 import { Message } from '../mailer/interface';
 import { defer } from 'rxjs';
 import { TaskQueue } from '../google/callQueue';

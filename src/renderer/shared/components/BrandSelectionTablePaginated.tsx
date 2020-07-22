@@ -10,7 +10,6 @@ import TableHead from '@material-ui/core/TableHead';
 import TablePagination from '@material-ui/core/TablePagination';
 import TableRow from '@material-ui/core/TableRow';
 import { Brand } from '../../model/serverModel';
-import { IdMap } from '../../store/util/types';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import { customTheme } from '../styles/theme';
 import { BrandSelection } from '../../store/stateModel';

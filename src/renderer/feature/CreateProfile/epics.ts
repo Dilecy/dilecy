@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/camelcase */
+
 import {
   createProfile,
   setConsent,
@@ -28,7 +30,7 @@ export const submitProfileEpic: Epic = (
 ) =>
   action$.pipe(
     filter(isActionOf(submitProfile)),
-    concatMap(action =>
+    concatMap(() =>
       fromThunky(async dispatch => {
         const values = state$.value.createProfileStatus.profileData;
         const sealedPassword = sealPassword(values.password!);

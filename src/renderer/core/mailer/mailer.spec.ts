@@ -3,8 +3,9 @@ import nodemailer from 'nodemailer';
 import { createMailer } from './mailer';
 import { TESTING_EMAIL_TO } from '../../shared/utils/environment';
 import { createTaskQueue } from '../google/callQueue';
+import chaiSpies from 'chai-spies';
 
-chai.use(require('chai-spies'));
+chai.use(chaiSpies);
 chai.should();
 
 describe('Mailer', () => {
@@ -36,7 +37,7 @@ describe('Mailer', () => {
     const sendMailSpy = chai.spy.returns(Promise.resolve({}));
 
     beforeEach(() => {
-      chai.spy.on(nodemailer, 'createTransport', returns => {
+      chai.spy.on(nodemailer, 'createTransport', () => {
         return {
           sendMail: sendMailSpy
         };

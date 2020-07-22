@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/camelcase */
 import { API_CONFIG } from './api-config';
 import { ApiService } from './api-interface';
 import {

@@ -1,20 +1,13 @@
 /* eslint-disable @typescript-eslint/camelcase */
 import chai from 'chai';
-import * as TD from '../model/mock/testData';
-import * as types from '../store/types';
-import * as Actions from './actions';
-import {
-  initialClientData,
-  clientDataReducer,
-  initialServerData,
-  serverDataReducer
-} from './reducer';
+// import * as TD from '../model/mock/testData';
+
 chai.should();
 
-const requestGroupsMap = TD.requestGroups.reduce(
-  (o, rg) => Object.assign(o, { [rg.id]: rg }),
-  {}
-);
+// const requestGroupsMap = TD.requestGroups.reduce(
+//   (o, rg) => Object.assign(o, { [rg.id]: rg }),
+//   {}
+// );
 
 // describe('Reducer', function() {
 //   describe('clientDataReducer', function() {

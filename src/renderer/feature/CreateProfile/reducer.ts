@@ -44,4 +44,4 @@ export const createProfileReducer = createReducer<
       ...action.payload
     }
   }))
-  .handleAction(actions.abortProfile, (state, action) => initialProfileState);
+  .handleAction(actions.abortProfile, () => initialProfileState);

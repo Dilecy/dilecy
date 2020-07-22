@@ -242,7 +242,7 @@ export const newRequestStateReducer = createReducer<
       browserHistoryData: action.payload
     }
   }))
-  .handleAction(actions.resetBrowserHistory, (state, action) => ({
+  .handleAction(actions.resetBrowserHistory, state => ({
     ...state,
     browserHistory: {
       ...initialNewRequestState.browserHistory
