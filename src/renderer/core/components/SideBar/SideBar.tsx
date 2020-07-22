@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect, useSelector } from 'react-redux';
-import SideBarMenu from './SideBarMenu';
+import { SideBarMenu } from './SideBarMenu';
 import Container from '@material-ui/core/Container';
 
 import Typography from '@material-ui/core/Typography';
@@ -13,7 +13,7 @@ import { customTheme } from '@dilecy/shared/styles/theme';
 
 import List from '@material-ui/core/List';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
-import SideBarMenuItem from './SideBarMenuItem';
+import { SideBarMenuItem } from './SideBarMenuItem';
 
 const useStyles = makeStyles((theme: Theme) => ({
   logo: {
@@ -87,7 +87,7 @@ interface Props {
   };
 }
 
-const SideBar = ({ logout, loggedIn }: Props) => {
+const _component = ({ logout, loggedIn }: Props) => {
   const classes = useStyles();
   const appVersion = useSelector((state: RootState) => state.appInfo.version);
   return (
@@ -139,7 +139,9 @@ const dispatchToProps = {
   logout: requestLogout
 };
 
-export default connect(
+const SideBar = connect(
   mapStateToProps,
   dispatchToProps
-)(SideBar);
+)(_component);
+
+export { SideBar };

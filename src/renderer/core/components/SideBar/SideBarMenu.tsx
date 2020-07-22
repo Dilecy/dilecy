@@ -1,6 +1,6 @@
 import React from 'react';
 import List from '@material-ui/core/List';
-import SideBarMenuItem from './SideBarMenuItem';
+import { SideBarMenuItem } from './SideBarMenuItem';
 import { makeStyles, Theme } from '@material-ui/core/styles';
 import { customTheme } from '@dilecy/shared/styles/theme';
 
@@ -18,7 +18,7 @@ const useStyles = makeStyles((theme: Theme) => ({
   }
 }));
 
-const SideBarNavigation: React.FC<Props> = ({ loggedIn }) => {
+const SideBarMenu: React.FC<Props> = ({ loggedIn }) => {
   const { listItem } = useStyles();
   return (
     <List component="nav">
@@ -46,4 +46,4 @@ const SideBarNavigation: React.FC<Props> = ({ loggedIn }) => {
   );
 };
 
-export default SideBarNavigation;
+export { SideBarMenu };

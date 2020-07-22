@@ -1,12 +1,11 @@
 import React from 'react';
 
 import { makeStyles } from '@material-ui/core/styles';
-import PageRouter from './core/components/PageRouter';
-import SideBar from './core/components/SideBar/SideBar';
+import { SideBar, PageRouter } from './core/components';
 import Container from '@material-ui/core/Container';
 import { useSelector, useDispatch } from 'react-redux';
 
-import { CustomAlert } from './shared/components/CustomAlert';
+import { CustomAlert } from './shared/components';
 import { dismissAlert } from './core/actions';
 import { RootState } from 'typesafe-actions';
 import { customTheme } from './shared/styles/theme';

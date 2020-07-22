@@ -2,7 +2,7 @@ import React, { MouseEventHandler } from 'react';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
 import { connect } from 'react-redux';
-import { selectView, requestLogout } from '../../actions';
+import { selectView } from '../../actions';
 import { RootState } from 'typesafe-actions';
 
 interface Props {
@@ -15,7 +15,7 @@ interface Props {
   children?: React.ReactNode;
 }
 
-const SideBarMenuItem = (props: Props) => (
+const _component = (props: Props) => (
   <ListItem
     button
     onClick={e => {
@@ -37,7 +37,9 @@ const dispatchToProps = {
   selectView
 };
 
-export default connect(
+const SideBarMenuItem = connect(
   mapStateToProps,
   dispatchToProps
-)(SideBarMenuItem);
+)(_component);
+
+export { SideBarMenuItem };

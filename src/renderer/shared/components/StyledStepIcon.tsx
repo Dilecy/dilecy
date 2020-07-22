@@ -34,7 +34,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     cursor: 'pointer'
   }
 }));
-export default function CustomStepIcon(props: StepIconProps) {
+export function CustomStepIcon(props: StepIconProps) {
   const classes = useStyles();
   const { completed, icon } = props;
   return (

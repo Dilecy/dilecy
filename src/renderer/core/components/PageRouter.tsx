@@ -17,7 +17,7 @@ interface Props {
  * This component is responsible for switching between pages/screens in the app
  * @param props
  */
-const PageRouter = (props: Props) => {
+const _component = (props: Props) => {
   switch (props.selectedView) {
     case 'login':
       return <LoginPage />;
@@ -40,4 +40,6 @@ const mapStateToProps = (state: RootState) => ({
   selectedView: state.selectedView
 });
 
-export default connect(mapStateToProps)(PageRouter);
+const PageRouter = connect(mapStateToProps)(_component);
+
+export { PageRouter };

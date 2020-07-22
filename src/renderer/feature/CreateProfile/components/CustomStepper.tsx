@@ -4,7 +4,7 @@ import { makeStyles, createStyles } from '@material-ui/core/styles';
 import Step from '@material-ui/core/Step';
 import Stepper from '@material-ui/core/Stepper';
 import StepLabel from '@material-ui/core/StepLabel';
-import CustomStepIcon from '@dilecy/shared/components/StyledStepIcon';
+import { CustomStepIcon } from '@dilecy/shared/components/StyledStepIcon';
 import { customTheme } from '@dilecy/shared/styles/theme';
 
 interface Props {
