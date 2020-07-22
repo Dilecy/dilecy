@@ -6,7 +6,7 @@
   "main": ".webpack/main",
   "scripts": {
     "start": "cross-env BUILD_ENV=development electron-forge start",
-    "webdev": "cross-env BUILD_ENV=development webpack-dev-server --open --compress --hot --config ./config/mock.webpack.config.js",
+    "webdev": "cross-env BUILD_ENV=development webpack-dev-server --open --compress --hot --config ./config/webpack.webdev.config.js",
     "package": "electron-forge package",
     "make": "electron-forge make",
     "publish": "electron-forge publish",
