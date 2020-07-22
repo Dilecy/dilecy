@@ -13,7 +13,7 @@ import {
 } from '../clientModel';
 import { ConsentAction } from '../serverModel';
 import * as Schema from './schemas';
-import { localization } from '../../shared/localization/localization';
+import { localization } from '@dilecy/shared';
 import { DUE_DAY_DURATION, PROGRESS_COMPLETED } from '@dilecy/shared';
 import { differenceInDays, addDays } from 'date-fns';
 

@@ -1,4 +1,4 @@
-import { LoginStatus } from '../../store/stateModel';
+import { LoginStatus } from '@dilecy/store';
 import { createReducer, RootAction } from 'typesafe-actions';
 import * as actions from './actions';
 

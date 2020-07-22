@@ -1,8 +1,8 @@
 import { createAction } from 'typesafe-actions';
 import { SealedPassword } from '../../core/crypto/interface';
-import { ProfileCreate } from '../../model/clientModel';
+import { ProfileCreate } from '@dilecy/model';
 import { ConsentStatus, CreateProfileData } from '../../store/stateModel';
-import { ConsentAction } from '../../model/serverModel';
+import { ConsentAction } from '@dilecy/model';
 
 export const createProfile = createAction('CREATE_PROFILE')<{
   sealedPassword: SealedPassword;

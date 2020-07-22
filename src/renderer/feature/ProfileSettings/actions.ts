@@ -1,6 +1,6 @@
 import { createAction } from 'typesafe-actions';
 import { SealedPassword } from '../../core/crypto/interface';
-import { ProfileDetails, Profile } from '../../model/clientModel';
+import { ProfileDetails, Profile } from '@dilecy/model';
 
 export const updateProfile = createAction('UPDATE_PROFILE')<{
   profile: Profile;

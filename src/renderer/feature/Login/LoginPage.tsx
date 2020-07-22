@@ -8,17 +8,22 @@ import Button from '@material-ui/core/Button';
 import Collapse from '@material-ui/core/Collapse';
 import TextField from '@material-ui/core/TextField';
 import Typography from '@material-ui/core/Typography';
-import { StyledButton, StyledButtonOutlined } from '@dilecy/shared';
+import {
+  StyledButton,
+  StyledButtonOutlined,
+  localization,
+  LogoIcon,
+  PlusIcon,
+  UserIcon
+} from '@dilecy/shared';
 
 import { makeStyles, Theme } from '@material-ui/core/styles';
 import { Profile } from '@dilecy/model/clientModel';
-import { LoginPageSelection } from '@dilecy/store/stateModel';
-import { usePasswordSealer } from '@dilecy/core/dependencies';
+import { LoginPageSelection } from '@dilecy/store';
 import { login } from './actions';
-import { selectPage, selectView } from '@dilecy/core/actions';
+import { selectPage, selectView, usePasswordSealer } from '@dilecy/core';
 import CreateProfileForm from '../CreateProfile/components/CreateProfilePage';
 import { customTheme } from '@dilecy/shared/styles/theme';
-import { localization, LogoIcon, PlusIcon, UserIcon } from '@dilecy/shared';
 
 const useStyles = makeStyles((theme: Theme) => ({
   root: {

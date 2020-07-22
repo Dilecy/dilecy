@@ -1,7 +1,7 @@
 import { Message } from '../mailer/interface';
 import { defer } from 'rxjs';
 import { TaskQueue } from '../google/callQueue';
-import { ProfileDetails } from '../../model/clientModel';
+import { ProfileDetails } from '@dilecy/model';
 import { ForwarderMessage } from '../api/forwarder-interface';
 import { createForwarderService } from '../api/forwarder-service';
 import { getForwarderServerUrl } from '@dilecy/shared';

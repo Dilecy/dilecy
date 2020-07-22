@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/camelcase */
 import { createSelector } from 'reselect';
 import { RootState } from 'typesafe-actions';
-import * as SM from '../../model/serverModel';
+import * as SM from '@dilecy/model';
 import { HashMap, IdMap } from '../util/types';
 import { BrowserHistory } from 'node-browser-history';
 import moment from 'moment';

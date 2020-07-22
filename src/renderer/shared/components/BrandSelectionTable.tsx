@@ -5,8 +5,9 @@ import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
-import { Brand } from '../../model/serverModel';
-import { IdMap } from '../../store/util/types';
+
+import { Brand } from '@dilecy/model';
+import { IdMap } from '@dilecy/store';
 
 const useStyles = makeStyles({
   table: {

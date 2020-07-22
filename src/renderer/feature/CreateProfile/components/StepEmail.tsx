@@ -13,11 +13,14 @@ import { RootState } from 'typesafe-actions';
 import { CreateProfileData } from '@dilecy/store/stateModel';
 import { useEmailForm } from '../ProfileHooks';
 
-import { StyledButton, StyledButtonOutlined } from '@dilecy/shared';
+import {
+  GoogleEmailButton,
+  StyledButton,
+  StyledButtonOutlined
+} from '@dilecy/shared';
 import { customTheme } from '@dilecy/shared/styles/theme';
-import { GoogleEmailButton } from '@dilecy/shared/components/GoogleEmailButton';
-import { EmailAccount } from '@dilecy/model/clientModel';
-import { pushAlert } from '@dilecy/core/actions';
+import { EmailAccount } from '@dilecy/model';
+import { pushAlert } from '@dilecy/core';
 
 const useStyles = makeStyles(theme => ({
   root: {

@@ -167,4 +167,4 @@ const CustomDataTable = <T extends Dictionary<any>>(props: Props<T>) => {
   );
 };
 
-export default CustomDataTable;
+export { CustomDataTable };

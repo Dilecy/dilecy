@@ -1,4 +1,4 @@
-import { RequestGroupState } from '../../model/clientModel';
+import { RequestGroupState } from '@dilecy/model';
 
 export interface OldRequest {
   id: number;

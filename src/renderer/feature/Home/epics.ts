@@ -11,7 +11,7 @@ import { pushAlert, fetchProfiles } from '../../core/actions';
 
 import { Epic } from '../../store/root-epic';
 import { loginSuccess } from '../Login/actions';
-import { RatingResponse } from '../../model/serverModel';
+import { RatingResponse } from '@dilecy/model';
 
 export const startRatingEpic: Epic = (
   action$,

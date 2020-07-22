@@ -46,8 +46,8 @@ import {
 } from '../../store/util/templateFields';
 import { addEmailRequests } from '../OldRequests/actions';
 import { Epic } from '../../store/root-epic';
-import { HashMap, IdMap } from '../../store/util/types';
-import { EmailTemplate, Brand, Tag } from '../../model/serverModel';
+import { HashMap, IdMap } from '@dilecy/store';
+import { EmailTemplate, Brand, Tag } from '@dilecy/model';
 import { tagGenerator } from '../../store/selectors/newRequest';
 import { MessageTransport } from '../../core/mailer/interface';
 import { isEmptyMap } from '../../shared/helpers/helper';

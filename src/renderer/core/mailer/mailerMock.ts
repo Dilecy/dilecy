@@ -1,6 +1,6 @@
 import { Mailer } from './interface';
 import { TaskQueue } from '../google/callQueue';
-import { ProfileDetails } from '../../model/clientModel';
+import { ProfileDetails } from '@dilecy/model';
 
 const sleep = (ms: number) => new Promise(resolve => setTimeout(resolve, ms));
 

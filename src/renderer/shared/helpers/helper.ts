@@ -1,5 +1,5 @@
-import { EmailAccount } from '../../model/clientModel';
-import { IdMap } from '../../store/util/types';
+import { EmailAccount } from '@dilecy/model';
+import { IdMap } from '@dilecy/store';
 
 export const isEmptyMap = (item: IdMap<any>) => {
   return Object.keys(item).length === 0 && item.constructor === Object;

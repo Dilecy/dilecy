@@ -4,7 +4,7 @@ import Typography from '@material-ui/core/Typography';
 import CardContent from '@material-ui/core/CardContent';
 import { makeStyles, Theme } from '@material-ui/core/styles';
 import { customTheme } from '../styles/theme';
-import { EmailAccount } from '../../model/clientModel';
+import { EmailAccount } from '@dilecy/model';
 import { localization } from '../localization/localization';
 import { StyledButtonOutlined } from './StyledButtonOutlined';
 import { StyledButton } from './StyledButton';

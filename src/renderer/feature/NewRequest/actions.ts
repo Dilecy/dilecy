@@ -1,14 +1,9 @@
 import { createAction } from 'typesafe-actions';
 import { RequestPageSelection, SendStatus } from '../../store/stateModel';
-import { RequestGroupType } from '../../model/clientModel';
+import { RequestGroupType } from '@dilecy/model';
 import { BrowserHistory } from 'node-browser-history';
-import {
-  MissingBrand,
-  EmailTemplate,
-  Brand,
-  Tag
-} from '../../model/serverModel';
-import { IdMap, HashMap } from '../../store/util/types';
+import { MissingBrand, EmailTemplate, Brand, Tag } from '@dilecy/model';
+import { IdMap, HashMap } from '@dilecy/store';
 import { BrandsResponse } from './interfaces/brand';
 
 export const selectNewRequestStep = createAction(

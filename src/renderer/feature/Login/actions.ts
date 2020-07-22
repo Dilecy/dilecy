@@ -1,6 +1,6 @@
 import { createAction } from 'typesafe-actions';
 import { SealedPassword } from '../../core/crypto/interface';
-import { Profile, ProfileDetails } from '../../model/clientModel';
+import { Profile, ProfileDetails } from '@dilecy/model';
 import { ConsentStatus } from '../../store/stateModel';
 
 const LOGIN = 'login/LOGIN';

@@ -1,5 +1,5 @@
-import { Company } from '../../model/serverModel';
-import { ProfileDetails } from '../../model/clientModel';
+import { Company } from '@dilecy/model';
+import { ProfileDetails } from '@dilecy/model';
 
 export const templateFields = (s: string) =>
   (s.match(/{{([^}]*)}}/g) || []).map(m => (m.match(/[^{}\s]+/g) || [''])[0]);

@@ -7,7 +7,7 @@ import Typography from '@material-ui/core/Typography';
 import ClearIcon from '@material-ui/icons/Clear';
 import { makeStyles } from '@material-ui/core/styles';
 import { RequestGroupType } from '@dilecy/model/clientModel';
-import CustomTooltip from '@dilecy/shared/components/CustomTooltip';
+import { CustomTooltip } from '@dilecy/shared';
 import { selectRequestType } from '../actions';
 import { customTheme } from '@dilecy/shared/styles/theme';
 import { RootState } from 'typesafe-actions';

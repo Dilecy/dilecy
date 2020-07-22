@@ -3,7 +3,7 @@ import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles, Theme } from '@material-ui/core/styles';
 
-import { EmailAccount } from '../../model/clientModel';
+import { EmailAccount } from '@dilecy/model';
 import { useGoogleAuth } from '../../core/dependencies';
 import { StyledButtonOutlined } from '../../shared/components/StyledButtonOutlined';
 import { customTheme } from '../../shared/styles/theme';

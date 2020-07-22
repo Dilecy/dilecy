@@ -13,9 +13,9 @@ import Backdrop from '@material-ui/core/Backdrop';
 
 import Link from '@material-ui/core/Link';
 import { SuggestBrand } from '../NewRequest/components/SuggestBrand';
-import { UpdateInfo } from '@dilecy/model/serverModel';
+import { UpdateInfo } from '@dilecy/model';
+import { selectView, setWelcomeMessageToggle } from '@dilecy/core';
 import { RootState } from 'typesafe-actions';
-import { selectView, setWelcomeMessageToggle } from '@dilecy/core/actions';
 import {
   startRating,
   clearShowRating,

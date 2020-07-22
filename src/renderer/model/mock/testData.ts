@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/camelcase */
 import * as CM from '../clientModel';
 import * as SM from '../serverModel';
-import { IdMap } from '../../store/util/types';
+import { IdMap } from '@dilecy/store';
 
 export const testProfile: CM.Profile = {
   id: 0,

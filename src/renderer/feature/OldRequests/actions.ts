@@ -3,7 +3,7 @@ import {
   RequestGroupDataStatus,
   EmailRequest,
   RequestGroup
-} from '../../model/clientModel';
+} from '@dilecy/model';
 import { RequestGroupListItem } from '../../store/stateModel';
 
 export const setRequestSearchFilter = createAction('SET_REQUEST_SEARCH_FILTER')<

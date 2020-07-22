@@ -9,8 +9,8 @@ import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TablePagination from '@material-ui/core/TablePagination';
 import TableRow from '@material-ui/core/TableRow';
-import { Brand } from '../../model/serverModel';
-import { IdMap } from '../../store/util/types';
+import { Brand } from '@dilecy/model';
+import { IdMap } from '@dilecy/store';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import { customTheme } from '../styles/theme';
 import { BrandSelection } from '../../store/stateModel';
@@ -147,4 +147,4 @@ const BrandSelectionTablePaginated: React.FC<Props> = ({
   );
 };
 
-export default BrandSelectionTablePaginated;
+export { BrandSelectionTablePaginated };

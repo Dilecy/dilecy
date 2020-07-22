@@ -4,7 +4,7 @@ import { fromThunky } from '../../store/thunky';
 import { fetchProfiles, pushAlert, requestLogout } from '../../core/actions';
 import { loginSuccess, deleteProfile } from '../Login/actions';
 import { updateProfile, changeProfilePassword } from './actions';
-import { ConsentAction } from '../../model/serverModel';
+import { ConsentAction } from '@dilecy/model';
 import { logout } from '../CreateProfile/actions';
 import { Epic } from '../../store/root-epic';
 import { confirmAndSend } from '../NewRequest/actions';

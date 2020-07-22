@@ -2,7 +2,6 @@ import React from 'react';
 import { connect, useDispatch } from 'react-redux';
 import Container from '@material-ui/core/Container';
 import Typography from '@material-ui/core/Typography';
-import Button from '@material-ui/core/Button';
 import Select from '@material-ui/core/Select';
 import FormControl from '@material-ui/core/FormControl';
 import { makeStyles } from '@material-ui/core/styles';
@@ -11,7 +10,6 @@ import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import { customTheme } from '@dilecy/shared/styles/theme';
-import { BrowserHistoryState, BrandSelection } from '@dilecy/store/stateModel';
 import { selectBrowserHistory, isBrowserHistoryLoading } from '../selectors';
 import {
   browserHistoryConsent,
@@ -24,11 +22,15 @@ import {
 import { RootState } from 'typesafe-actions';
 import {
   getRecommendedDomainsWithBrands,
-  BrowserHistoryWithBrand
-} from '@dilecy/store/selectors/newRequest';
-import CustomDataTable from '@dilecy/shared/components/CustomDataTable';
-import { StyledButtonOutlined } from '@dilecy/shared';
-import { localization } from '@dilecy/shared';
+  BrowserHistoryWithBrand,
+  BrowserHistoryState,
+  BrandSelection
+} from '@dilecy/store';
+import {
+  StyledButtonOutlined,
+  localization,
+  CustomDataTable
+} from '@dilecy/shared';
 
 interface Props {
   brandSelection: BrandSelection;

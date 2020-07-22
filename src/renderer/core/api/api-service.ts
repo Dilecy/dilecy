@@ -1,11 +1,6 @@
 import { API_CONFIG } from './api-config';
 import { ApiService } from './api-interface';
-import {
-  ConsentAction,
-  MissingBrand,
-  Tag,
-  Brand
-} from '../../model/serverModel';
+import { ConsentAction, MissingBrand, Tag, Brand } from '@dilecy/model';
 import {
   getRequest,
   getRequestPaginated,

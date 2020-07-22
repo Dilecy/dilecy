@@ -24,7 +24,7 @@ import RequestTemplatePage from './components/RequestTemplateStep';
 import SummaryPage from './components/SummaryStep';
 import SelectRecommendedBrandsPage from './components/SelectRecommendedBrandsStep';
 
-import { RequestGroupType } from '../../model/clientModel';
+import { RequestGroupType } from '@dilecy/model';
 import { RequestPageSelection, NewRequestStatus } from '../../store/stateModel';
 import {
   cancelNewRequest,

@@ -1,7 +1,7 @@
 import React from 'react';
 import { makeStyles, Theme } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
-import { customTheme } from '../../shared/styles/theme';
+import { customTheme } from '@dilecy/shared/styles/theme';
 
 const useStyles = makeStyles((theme: Theme) => ({
   iframe: {

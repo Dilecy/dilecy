@@ -3,10 +3,9 @@ import { filter, concatMap } from 'rxjs/operators';
 import { isActionOf } from 'typesafe-actions';
 import * as Actions from './actions';
 import { fromThunky } from '../../store/thunky';
-import { IdMap } from '../../store/util/types';
-import { Brand, Company } from '../../model/serverModel';
-import { localization } from '../../shared/localization/localization';
-import { RequestGroup } from '../../model/clientModel';
+import { IdMap } from '@dilecy/store';
+import { Brand, Company, RequestGroup } from '@dilecy/model';
+import { localization } from '@dilecy/shared';
 
 export const fetchOldRequestsEpic: Epic = (
   action$,

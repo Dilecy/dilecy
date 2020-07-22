@@ -12,7 +12,7 @@ import { createTracker } from '../../core/tracker/tracker';
 import { getMockBrowserHistory } from '../../core/browserHistory/mockBrowserHistory';
 import { createGoogleAuthMock } from '../../core/google/googleAuthMock';
 import Button from '@material-ui/core/Button';
-import { EmailAccount } from '../../model/clientModel';
+import { EmailAccount } from '@dilecy/model';
 
 describe('GoogleEmailButton tests', () => {
   const browserHistory = (timeInMins: number) =>

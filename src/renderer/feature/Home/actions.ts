@@ -1,5 +1,5 @@
 import { createAction } from 'typesafe-actions';
-import { UpdateInfo } from '../../model/serverModel';
+import { UpdateInfo } from '@dilecy/model';
 
 export const setUpdateInfo = createAction('SET_UPDATE_INFO')<
   Partial<UpdateInfo>

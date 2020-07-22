@@ -13,7 +13,7 @@ import {
   EmailForwardFormValues,
   defaultEmailForwardFormValues
 } from '../../feature/CreateProfile/ProfileHooks';
-import { EmailAccount } from '../../model/clientModel';
+import { EmailAccount } from '@dilecy/model';
 
 interface EmailForwarderDialogProps {
   close: () => void;

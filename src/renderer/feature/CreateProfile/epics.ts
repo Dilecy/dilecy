@@ -8,7 +8,7 @@ import {
 import { concatMap, filter, concatMapTo } from 'rxjs/operators';
 import { isActionOf } from 'typesafe-actions';
 import { fromThunky } from '../../store/thunky';
-import { ConsentAction } from '../../model/serverModel';
+import { ConsentAction } from '@dilecy/model';
 import { doPing, loginSuccess, setProfiles } from '../Login/actions';
 import {
   pushAlert,

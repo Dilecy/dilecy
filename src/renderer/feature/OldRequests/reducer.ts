@@ -1,8 +1,8 @@
 import { createReducer, RootAction } from 'typesafe-actions';
 import { OldRequestsState } from '../../store/stateModel';
 import * as Actions from './actions';
-import { IdMap } from '../../store/util/types';
-import { RequestGroup } from '../../model/clientModel';
+import { IdMap } from '@dilecy/store';
+import { RequestGroup } from '@dilecy/model';
 
 export const initialOldRequestState: OldRequestsState = {
   oldRequests: {},

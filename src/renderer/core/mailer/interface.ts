@@ -1,5 +1,5 @@
 import { TaskQueue } from '../google/callQueue';
-import { ProfileDetails } from '../../model/clientModel';
+import { ProfileDetails } from '@dilecy/model';
 
 export interface Message {
   from: string;

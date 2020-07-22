@@ -1,4 +1,4 @@
-import { ConsentAction, MissingBrand } from '../../model/serverModel';
+import { ConsentAction, MissingBrand } from '@dilecy/model';
 import { ApiService } from './api-interface';
 import { serverTestData } from '../../model/mock/testData';
 import { of } from 'rxjs';

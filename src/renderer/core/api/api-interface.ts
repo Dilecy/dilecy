@@ -14,7 +14,7 @@ import {
   UpdateInfo,
   Domain,
   RatingResponse
-} from '../../model/serverModel';
+} from '@dilecy/model';
 import { Observable } from 'rxjs';
 
 export interface ApiService {

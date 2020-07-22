@@ -36,4 +36,4 @@ const CustomTooltip: React.FC<Props> = ({ content }) => {
   );
 };
 
-export default CustomTooltip;
+export { CustomTooltip };
