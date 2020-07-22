@@ -5,10 +5,10 @@ import { SideBar, PageRouter } from './core/components';
 import Container from '@material-ui/core/Container';
 import { useSelector, useDispatch } from 'react-redux';
 
-import { CustomAlert } from './shared/components';
-import { dismissAlert } from './core/actions';
 import { RootState } from 'typesafe-actions';
+import { CustomAlert } from './shared';
 import { customTheme } from './shared/styles/theme';
+import { dismissAlert } from './core';
 
 const useStyles = makeStyles(theme => ({
   viewport: {

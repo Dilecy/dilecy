@@ -9,12 +9,14 @@ import Step from '@material-ui/core/Step';
 import StepLabel from '@material-ui/core/StepLabel';
 import { makeStyles, Theme } from '@material-ui/core/styles';
 
+import { useTracker, selectPage, selectView } from '@dilecy/core';
 import {
   ConfirmDialog,
   CustomStepIcon,
   StyledButton,
   localization
 } from '@dilecy/shared';
+import { customTheme } from '@dilecy/shared/styles/theme';
 
 import ChooseRequestTypePage from './components/ChooseRequestTypeStep';
 import SelectBrandsPage from './components/SelectBrandsStep';
@@ -24,14 +26,11 @@ import SelectRecommendedBrandsPage from './components/SelectRecommendedBrandsSte
 
 import { RequestGroupType } from '../../model/clientModel';
 import { RequestPageSelection, NewRequestStatus } from '../../store/stateModel';
-import { useTracker } from '../../core/dependencies';
 import {
   cancelNewRequest,
   selectNewRequestStep,
   newRequestDone
 } from './actions';
-import { selectPage, selectView } from '../../core/actions';
-import { customTheme } from '../../shared/styles/theme';
 import CompleteProfileModal from '../CreateProfile/components/CompleteProfileModal';
 
 const useStyles = makeStyles((theme: Theme) => ({
