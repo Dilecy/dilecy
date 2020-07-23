@@ -7,5 +7,5 @@ export interface GoogleAuthResult {
 export interface GoogleAuth {
   getUserData: (refreshToken?: string) => Promise<GoogleAuthResult>;
   reset: () => void;
-  getAuthClient: (refreshToken: string) => any;
+  getApiClient: (refreshToken: string) => any;
 }

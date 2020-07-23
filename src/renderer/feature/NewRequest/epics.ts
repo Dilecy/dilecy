@@ -54,8 +54,6 @@ import { isEmptyMap } from '../../shared/helpers/helper';
 import { HISTORY_IMPORT_LIMIT } from '../../shared/utils/environment';
 import { Tracker } from '../../core/tracker/interface';
 import { createTaskQueue } from '../../core/google/callQueue';
-import { gmail_v1 } from 'googleapis/build/src/apis/gmail/v1';
-import { googleAuth } from '../../core/google/googleAuth';
 
 const loadingHistoryFailed =
   'Der Browserverlauf konnte nicht geladen werden. Bitte wende dich an unseren Support.';
@@ -128,7 +126,7 @@ export const newRequestDoneEpic: Epic = action$ =>
 export const confirmAndSendEpic: Epic = (
   action$,
   state$,
-  { clientBackend, apiService, mailer, loginSystem, tracker }
+  { clientBackend, apiService, mailer, loginSystem, tracker, googleAuth }
 ) =>
   action$.pipe(
     filter(isActionOf(confirmAndSend)),
@@ -159,11 +157,7 @@ export const confirmAndSendEpic: Epic = (
               refreshToken!
             );
 
-            const authClient = await googleAuth.getAuthClient(decryptedToken);
-
-            const apiClient = new gmail_v1.Gmail({
-              auth: authClient
-            });
+            const apiClient = await googleAuth.getApiClient(decryptedToken);
 
             transport = mailer.getGoogleTransport(taskQueue, apiClient);
           } else if (isForwarder) {
