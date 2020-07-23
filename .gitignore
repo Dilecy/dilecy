@@ -4,6 +4,7 @@ out/
 test-out/
 .vscode/
 test.sqlcipher
+test/e2e-chromedriverlog.txt
 yarn-error.log
 .idea
 .DS_Store
