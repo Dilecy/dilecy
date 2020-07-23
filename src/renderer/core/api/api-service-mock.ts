@@ -3,12 +3,14 @@ import { ApiService } from './api-interface';
 import { serverTestData } from '../../model/mock/testData';
 import { of } from 'rxjs';
 
-const postConsent = () =>
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+const postConsent = (consent: ConsentAction) =>
   new Promise(() => {
     throw new Error('Server Error');
   });
 
-const postMissingBrand = () =>
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+const postMissingBrand = (brand: MissingBrand) =>
   new Promise(() => {
     throw new Error('Server Error');
   });

@@ -187,6 +187,7 @@ export class DBClientBackend implements CM.ClientBackend {
     // @ts-ignore: see getRequestGroups comment
     return MRequestGroup.query(this.profileDb).insertAndFetch(group);
   }
+  /* eslint-enable @typescript-eslint/ban-ts-ignore */
 
   async getEmailRequests() {
     return MEmailRequest.query(this.profileDb);

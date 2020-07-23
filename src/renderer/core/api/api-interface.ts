@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/camelcase */
 import { AjaxResponse } from 'rxjs/ajax';
 import { PaginatedResponse } from './http-service';
 import {
@@ -47,6 +46,7 @@ export interface ApiService {
   ) => Promise<AjaxResponse | unknown>;
   postPing: (
     cohort: string,
+    // eslint-disable-next-line @typescript-eslint/camelcase
     is_first: boolean
   ) => Promise<AjaxResponse | unknown>;
   postRating: (points: number) => Promise<RatingResponse>;

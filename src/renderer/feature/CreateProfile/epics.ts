@@ -1,5 +1,3 @@
-/* eslint-disable @typescript-eslint/camelcase */
-
 import {
   createProfile,
   setConsent,
@@ -48,6 +46,7 @@ export const submitProfileEpic: Epic = (
           profileName: values.profileName!,
           emailAccounts: [email]
         };
+        // eslint-disable-next-line @typescript-eslint/camelcase
         const { tracking, ux_research } = values;
         dispatch(
           createProfile({
@@ -55,6 +54,7 @@ export const submitProfileEpic: Epic = (
             profileDetails,
             consent: {
               tracking: tracking ? await rng.generateVisitorId() : undefined,
+              // eslint-disable-next-line @typescript-eslint/camelcase
               ux_research: ux_research ? email.emailAddress : undefined
             }
           })

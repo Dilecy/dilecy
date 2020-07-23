@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/camelcase */
 import { API_CONFIG } from './api-config';
 import { ApiService } from './api-interface';
 import {
@@ -68,8 +67,8 @@ export const createApiService = (apiBaseUrl: string): ApiService => ({
     postRequest(`${apiBaseUrl}/consents`, consent),
   postMissingBrand: (missingBrand: MissingBrand) =>
     postRequest(`${apiBaseUrl}/suggested_brands`, missingBrand),
-  postPing: (cohort: string, is_first: boolean) =>
-    postRequest(`${apiBaseUrl}/ping?cohort=${cohort}&is_first=${is_first}`, {}),
+  postPing: (cohort: string, isFirst: boolean) =>
+    postRequest(`${apiBaseUrl}/ping?cohort=${cohort}&is_first=${isFirst}`, {}),
   postRating: (points: number) => postJSON(`${apiBaseUrl}/ratings`, { points }),
   patchRating: (points: number, id: number, password: string) =>
     patchJSON(`${apiBaseUrl}/ratings/${id}?password=${password}`, { points }),

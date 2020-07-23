@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/camelcase */
 import ElectronGoogleOAuth2 from '@getstation/electron-google-oauth2';
 
 export interface OAuthClient {
@@ -25,6 +24,7 @@ export const createOAuthClient = (
   });
   return {
     setRefreshToken: refreshToken => {
+      // eslint-disable-next-line @typescript-eslint/camelcase
       return client.setTokens({ refresh_token: refreshToken });
     },
     getAccessToken: async () => {
@@ -39,6 +39,7 @@ export const createOAuthClient = (
       return (result.data as any).email;
     },
     getAuthClient: refreshToken => {
+      // eslint-disable-next-line @typescript-eslint/camelcase
       client.setTokens({ refresh_token: refreshToken });
       return client.oauth2Client;
     }
