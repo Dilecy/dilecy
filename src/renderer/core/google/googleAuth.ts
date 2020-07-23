@@ -1,10 +1,12 @@
+// eslint-disable-next-line @typescript-eslint/camelcase
+import { gmail_v1 } from 'googleapis/build/src/apis/gmail/v1';
 import { GoogleAuth, GoogleAuthResult } from './interface';
 import { createOAuthClient, OAuthClient } from './oauthClient';
 import {
+  DILECY_OAUTH_REDIRECT,
+  GOOGLE_API_SCOPE,
   GOOGLE_CLIENT_ID,
   GOOGLE_CLIENT_SECRET,
-  GOOGLE_API_SCOPE,
-  DILECY_OAUTH_REDIRECT,
   GOOGLE_PROFILE_URL
 } from '../../shared/utils/environment';
 
@@ -62,7 +64,7 @@ export const googleAuth: GoogleAuth = {
       return result;
     }
   },
-  getAuthClient: (refreshToken: string) => {
+  getApiClient: async (refreshToken: string) => {
     const client = createOAuthClient(
       GOOGLE_CLIENT_ID,
       GOOGLE_CLIENT_SECRET!,
@@ -70,7 +72,10 @@ export const googleAuth: GoogleAuth = {
       DILECY_OAUTH_REDIRECT
     );
 
-    return client.getAuthClient(refreshToken);
+    const auth = await client.getAuthClient(refreshToken);
+
+    // eslint-disable-next-line @typescript-eslint/camelcase
+    return new gmail_v1.Gmail({ auth });
   },
   reset() {
     lastToken = {};

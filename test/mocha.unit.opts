@@ -1,5 +1,0 @@
-./src/**/*.spec.[j|t]s{,x}
---require test/test-hook.js
---timeout 10000
---recursive
---exit

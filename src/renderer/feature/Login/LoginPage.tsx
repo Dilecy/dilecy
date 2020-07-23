@@ -9,7 +9,7 @@ import Collapse from '@material-ui/core/Collapse';
 import TextField from '@material-ui/core/TextField';
 import Typography from '@material-ui/core/Typography';
 import StyledButton from '../../shared/components/StyledButton';
-import StyledButtonOutlined from '../../shared/components/StyledButtonOutlined';
+import StyledButtonOutlined from '@dilecy/shared/components/StyledButtonOutlined';
 
 import { makeStyles, Theme } from '@material-ui/core/styles';
 import { Profile } from '../../model/clientModel';
