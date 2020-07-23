@@ -1,4 +1,5 @@
 module.exports = {
+  spec: './test/**/*.spec.[j|t]s',
   exit: true,
   require: 'ts-node/register',
   recursive: true,
