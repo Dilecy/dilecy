@@ -5,7 +5,7 @@ import { IdMap } from '../../store/util/types';
 
 export const testProfile: CM.Profile = {
   id: 0,
-  profileName: 'Test',
+  profileName: 'Test (password is test)',
   passwordHash: 'test',
   encryptionKey: 'secret'
 };

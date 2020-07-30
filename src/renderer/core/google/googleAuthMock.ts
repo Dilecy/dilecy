@@ -10,7 +10,7 @@ export function createGoogleAuthMock(): GoogleAuth {
       });
     },
     reset: () => {},
-    getAuthClient: refreshToken => {
+    getApiClient: async (refreshToken?: string) => {
       return {};
     }
   };
