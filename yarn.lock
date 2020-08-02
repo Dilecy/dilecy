@@ -7842,9 +7842,9 @@ node-addon-api@^3.0.0:
   resolved "https://registry.yarnpkg.com/node-addon-api/-/node-addon-api-3.0.0.tgz#812446a1001a54f71663bed188314bba07e09247"
   integrity sha512-sSHCgWfJ+Lui/u+0msF3oyCgvdkhxDbkCS6Q8uiJquzOimkJBvX6hl5aSSA7DR1XbMpdM8r7phjcF63sF4rkKg==
 
-node-browser-history@gabber7/node-browser-history#fork:
+node-browser-history@gabber7/node-browser-history#wip-linux-support:
   version "1.0.5"
-  resolved "https://codeload.github.com/gabber7/node-browser-history/tar.gz/05c82263ba00cf98345e93ee5265b12249cfe51b"
+  resolved "https://codeload.github.com/gabber7/node-browser-history/tar.gz/d6bebc929bbc267299d4a381cb301bf3663611cc"
   dependencies:
     moment "^2.24"
     sqlite3 "^4.1.1"

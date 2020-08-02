@@ -51,7 +51,7 @@
     "knex": "^0.20.13",
     "material-table": "^1.62.0",
     "moment": "^2.25.3",
-    "node-browser-history": "gabber7/node-browser-history#fork",
+    "node-browser-history": "gabber7/node-browser-history#wip-linux-support",
     "nodemailer": "^6.3.1",
     "objection": "^2.1.2",
     "openpgp": "^4.6.2",

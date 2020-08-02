@@ -1,4 +1,9 @@
 #!/bin/sh
+if [[ "$OSTYPE" == "darwin"* ]]; then
+  ./buildDeps-macOS.sh
+  exit
+fi
+
 deps=`pwd`
 rm -rf build sqlcipher
 mkdir -p sqlcipher/include
@@ -18,8 +23,8 @@ cd sqlcipher
 git checkout v4.2.0
 # Configure sqlcipher
 features='--enable-fts3 --enable-fts4 --enable-fts5 --enable-json1 --enable-rtree --disable-tcl'
-config='--enable-tempstore=yes --enable-releasemode --enable-shared=no --enable-static=yes'  
-cflags='-fPIC -DSQLITE_HAS_CODEC -I'$deps/sqlcipher
+config='--enable-tempstore=yes --enable-releasemode --enable-shared=no --enable-static=yes --with-crypto-lib=none'
+cflags='-fPIC -DSQLITE_HAS_CODEC -DSQLCIPHER_CRYPTO_OPENSSL -I'$deps/sqlcipher' -I'$deps/build/openssl/include
 ./configure $features $config CFLAGS="$cflags" LDFLAGS="$deps/sqlcipher/libcrypto.a"
 # Build sqlcipher
 make -j8

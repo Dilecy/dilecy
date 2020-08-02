@@ -7,19 +7,19 @@ Prebuilt binaries for macOS and Windows can be downloaded from [our website](htt
 # Development
 
 ## Requirements
-- Supported OS (Windows or macOS)
+- Supported OS (Windows, Linux or macOS)
 - Git
 - Node.js v10.17.0 or higher
 - npm
 - Yarn
 
-## macOS
+## Linux / macOS
 ```
 mkdir ~/code
 cd ~/code
 git clone git@github.com:Dilecy/dilecy.git
 cd dilecy/deps
-./buildDeps-macOS.sh
+./buildDeps.sh
 cd ~/code/dilecy
 yarn install
 yarn rebuild
