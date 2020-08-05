@@ -136,7 +136,8 @@ export type UpdateInfo = {
   latest_version: string;
   url_windows: string;
   url_macos: string;
-  url_linux: string;
+  url_deb: string;
+  url_rpm: string;
 };
 
 export interface ConsentAction {
