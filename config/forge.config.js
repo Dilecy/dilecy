@@ -3,6 +3,7 @@ const path = require('path');
 const rimraf = require('rimraf');
 
 const appIconIco = path.join(__dirname, '..', 'resources', 'app_icon.ico');
+const appIconPng = path.join(__dirname, '..', 'resources', 'app_icon_256.png');
 const isProduction = process.env.BUILD_ENV !== 'development';
 
 const makePackagerConfig = () => {
@@ -55,6 +56,34 @@ module.exports = {
     {
       name: '@electron-forge/maker-pkg',
       platforms: ['darwin']
+    },
+    {
+      name: '@electron-forge/maker-deb',
+      platforms: ['linux'],
+      config: {
+        options: {
+          icon: appIconPng,
+          maintainer: 'Dilecy GmbH',
+          homepage: 'https://dilecy.eu',
+          description:
+            "Your data in your control! Dilecy's desktop client offers users " +
+            'features to identify organizations that might hold data on them.'
+        }
+      }
+    },
+    {
+      name: '@electron-forge/maker-rpm',
+      platforms: ['linux'],
+      config: {
+        options: {
+          icon: appIconPng,
+          maintainer: 'Dilecy GmbH',
+          homepage: 'https://dilecy.eu',
+          description:
+            "Your data in your control! Dilecy's desktop client offers users " +
+            'features to identify organizations that might hold data on them.'
+        }
+      }
     }
   ],
   plugins: [['@electron-forge/plugin-webpack', webpackConfig]],
