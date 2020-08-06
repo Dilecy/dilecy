@@ -28,7 +28,7 @@ import StyledButtonOutlined from '../../shared/components/StyledButtonOutlined';
 import StyledRating from '../../shared/components/StyledRating';
 import { UserIcon } from '../../shared/components/Icon';
 import { customTheme } from '../../shared/styles/theme';
-import { isDevelopment } from '../../shared/utils/environment';
+import { getUpdateUrl, isDevelopment } from '../../shared/utils/environment';
 import {
   getPrimaryEmail,
   getRating,
@@ -274,11 +274,7 @@ const HomePage = (props: Props) => {
           {updateInfo.latest_version && (
             <Link
               className={classes.button}
-              href={
-                process.platform === 'darwin'
-                  ? updateInfo.url_macos
-                  : updateInfo.url_windows
-              }
+              href={getUpdateUrl(updateInfo)}
               download
             >
               Download Version {updateInfo.latest_version}

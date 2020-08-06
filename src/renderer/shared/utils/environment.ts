@@ -1,3 +1,6 @@
+import fs from 'fs';
+import { UpdateInfo } from '../../model/serverModel';
+
 const DEV_API_URL = 'https://staging-backend.dilecy.de/api/v1';
 const PROD_API_URL = 'https://backend.dilecy.de/api/v1';
 
@@ -33,6 +36,20 @@ export const getEnvironment = (): Environment => {
     return Environment.STAGING;
   } else {
     return Environment.PROD;
+  }
+};
+
+export const getUpdateUrl = (
+  updateInfo: Partial<UpdateInfo>
+): string | undefined => {
+  if (process.platform === 'win32') {
+    return updateInfo.url_windows;
+  } else if (process.platform === 'darwin') {
+    return updateInfo.url_macos;
+  } else if (fs.existsSync('/etc/debian_version')) {
+    return updateInfo.url_deb;
+  } else {
+    return updateInfo.url_rpm;
   }
 };
 
