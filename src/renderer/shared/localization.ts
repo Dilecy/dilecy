@@ -148,5 +148,6 @@ export const localization = {
     'Wir schicken dir einzelne E-Mails, die du an die Unternehmen weiter leiten kannst.',
   EMAIL_FORWARD_QUESTION: 'An welche E-Mail sollen wir die Vorlagen schicken?',
   YOUR_EMAIL_ADDRESS: 'Deine Mailadresse',
-  CONFIRM_AND_SEND: 'Bestätigen und absenden'
+  CONFIRM_AND_SEND: 'Bestätigen und absenden',
+  LEARN_MORE: 'Mehr erfahren'
 };
