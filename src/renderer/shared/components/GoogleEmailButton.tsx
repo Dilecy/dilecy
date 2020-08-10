@@ -14,12 +14,18 @@ const useStyles = makeStyles((theme: Theme) => ({
   setEmail: {
     marginBottom: '1rem'
   },
+  outline: {
+    padding: '11px 20px',
+    fontFamily: 'Roboto Medium',
+    fontSize: '14px',
+    color: '#807974'
+  },
   icon: {
-    marginRight: ' 0.5rem',
-    height: '1.5rem',
+    marginRight: '24px',
+    height: '18px',
     '& .MuiSvgIcon-root': {
-      width: '1.5rem',
-      height: '1.5rem'
+      width: '18px',
+      height: '18px'
     }
   },
   removeEmail: {
@@ -134,6 +140,7 @@ export const GoogleEmailButton: React.FC<Props> = ({
             variant="outlined"
             color="primary"
             id="googleButton"
+            className={classes.outline}
           >
             <div className={classes.icon}>
               <GoogleIcon />
