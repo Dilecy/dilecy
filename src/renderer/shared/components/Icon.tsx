@@ -36,7 +36,7 @@ const useLogoStyles = makeStyles({
  */
 
 function GoogleIcon() {
-  return <SvgIcon component={Google} viewBox="0 0 488 512" />;
+  return <SvgIcon component={Google} viewBox="0 0 18 18" />;
 }
 
 function LogoIcon(props?: { height?: string }) {
