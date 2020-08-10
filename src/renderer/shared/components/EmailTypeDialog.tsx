@@ -49,6 +49,12 @@ const useStylesEmailTypeDialog = makeStyles((theme: Theme) => ({
   firstRow: {
     borderTop: '1px solid grey',
     marginTop: '1rem'
+  },
+  learnMore: {
+    cursor: 'pointer',
+    color: customTheme.colorPrimary,
+    textAlign: 'center',
+    marginTop: '1rem'
   }
 }));
 
@@ -58,14 +64,17 @@ const EmailTypeDialog: React.FC<EmailTypeDialogProps> = (
   const classes = useStylesEmailTypeDialog();
 
   const { close, useForwarder, useOwnEmail } = props;
+
+  const [showMore, setShowMore] = React.useState(false);
+
   return (
     <Card className={classes.card}>
       <CardContent className={classes.welcomeMessage}>
         <Typography variant="h4">{localizations.HOW_SEND_EMAILS}</Typography>
 
         <Grid container>
-          <Grid item xs={4}></Grid>
-          <Grid item xs={4}>
+          {showMore && <Grid item xs={4}></Grid>}
+          <Grid item xs={showMore ? 4 : 6}>
             <Typography variant="subtitle1" className={classes.headerText}>
               {localizations.SEND_WITH_OWN_EMAIL}:
             </Typography>
@@ -73,7 +82,7 @@ const EmailTypeDialog: React.FC<EmailTypeDialogProps> = (
               {localizations.OWN_EMAIL_TIP}
             </Typography>
           </Grid>
-          <Grid item xs={4}>
+          <Grid item xs={showMore ? 4 : 6}>
             <Typography variant="subtitle1" className={classes.headerText}>
               {localizations.USE_DILECY}:
             </Typography>
@@ -82,76 +91,104 @@ const EmailTypeDialog: React.FC<EmailTypeDialogProps> = (
             </Typography>
           </Grid>
 
-          <Grid
-            container
-            className={`${classes.benefitRow} ${classes.firstRow}`}
-            alignItems="center"
-          >
-            <Grid item xs={4}>
-              <Typography variant="subtitle2" className={classes.smallText}>
-                {localizations.WE_DONT_GET_YOUR_ADDRESS}
-              </Typography>
-            </Grid>
-            <Grid item xs={4}>
-              <CheckIcon></CheckIcon>
-            </Grid>
-            <Grid item xs={4}>
-              <CrossIcon></CrossIcon>
-            </Grid>
-          </Grid>
+          {showMore ? (
+            <>
+              <Grid
+                container
+                className={`${classes.benefitRow} ${classes.firstRow}`}
+                alignItems="center"
+              >
+                <Grid item xs={4}>
+                  <Typography variant="subtitle2" className={classes.smallText}>
+                    {localizations.WE_DONT_GET_YOUR_ADDRESS}
+                  </Typography>
+                </Grid>
+                <Grid item xs={4}>
+                  <CheckIcon></CheckIcon>
+                </Grid>
+                <Grid item xs={4}>
+                  <CrossIcon></CrossIcon>
+                </Grid>
+              </Grid>
 
-          <Grid container className={classes.benefitRow} alignItems="center">
-            <Grid item xs={4}>
-              <Typography variant="subtitle2" className={classes.smallText}>
-                {localizations.WE_DONT_KNOW_WHAT_YOU_SEND}
-              </Typography>
-            </Grid>
-            <Grid item xs={4}>
-              <CheckIcon></CheckIcon>
-            </Grid>
-            <Grid item xs={4}>
-              <CrossIcon></CrossIcon>
-            </Grid>
-          </Grid>
+              <Grid
+                container
+                className={classes.benefitRow}
+                alignItems="center"
+              >
+                <Grid item xs={4}>
+                  <Typography variant="subtitle2" className={classes.smallText}>
+                    {localizations.WE_DONT_KNOW_WHAT_YOU_SEND}
+                  </Typography>
+                </Grid>
+                <Grid item xs={4}>
+                  <CheckIcon></CheckIcon>
+                </Grid>
+                <Grid item xs={4}>
+                  <CrossIcon></CrossIcon>
+                </Grid>
+              </Grid>
 
-          <Grid container className={classes.benefitRow} alignItems="center">
-            <Grid item xs={4}>
-              <Typography variant="subtitle2" className={classes.smallText}>
-                {localizations.PASSWORD_NOT_REQUIRED}
-              </Typography>
-            </Grid>
+              <Grid
+                container
+                className={classes.benefitRow}
+                alignItems="center"
+              >
+                <Grid item xs={4}>
+                  <Typography variant="subtitle2" className={classes.smallText}>
+                    {localizations.PASSWORD_NOT_REQUIRED}
+                  </Typography>
+                </Grid>
 
-            <Grid item xs={4}>
-              <CrossIcon></CrossIcon>
-            </Grid>
+                <Grid item xs={4}>
+                  <CrossIcon></CrossIcon>
+                </Grid>
 
-            <Grid item xs={4}>
-              <CheckIcon></CheckIcon>
-            </Grid>
-          </Grid>
+                <Grid item xs={4}>
+                  <CheckIcon></CheckIcon>
+                </Grid>
+              </Grid>
 
-          <Grid container className={classes.benefitRow} alignItems="center">
-            <Grid item xs={4}>
-              <Typography variant="subtitle2" className={classes.smallText}>
-                {localizations.EFFORT}
-              </Typography>
+              <Grid
+                container
+                className={classes.benefitRow}
+                alignItems="center"
+              >
+                <Grid item xs={4}>
+                  <Typography variant="subtitle2" className={classes.smallText}>
+                    {localizations.EFFORT}
+                  </Typography>
+                </Grid>
+                <Grid item xs={4}>
+                  <Typography>{localizations.LITTLE_EFFORT}</Typography>
+                </Grid>
+                <Grid item xs={4}>
+                  <Typography>{localizations.BIG_EFFORT}</Typography>
+                </Grid>
+              </Grid>
+            </>
+          ) : (
+            <Grid container alignItems="center">
+              <Grid item xs={12}>
+                <Typography
+                  variant="subtitle2"
+                  className={classes.learnMore}
+                  onClick={() => setShowMore(true)}
+                >
+                  {localizations.LEARN_MORE}
+                </Typography>
+              </Grid>
             </Grid>
-            <Grid item xs={4}>
-              <Typography>{localizations.LITTLE_EFFORT}</Typography>
-            </Grid>
-            <Grid item xs={4}>
-              <Typography>{localizations.BIG_EFFORT}</Typography>
-            </Grid>
-          </Grid>
+          )}
 
           <Grid container className={classes.buttonRow}>
-            <Grid item xs={4}></Grid>
-            <Grid item xs={4}>
+            {showMore && <Grid item xs={4}></Grid>}
+            <Grid item xs={showMore ? 4 : 6}>
               <StyledButton onClick={() => useOwnEmail()}>
                 {localizations.USE_OWN_EMAIL}
               </StyledButton>
             </Grid>
-            <Grid item xs={4}>
+            <Grid item xs={showMore ? 4 : 6}>
               <StyledButton onClick={() => useForwarder()}>
                 {localizations.USE_DILECY}
               </StyledButton>
