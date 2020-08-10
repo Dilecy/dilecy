@@ -18,7 +18,11 @@ import { Epic } from '../store/root-epic';
 import { logout } from '../feature/Login/actions';
 import { abortProfile } from '../feature/CreateProfile/actions';
 
-export const startupEpic: Epic = (action$, _, { apiService, clientBackend, tracker }) =>
+export const startupEpic: Epic = (
+  action$,
+  _,
+  { apiService, clientBackend, tracker }
+) =>
   action$.pipe(
     filter(isActionOf(Actions.appStarted)),
     concatMap(action =>

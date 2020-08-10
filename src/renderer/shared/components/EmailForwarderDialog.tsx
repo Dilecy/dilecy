@@ -7,7 +7,7 @@ import StyledButton from './StyledButton';
 import StyledButtonOutlined from './StyledButtonOutlined';
 import { CardContent, Typography } from '@material-ui/core';
 import { CustomInputField } from './CustomInputField';
-import { Formik, Form, FormikHelpers } from 'formik';
+import { Formik, Form } from 'formik';
 import { ForwardEmailSettingsValidationSchema } from '../utils/validationSchema';
 import {
   EmailForwardFormValues,
@@ -76,7 +76,7 @@ const EmailForwarderDialog: React.FC<EmailForwarderDialogProps> = (
           validationSchema={ForwardEmailSettingsValidationSchema}
           onSubmit={formikSubmit}
         >
-          {({ dirty }) => (
+          {() => (
             <Form autoComplete="off">
               <div className={classes.titleRow}>
                 <Typography variant="h4">{localizations.USE_DILECY}</Typography>

@@ -151,7 +151,7 @@ export const useProfileDataForm = ({
       }
       return errors;
     },
-    onSubmit: async (values, { setSubmitting }) => {
+    onSubmit: async values => {
       submitAction && (await submitAction(values));
     }
   });

@@ -1,6 +1,4 @@
 /* eslint-disable @typescript-eslint/camelcase */
-import { Observable } from 'rxjs';
-
 export interface Tag {
   id: number;
   is_active?: boolean;

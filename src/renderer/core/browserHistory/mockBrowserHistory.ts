@@ -16,7 +16,7 @@ export const getMockBrowserHistory = async (timeInMins: number) => {
       utc_time: 12343
     }
   ];
-  return new Promise((resolve, reject) => {
+  return new Promise(resolve => {
     // Setting 5000 ms time
     setTimeout(resolve, 5000);
   }).then(function() {

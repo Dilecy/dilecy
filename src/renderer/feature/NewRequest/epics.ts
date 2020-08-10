@@ -54,6 +54,7 @@ import { isEmptyMap } from '../../shared/helpers/helper';
 import { HISTORY_IMPORT_LIMIT } from '../../shared/utils/environment';
 import { Tracker } from '../../core/tracker/interface';
 import { createTaskQueue } from '../../core/google/callQueue';
+import { googleAuth } from '../../core/google/googleAuth';
 
 const loadingHistoryFailed =
   'Der Browserverlauf konnte nicht geladen werden. Bitte wende dich an unseren Support.';
@@ -280,7 +281,7 @@ export const requestTypeEpic: Epic = (action$, state$) =>
 export const fetchTagsEpic: Epic = (action$, state$, { apiService }) =>
   action$.pipe(
     filter(isActionOf(tagsRequested)),
-    mergeMap(action =>
+    mergeMap(() =>
       fromThunky(async dispatch => {
         try {
           const tagsById: IdMap<Tag> = {};
@@ -400,7 +401,7 @@ export const fetchRecommendedBrandsEpic: Epic = (
 ) =>
   action$.pipe(
     filter(isActionOf(recommendedBrandsRequested)),
-    concatMap(action =>
+    concatMap(() =>
       fromThunky(async dispatch => {
         const state = state$.value;
         const selectedBrandIds = Object.keys(

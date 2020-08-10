@@ -1,5 +1,5 @@
 import React from 'react';
-import chai, { expect } from 'chai';
+import { expect } from 'chai';
 import { mount } from 'enzyme';
 import {
   LogoutIcon,

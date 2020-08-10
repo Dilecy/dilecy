@@ -2,7 +2,8 @@ import chai from 'chai';
 import { googleAuth } from './googleAuth';
 import * as client from './oauthClient';
 import { GOOGLE_API_SCOPE } from '../../shared/utils/environment';
-chai.use(require('chai-spies'));
+import chaiSpies from 'chai-spies';
+chai.use(chaiSpies);
 chai.should();
 
 describe('Google Auth tests', () => {
@@ -27,6 +28,7 @@ describe('Google Auth tests', () => {
       },
       openAuthWindowAndGetTokens: async () => {
         return Promise.resolve({
+          // eslint-disable-next-line @typescript-eslint/camelcase
           refresh_token: 'refresh_token',
           scope: GOOGLE_API_SCOPE
         });
@@ -46,6 +48,7 @@ describe('Google Auth tests', () => {
       setRefreshToken: (token: string) => {},
       openAuthWindowAndGetTokens: async () => {
         return Promise.resolve({
+          // eslint-disable-next-line @typescript-eslint/camelcase
           refresh_token: 'refresh_token',
           scope: GOOGLE_API_SCOPE
         });

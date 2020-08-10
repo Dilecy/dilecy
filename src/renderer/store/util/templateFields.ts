@@ -12,7 +12,7 @@ export const replaceTemplateField = (
   field: string,
   value: string | null
 ) => {
-  let newValue = value || '';
+  const newValue = value || '';
   return s.replace(new RegExp(`{{\\s*${field}\\s*}}`, 'g'), newValue);
 };
 

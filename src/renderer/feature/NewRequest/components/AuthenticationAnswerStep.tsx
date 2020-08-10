@@ -8,7 +8,6 @@ import Container from '@material-ui/core/Container';
 import Typography from '@material-ui/core/Typography';
 import { AuthQAItem } from '../../../store/stateModel';
 import { setAuthAnswerText } from '../actions';
-import { RootState } from 'typesafe-actions';
 
 interface Props {
   authQA: AuthQAItem[];
@@ -43,7 +42,7 @@ const AuthenticationAnswerStep = (props: Props) => {
   );
 };
 
-const mapStateToProps = (state: RootState) => ({
+const mapStateToProps = () => ({
   authQA: [] //TODO: replace with selector when available
 });
 

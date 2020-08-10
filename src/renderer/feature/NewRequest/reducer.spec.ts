@@ -1,7 +1,6 @@
 /* eslint-disable @typescript-eslint/camelcase */
 import chai from 'chai';
 import { initialNewRequestState, newRequestStateReducer } from './reducer';
-import * as TD from '../../model/mock/testData';
 import * as Actions from './actions';
 chai.should();
 

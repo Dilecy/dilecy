@@ -1,8 +1,7 @@
 import React from 'react';
-import { connect, useDispatch } from 'react-redux';
+import { connect } from 'react-redux';
 import Container from '@material-ui/core/Container';
 import Typography from '@material-ui/core/Typography';
-import Button from '@material-ui/core/Button';
 import Select from '@material-ui/core/Select';
 import FormControl from '@material-ui/core/FormControl';
 import { makeStyles } from '@material-ui/core/styles';
@@ -141,7 +140,6 @@ const SelectRecommendedBrandsStep: React.FC<Props> = ({
   brandSelection
 }) => {
   const classes = useStyles();
-  const dispatch = useDispatch();
   const [period, setPeriod] = React.useState(periodList[5].value); //setting default to 1 year
 
   React.useEffect(() => {

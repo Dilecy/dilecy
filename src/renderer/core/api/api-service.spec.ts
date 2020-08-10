@@ -3,7 +3,8 @@ import { createApiService } from './api-service';
 import { ApiService } from './api-interface';
 import { ajaxWrapper } from './ajax-wrapper';
 import { of } from 'rxjs';
-chai.use(require('chai-spies'));
+import chaiSpies from 'chai-spies';
+chai.use(chaiSpies);
 chai.should();
 
 describe('Api service tests', () => {
@@ -14,9 +15,9 @@ describe('Api service tests', () => {
 
   beforeEach(() => {
     sut = createApiService('http://testapi');
-    postJsonSpy = chai.spy.on(ajaxWrapper, 'postJSON', returns => of({}));
-    patchJsonSpy = chai.spy.on(ajaxWrapper, 'patchJSON', returns => of({}));
-    postSpy = chai.spy.on(ajaxWrapper, 'post', returns => of({}));
+    postJsonSpy = chai.spy.on(ajaxWrapper, 'postJSON', () => of({}));
+    patchJsonSpy = chai.spy.on(ajaxWrapper, 'patchJSON', () => of({}));
+    postSpy = chai.spy.on(ajaxWrapper, 'post', () => of({}));
   });
 
   describe('postRating', () => {

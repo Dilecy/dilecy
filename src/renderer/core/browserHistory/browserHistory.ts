@@ -9,7 +9,7 @@ import { getAllHistory } from 'node-browser-history';
  */
 
 export const getBrowserHistoryAsync = async (timeinMinutes: number) => {
-  return new Promise((resolve, reject) => {
+  return new Promise(resolve => {
     // Setting a slight delay time delay
     setTimeout(resolve, 400);
   }).then(() => getAllHistory(timeinMinutes));

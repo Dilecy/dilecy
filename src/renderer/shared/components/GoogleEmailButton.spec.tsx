@@ -1,6 +1,6 @@
 import React from 'react';
-import chai, { expect } from 'chai';
-import { shallow, mount } from 'enzyme';
+import chai from 'chai';
+import { mount } from 'enzyme';
 import { DependencyInjector } from '../../core/dependencies';
 import { GoogleEmailButton } from './GoogleEmailButton';
 import { sealPassword, rng } from '../../core/crypto/password.mock';
@@ -11,7 +11,6 @@ import { createMailerMock } from '../../core/mailer/mailerMock';
 import { createTracker } from '../../core/tracker/tracker';
 import { getMockBrowserHistory } from '../../core/browserHistory/mockBrowserHistory';
 import { createGoogleAuthMock } from '../../core/google/googleAuthMock';
-import Button from '@material-ui/core/Button';
 import { EmailAccount } from '../../model/clientModel';
 
 describe('GoogleEmailButton tests', () => {

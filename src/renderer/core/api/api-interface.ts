@@ -46,6 +46,7 @@ export interface ApiService {
   ) => Promise<AjaxResponse | unknown>;
   postPing: (
     cohort: string,
+    // eslint-disable-next-line @typescript-eslint/camelcase
     is_first: boolean
   ) => Promise<AjaxResponse | unknown>;
   postRating: (points: number) => Promise<RatingResponse>;
