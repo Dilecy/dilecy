@@ -1,5 +1,6 @@
 const rules = require('./webpack.rules');
 const { rendererPlugins } = require('./webpack.plugins');
+const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
 
 rules.push(
   {
@@ -39,6 +40,11 @@ module.exports = {
     nodemailer: 'commonjs nodemailer'
   },
   resolve: {
-    extensions: ['.js', '.ts', '.jsx', '.tsx', '.css']
+    extensions: ['.js', '.ts', '.jsx', '.tsx', '.css'],
+    plugins: [
+      new TsconfigPathsPlugin({
+        configFile: './tsconfig.json'
+      })
+    ]
   }
 };
