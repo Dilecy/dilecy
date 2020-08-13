@@ -2,8 +2,7 @@ import { hot } from 'react-hot-loader/root';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-// TODO: use scss file provided through the tagify package
-import './tagify.css';
+import '@yaireo/tagify/dist/tagify.css';
 import { Provider } from 'react-redux';
 import { DependencyInjector } from './core/dependencies';
 import App from './App';
