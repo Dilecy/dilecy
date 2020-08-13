@@ -3,6 +3,10 @@ import { connect } from 'react-redux';
 import TextField from '@material-ui/core/TextField';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
+// TODO remove this tsc/lint exceptions by adding a type definition for tagify
+// eslint-disable-next-line @typescript-eslint/ban-ts-ignore
+// @ts-ignore
+import Tags from '@yaireo/tagify/dist/react.tagify';
 import StyledbuttonOutlined from '../../../shared/components/StyledButtonOutlined';
 import { EmailTemplate } from '../../../model/serverModel';
 import CustomTooltip from '../../../shared/components/CustomTooltip';
@@ -21,7 +25,6 @@ import { localization } from '../../../shared/localization';
 
 const useStyles = makeStyles(theme => ({
   root: {
-    textAlign: 'center',
     display: 'flex',
     flex: 1,
     flexDirection: 'column',
@@ -52,6 +55,7 @@ const useStyles = makeStyles(theme => ({
     textAlign: 'left'
   },
   subjectField: { margin: '1.25rem 0' },
+  // TODO: remove or replace the class templateField
   templateField: {
     flex: 1,
     wordBreak: 'break-word',
@@ -69,6 +73,32 @@ const useStyles = makeStyles(theme => ({
 
     '& .MuiInputBase-inputMultiline': {
       height: '100%'
+    }
+  },
+  // TODO: remove or conert the class templateField2 to templateField
+  templateField2: {
+    // make it look like the old component
+    fontFamily: 'Montserrat',
+    fontSize: '12px',
+    padding: '18.5px 14px',
+    borderRadius: '4px',
+    border: '1px solid #cbcbcb',
+    '&:hover': { border: '1px solid #3c3c3c' },
+    '&:focus-within': { border: '1px solid #334395' }, // actually the border should be 2px when focussed but that creates a flickering
+
+    // add scrollbars
+    overflow: 'auto',
+
+    // make tags look like in the mockup
+    '& > span > tag': {
+      minWidth: '200px'
+    },
+    '& > span > tag > div': {
+      width: '100%',
+      textAlign: 'center'
+    },
+    '& > span > tag > x': {
+      display: 'none' // hiding the delete button is not supported in mixed mode
     }
   }
 }));
@@ -105,6 +135,24 @@ const RequestTemplateStep: React.FC<Props> = (props: Props) => {
       setRequestTemplateText(event.target.value);
     }
   };
+
+  const handleOnChangeTemplateText = React.useCallback(event => {
+    event.persist();
+
+    let templateText = event.target.value;
+    templateText.split('{{ ').map((s1: string, i: number) => {
+      if (!i) return;
+      const s2 = s1.split(' }}');
+      const json = s2[0];
+      const field = JSON.parse(json).value;
+      templateText = templateText.replace(
+        `{{ {"value":"${field}"} }}`,
+        `{{ ${field} }}`
+      );
+
+      setRequestTemplateText(templateText);
+    });
+  }, []);
 
   const validateStep = () => {
     if (
@@ -146,6 +194,19 @@ const RequestTemplateStep: React.FC<Props> = (props: Props) => {
         }
       : {};
 
+  const tagSettings = {
+    mode: 'mix',
+    duplicates: true,
+    mixTagsInterpolator: ['{{ ', ' }}'],
+    editTags: false,
+    autoComplete: {
+      enabled: false
+    },
+    dropdown: {
+      enabled: false
+    }
+  };
+
   return (
     <div className={classes.root}>
       <div className={classes.headingContainer}>
@@ -166,6 +227,17 @@ const RequestTemplateStep: React.FC<Props> = (props: Props) => {
         variant="outlined"
         label="Betreff"
       />
+      {/* TODO Add a label, show errors*/}
+      <Tags
+        InputMode="textarea"
+        settings={tagSettings}
+        className={`${classes.templateField} ${classes.templateField2}`}
+        value={requestTemplateText}
+        name="templateText"
+        onChange={handleOnChangeTemplateText}
+        {...errors}
+      />
+      {/* TODO Remove the old TextField when done */}
       <TextField
         className={classes.templateField}
         value={requestTemplateText}

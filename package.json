@@ -41,6 +41,7 @@
     "@material-ui/pickers": "^3.2.10",
     "@types/chai-spies": "^1.0.1",
     "@types/js-base64": "^2.3.2",
+    "@yaireo/tagify": "^3.17.7",
     "bcrypt": "^5.0.0",
     "clsx": "^1.1.0",
     "date-fns": "^2.9.0",

@@ -2,6 +2,7 @@ import { remote, ipcRenderer } from 'electron';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
+import '@yaireo/tagify/dist/tagify.css';
 import { Provider } from 'react-redux';
 import { DependencyInjector } from './core/dependencies';
 import ThemeRoot from './shared/styles/theme';
